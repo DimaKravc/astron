@@ -1,0 +1,28 @@
+// Main colors
+$color-base: #000000;
+$color-accent: #ffc20e;
+
+// Font configs
+$font-size-base: 14px;
+$font-line-height-base: 1.6; // 22.4px
+
+// Font families
+$font-family-base: "Open Sans", sans-serif;
+$font-family-lead: "Helvetica Condensed Black", sans-serif;
+
+// Font weights
+$font-weight-extra-light: 100;
+$font-weight-light: 200;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+
+// Base transition time
+$transition-time: .13s;
+
+// Screens resolutions
+$screen-sm-min: 768px;
+$screen-sm-max: 767px;
+$screen-md-min: 992px;
+$screen-md-max: 991px;
+$screen-lg-min: 1240px;
+$screen-lg-max: 1239px;

@@ -1,0 +1,39 @@
+.site-nav {
+    &__list {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+
+        li {
+            line-height: 1;
+            padding: 0 rem(22px);
+        }
+
+        a {
+            text-transform: uppercase;
+            @include font-size(18px);
+            font-family: $font-family-lead;
+            color: $color-base;
+
+            &:hover {
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    &_loc_footer {
+        .site-nav {
+            &__list {
+                li {
+                    padding: 0 rem(16px);
+                }
+
+                a {
+                    @include font-size(14px);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.button {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    background: $color-base;
+    line-height: rem(38px);
+    @include font-size(15px);
+    font-family: $font-family-lead;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    height: rem(38px);
+    border-radius: 0;
+    border: 0;
+    outline: none;
+    padding: 0 rem(22px);
+    margin: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    vertical-align: top;
+    user-select: none;
+    transition: all $transition-time;
+
+    &_state_disabled,
+    &[disabled] {
+        background: #e6e3e3;
+        color: #999999;
+        cursor: default;
+        pointer-events: none;
+    }
+}

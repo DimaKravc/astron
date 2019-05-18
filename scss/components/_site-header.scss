@@ -1,0 +1,10 @@
+.site-header {
+    padding: rem(56px) 0 rem(140px);
+    background: $color-accent;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
