@@ -1,0 +1,10 @@
+// Pixels to Rems
+@function rem($value) {
+    @return $value / $font-size-base+rem;
+}
+
+// Font Size in Rems
+@mixin font-size($value, $content:null) {
+    font-size: $value $content;
+    font-size: rem($value) $content;
+}

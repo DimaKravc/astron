@@ -12,14 +12,16 @@ Tags:         one-column, two-columns, three-columns, right-sidebar, left-sideba
 Text Domain:  astros
 */
 
+@import "utils/angle",
+        "utils/clearfix",
+        "utils/font-size";
+
 @import "base/config",
-        "base/utils",
         "base/normalize",
         "base/theme";
 
-@import "utils/angle";
-
 @import "components/container",
+        "components/grid",
         "components/site-spacer",
         "components/button",
         "components/site-header",
