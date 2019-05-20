@@ -49,6 +49,39 @@ jQuery(document).ready(function ($) {
             $(window).resize(function () {
                 autoHeight = overlayNode.css('height', 'auto').outerHeight();
             });
+        },
+
+        loadMorePost: function () {
+            $('[data-js="load-more-btn"]').on('click', function (e) {
+                e.preventDefault();
+
+                var button = $(this),
+                    data = {
+                        'action': 'loadmore',
+                        'query': window.localize_array.posts,
+                        'page': window.localize_array.current_page
+                    };
+
+                $.ajax({
+                    url: window.localize_array.ajax_url,
+                    data: data,
+                    type: 'POST',
+                    beforeSend: function (xhr) {
+                        button.text('Loading...');
+                    },
+                    success: function (data) {
+                        if (data) {
+                            button.text('More posts').parent().before(data).slideDown('slow');
+                            window.localize_array.current_page++
+
+                            if (window.localize_array.current_page == window.localize_array.max_page)
+                                button.remove();
+                        } else {
+                            button.remove();
+                        }
+                    }
+                });
+            })
         }
     });
 });

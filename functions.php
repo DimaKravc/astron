@@ -152,6 +152,8 @@ if (!function_exists('astron_load_scripts')) :
      */
     function astron_load_scripts()
     {
+        global $wp_query;
+
         /**
          * Load styles
          */
@@ -167,6 +169,9 @@ if (!function_exists('astron_load_scripts')) :
 
         wp_localize_script('main', 'localize_array', array(
             'ajax_url' => admin_url('admin-ajax.php'),
+            'posts' => json_encode($wp_query->query_vars),
+            'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+            'max_page' => $wp_query->max_num_pages
         ));
 
         if (is_singular() && get_option('thread_comments')) {
@@ -221,6 +226,28 @@ if (!function_exists('astron_register_sidebars')) :
 endif;
 add_action('widgets_init', 'astron_register_sidebars');
 
+if (!function_exists('astron_excerpt_length')) :
+    /**
+     * Limit excerpt 50 words
+     */
+    function astron_excerpt_length()
+    {
+        return 50;
+    }
+endif;
+add_filter('excerpt_length', 'astron_excerpt_length');
+
+if (!function_exists('astron_excerpt_more')) :
+    /**
+     * Update excerpt
+     */
+    function astron_excerpt_more($more)
+    {
+        return '...';
+    }
+endif;
+add_filter('excerpt_more', 'astron_excerpt_more');
+
 if (!function_exists('astron_language_list')) :
     /**
      * Register language select
@@ -246,3 +273,29 @@ if (!function_exists('astron_language_list')) :
         }
     }
 endif;
+
+if (!function_exists('astron_loadmore_ajax_handler')) :
+    function astron_loadmore_ajax_handler()
+    {
+        $args = json_decode(stripslashes($_POST['query']), true);
+        $args['paged'] = $_POST['page'] + 1;
+        $args['post_status'] = 'publish';
+
+        query_posts($args);
+
+        echo '<h2>Page #' . $args['paged'] . '</h2>';
+
+        if (have_posts()) :
+
+            while (have_posts()): the_post();
+
+                get_template_part('templates/content');
+
+            endwhile;
+
+        endif;
+        die;
+    }
+endif;
+add_action('wp_ajax_loadmore', 'astron_loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore', 'astron_loadmore_ajax_handler');

@@ -73,13 +73,13 @@ h4,
 h5,
 h6 {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: rem(25px);
     font-family: $font-family-lead;
     text-transform: uppercase;
 }
 
 h1 {
-    @include font-size(86px);
+    @include font-size(96px);
     line-height: 1.3953;
 }
 

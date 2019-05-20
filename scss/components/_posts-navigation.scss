@@ -1,0 +1,13 @@
+.posts-navigation {
+  display: flex;
+  justify-content: center;
+
+  .button {
+    color: #000000;
+    background: $color-accent;
+    height: rem(36px);
+    margin: rem(40px) 0;
+    line-height: rem(36px);
+    @include font-size(14px)
+  }
+}

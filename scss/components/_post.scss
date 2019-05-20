@@ -1,4 +1,6 @@
 .post {
+    animation: animateElement ease-in .25s;
+    animation-iteration-count: 1;
     display: flex;
     align-items: start;
     justify-content: center;
@@ -20,7 +22,7 @@
         flex-direction: column;
         justify-content: space-between;
         clip-path: polygon(rem(60px) 100%, 0 0, 100% 0, 100% 100%);
-        padding: rem(30px) rem(25px) rem(22px) rem(75px);
+        padding: rem(22px) rem(25px) rem(22px) rem(75px);
     }
 
     &__header {
@@ -47,6 +49,7 @@
         max-height: rem(72px);
         overflow: hidden;
         margin-bottom: rem(10px);
+        flex: 1;
     }
 
     &__footer {
@@ -60,7 +63,7 @@
     }
 
 
-    &__button {
+    .button {
         height: rem(25px);
         min-width: rem(138px);
         @include font-size(10px);
@@ -68,4 +71,32 @@
         color: $color-accent;
     }
 
+    & + h2 {
+        margin-bottom: rem(50px);
+    }
+}
+
+@keyframes animateElement {
+    0% {
+        opacity: 0;
+        transform: translate(0px, 5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .post {
+        &__thumbnail {
+            display: none;
+        }
+
+        &__primary {
+            clip-path: none;
+            margin: 0;
+            padding-left: rem(25px);
+        }
+    }
 }
