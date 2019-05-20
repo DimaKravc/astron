@@ -1,10 +1,27 @@
 .site-header {
-    padding: rem(56px) 0 rem(140px);
+    padding: rem(55px) 0 rem(135px);
     background: $color-accent;
 
     &__inner {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    &__utils {
+        position: relative;
+
+        .language-select {
+            position: absolute;
+            top: rem(68px);
+            right: 0;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .site-header {
+        padding: rem(55px) 0 rem(110px);
     }
 }

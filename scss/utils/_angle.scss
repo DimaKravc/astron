@@ -122,11 +122,11 @@
 
 // Classes
 .angle--top-left {
-    @include angle-edge($angle: 3, $angle-position-y: 'top', $angle-position-x: 'left');
+    @include angle-edge($angle: 2, $angle-position-y: 'top', $angle-position-x: 'left');
 }
 
 .angle--top-right {
-    @include angle-edge($angle: 3, $angle-position-y: 'top', $angle-position-x: 'right');
+    @include angle-edge($angle: 2, $angle-position-y: 'top', $angle-position-x: 'right');
 }
 
 .angle--bottom-left {
@@ -134,23 +134,23 @@
 }
 
 .angle--bottom-right {
-    @include angle-edge($angle: 3, $angle-position-y: 'bottom', $angle-position-x: 'right');
+    @include angle-edge($angle: 2, $angle-position-y: 'bottom', $angle-position-x: 'right');
 }
 
 .angle--both-left-left {
-    @include angle-edge($angle: 3, $angle-position-y: 'both', $angle-position-x: 'left');
+    @include angle-edge($angle: 2, $angle-position-y: 'both', $angle-position-x: 'left');
 }
 
 .angle--both-right-right {
-    @include angle-edge($angle: 3, $angle-position-y: 'both', $angle-position-x: 'right');
+    @include angle-edge($angle: 2, $angle-position-y: 'both', $angle-position-x: 'right');
 }
 
 .angle--both-left-right {
-    @include angle-edge($angle: 3, $angle-position-y: 'both', $angle-position-x: 'left', $angle-position-bottom-x: 'right');
+    @include angle-edge($angle: 2, $angle-position-y: 'both', $angle-position-x: 'left', $angle-position-bottom-x: 'right');
 }
 
 .angle--both-right-left {
-    @include angle-edge($angle: 3, $angle-position-y: 'both', $angle-position-x: 'right', $angle-position-bottom-x: 'left');
+    @include angle-edge($angle: 2, $angle-position-y: 'both', $angle-position-x: 'right', $angle-position-bottom-x: 'left');
 }
 
 .angle__content {

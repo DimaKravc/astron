@@ -1,0 +1,71 @@
+.post {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: rem(50px);
+
+    &__thumbnail {
+        width: rem(180px);
+        height: rem(205px);
+        clip-path: polygon(0 100%, 0 0, rem(120px) 0, 100% 100%);
+        float: left;
+    }
+
+    &__primary {
+        height: rem(205px);
+        margin: rem(10px) 0 0 rem(-56px);
+        background: $color-accent;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        clip-path: polygon(rem(60px) 100%, 0 0, 100% 0, 100% 100%);
+        padding: rem(30px) rem(25px) rem(22px) rem(75px);
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: rem(10px);
+    }
+
+    &__title {
+        margin: 0;
+    }
+
+    &__date {
+        time {
+            @include font-size(12px);
+            font-family: $font-family-lead;
+        }
+    }
+
+    &__content {
+        @include font-size(12px);
+        line-height: 1.5;
+        max-height: rem(72px);
+        overflow: hidden;
+        margin-bottom: rem(10px);
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &__share {
+        margin: 0 rem(10px);
+    }
+
+
+    &__button {
+        height: rem(25px);
+        min-width: rem(138px);
+        @include font-size(10px);
+        line-height: 2.5;
+        color: $color-accent;
+    }
+
+}

@@ -1,0 +1,33 @@
+.mob-nav-overlay {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background: $color-accent;
+    overflow: hidden;
+    z-index: 1;
+    padding: rem(55px) 0 rem(110px);
+    box-shadow: 0 6px 15px -12px rgba(0,0,0,0.67);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .13s linear .27s, visibility .13s linear .27s;
+
+    &__inner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .site-brand {
+        opacity: 0;
+    }
+
+    &.is-shown {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+    }
+}

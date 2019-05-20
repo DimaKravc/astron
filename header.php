@@ -43,15 +43,50 @@
             </div>
 
             <?php wp_nav_menu(array(
-                'theme_location' => 'site-menu',
+                'theme_location' => 'site-nav',
                 'container' => 'nav',
-                'container_class' => 'site-nav',
+                'container_class' => 'site-nav hidden-sm hidden-xs',
                 'menu_class' => 'site-nav__list'
             )); ?>
 
-            <div class="site-header__utils">
+            <div class="site-header__utils hidden-sm hidden-xs">
                 <a href="<?php echo get_permalink('11') ?>" class="button">Submit an application</a>
+                <?php astron_language_select() ?>
             </div>
+
+            <button class="mob-nav-toggle hidden-lg hidden-md" data-js="mob-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </div>
 </header>
+<div class="mob-nav-overlay angle--bottom-left hidden-lg hidden-md" data-js="mob-nav-overlay">
+    <div class="container">
+        <div class="mob-nav-overlay__inner">
+            <?php astron_language_select() ?>
+            <div class="site-brand">
+                <?php if (!is_home() || is_paged()) : ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <?php endif; ?>
+                    <img src="<?php echo get_template_directory_uri() . '/images/astron-logo.svg' ?>"
+                         alt="<?php bloginfo('name') ?>">
+                    <?php if (!is_home() || is_paged()) : ?>
+                </a>
+            <?php endif; ?>
+            </div>
+            <button class="mob-nav-toggle hidden-lg hidden-md" data-js="mob-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <?php wp_nav_menu(array(
+            'theme_location' => 'site-nav',
+            'container' => 'nav',
+            'container_class' => 'site-nav site-nav_loc_mob',
+            'menu_class' => 'site-nav__list'
+        )); ?>
+    </div>
+</div>

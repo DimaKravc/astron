@@ -1,0 +1,94 @@
+select.language-select {
+    display: none;
+}
+
+.language-select {
+    border: none;
+    background: none;
+    padding: 0 rem(34px) 0 0;
+    height: auto;
+    line-height: 1;
+
+    .current {
+        font-family: $font-family-lead;
+        @include font-size(18px);
+        line-height: 1.5;
+        color: #FFFFFF;
+        text-transform: uppercase;
+    }
+
+    .list {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: none;
+        margin: 0;
+        width: 100%;
+        overflow: visible;
+        transition: none;
+
+        .option {
+            font-family: $font-family-lead;
+            @include font-size(18px);
+            line-height: 1.5;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            padding: 0;
+            min-height: 0;
+            position: relative;
+
+            &:after {
+                content: "";
+                width: rem(10px);
+                height: rem(10px);
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                background: url("./images/arrow-right.svg") no-repeat center / contain;
+                opacity: 0;
+                transform: translateX(rem(5px));
+                transition: all .4s ease;
+            }
+
+            &.selected {
+                display: none;
+            }
+
+            &.focus {
+                background: none;
+            }
+
+            &:hover {
+                background: none;
+                transform: translateX(rem(-5px));
+
+                &:after {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+
+    &:after {
+        width: rem(20px);
+        height: rem(20px);
+        background: url("./images/globus.svg") no-repeat center / contain;
+        transform: none;
+        right: 0;
+        margin-top: rem(-10px);
+        border: none;
+    }
+
+    &.open {
+        &:after {
+            transform: none;
+        }
+
+        .list {
+            transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+        }
+    }
+}

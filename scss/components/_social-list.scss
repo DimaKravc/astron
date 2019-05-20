@@ -1,0 +1,34 @@
+.social-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+
+
+    &__item {
+        margin: 0 rem(5px);
+
+        [class*="icon-"] {
+            display: block;
+        }
+    }
+
+    .icon-fb {
+        width: rem(6px);
+        height: rem(12px);
+        background: url("./images/fb.svg") no-repeat;
+    }
+
+    .icon-vk {
+        width: rem(15px);
+        height: rem(8px);
+        background: url("./images/vk.svg") no-repeat;
+    }
+
+    .icon-tg {
+        width: rem(11px);
+        height: rem(10px);
+        background: url("./images/tg.svg") no-repeat;
+    }
+}
