@@ -15,11 +15,6 @@
             text-transform: uppercase;
             @include font-size(18px);
             font-family: $font-family-lead;
-            color: $color-base;
-
-            &:hover {
-                color: #FFFFFF;
-            }
         }
     }
 

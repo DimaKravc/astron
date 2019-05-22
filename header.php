@@ -28,6 +28,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<button class="button scroll-to-top" data-js="scroll-to-top"><i class="icon-arrow-up"></i></button>
 <header class="site-header angle--bottom-left">
     <div class="container">
         <div class="site-header__inner">

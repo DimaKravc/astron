@@ -25,7 +25,7 @@
                     while (have_posts()) {
                         the_post();
 
-                        get_template_part('templates/content');
+                        get_template_part('templates/content', 'list');
                     }
 
                     if ($wp_query->max_num_pages > 1):?>

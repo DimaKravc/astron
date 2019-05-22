@@ -1,6 +1,7 @@
 .site-header {
     padding: rem(55px) 0 rem(135px);
     background: $color-accent;
+    z-index: $header-index;
 
     &__inner {
         position: relative;

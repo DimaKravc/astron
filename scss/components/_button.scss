@@ -1,8 +1,8 @@
 .button {
-    display: inline-block;
+    display: block;
     position: relative;
     color: #fff;
-    background: $color-base;
+    background: transparent;
     line-height: rem(38px);
     @include font-size(15px);
     font-family: $font-family-lead;
@@ -14,13 +14,14 @@
     border-radius: 0;
     border: 0;
     outline: none;
-    padding: 0 rem(22px);
+    padding: 0 20px;
     margin: 0;
-    box-sizing: border-box;
     cursor: pointer;
     vertical-align: top;
     user-select: none;
     transition: all $transition-time;
+    backface-visibility: hidden;
+    z-index: 1;
 
     &_state_disabled,
     &[disabled] {
@@ -28,5 +29,39 @@
         color: #999999;
         cursor: default;
         pointer-events: none;
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        top: 0;
+        background: $color-base;
+        z-index: -1;
+        transition: $transition-time;
+        backface-visibility: hidden;
+    }
+
+    &:before {
+        left: 1px;
+        right: 41%;
+        clip-path: polygon(0 100%, 0 0, 100% 0%, 72% 100%);
+    }
+
+    &:after {
+        right: 0;
+        left: 41%;
+        clip-path: polygon(0 100%, 28% 0, 100% 0%, 100% 100%);
+    }
+
+    &:hover {
+        &:before {
+            transform: translate(-2%,8%);
+        }
+
+        &:after {
+            transform: translate(2%,-8%);
+        }
     }
 }

@@ -289,7 +289,7 @@ if (!function_exists('astron_loadmore_ajax_handler')) :
 
             while (have_posts()): the_post();
 
-                get_template_part('templates/content');
+                get_template_part('templates/content', 'list');
 
             endwhile;
 
@@ -299,3 +299,5 @@ if (!function_exists('astron_loadmore_ajax_handler')) :
 endif;
 add_action('wp_ajax_loadmore', 'astron_loadmore_ajax_handler');
 add_action('wp_ajax_nopriv_loadmore', 'astron_loadmore_ajax_handler');
+
+require get_template_directory() . '/inc/contacts-page-settings.php';

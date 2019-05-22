@@ -2,6 +2,7 @@
     padding: rem(110px) 0 rem(20px);
     background: $color-accent;
     flex-shrink: 0;
+    z-index: $footer-index;
 
     &__inner {
         display: flex;

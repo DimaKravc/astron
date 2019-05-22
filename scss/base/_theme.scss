@@ -124,6 +124,10 @@ a {
     text-decoration: none;
     transition: color $transition-time;
 
+    &:hover {
+        color: #ffffff;
+    }
+
     &:focus {
         outline: 5px auto -webkit-focus-ring-color;
     }

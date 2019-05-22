@@ -1,12 +1,11 @@
 <?php
 /**
  * The response page template file.
- * Template Name: Response page
+ * Template Name: Response Page Layout
  *
  * @package Astron
  * @version 1.0.0
  */
-
 ?>
 
 <?php get_header(); ?>

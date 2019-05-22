@@ -1,0 +1,23 @@
+.contacts {
+    background: $color-accent;
+    padding: rem(40px) rem(50px) rem(35px) rem(42px);
+    clip-path: polygon(0 0, 76% 0, 100% 100%, 0 100%);
+
+    .contacts-item {
+        margin: 0 0 rem(20px);
+
+        dt {
+            font-family: $font-family-lead;
+            @include font-size(20px);
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-bottom: rem(5px);
+        }
+
+        dd {
+            margin: 0;
+            font-family: "Verdana", cursive;
+            @include font-size(12px);
+        }
+    }
+}

@@ -1,13 +1,16 @@
 .posts-navigation {
-  display: flex;
-  justify-content: center;
+  padding: 1px;
 
   .button {
     color: #000000;
-    background: $color-accent;
     height: rem(36px);
-    margin: rem(40px) 0;
+    margin: rem(40px) auto;
     line-height: rem(36px);
-    @include font-size(14px)
+    @include font-size(14px);
+
+    &:before,
+    &:after {
+      background: $color-accent;
+    }
   }
 }

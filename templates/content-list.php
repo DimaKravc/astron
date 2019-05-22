@@ -5,11 +5,15 @@
  * @package Nobrand
  */
 
+$post_class = array(
+    'post',
+    ! has_post_thumbnail() ? 'post_no_thumbnail' : '',
+);
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="post">
+<article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
     <div class="post__thumbnail">
-        <a href="#">
+        <a href="<?php echo esc_url(get_permalink()) ?>">
             <?php the_post_thumbnail('astron_small_thumb', array('alt' => get_the_title())); ?>
         </a>
     </div>
@@ -36,13 +40,16 @@
             <div class="post__share">
                 <ul class="social-list">
                     <li class="social-list__item">
-                        <a href="<?php echo esc_url('http://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink()) ?>" target="_blank"><i class="icon-fb"></i></a>
+                        <a href="<?php echo esc_url('http://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink()) ?>"
+                           target="_blank"><i class="icon-fb"></i></a>
                     </li>
                     <li class="social-list__item">
-                        <a href="<?php echo esc_url('https://vk.com/share.php?url=' . get_the_permalink()) ?>" target="_blank"><i class="icon-vk"></i></a>
+                        <a href="<?php echo esc_url('https://vk.com/share.php?url=' . get_the_permalink()) ?>"
+                           target="_blank"><i class="icon-vk"></i></a>
                     </li>
                     <li class="social-list__item">
-                        <a href="<?php echo esc_url('https://telegram.me/share/url?url=' . get_permalink() . '&text=' . get_the_title() . '') ?>" target="_blank"><i class="icon-tg"></i></a>
+                        <a href="<?php echo esc_url('https://telegram.me/share/url?url=' . get_permalink() . '&text=' . get_the_title() . '') ?>"
+                           target="_blank"><i class="icon-tg"></i></a>
                     </li>
                 </ul>
             </div>

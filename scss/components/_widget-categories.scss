@@ -23,6 +23,7 @@
                 font-family: $font-family-lead;
                 display: block;
                 padding: 0 rem(20px);
+                transition: $transition-time;
             }
 
             ul {
@@ -33,7 +34,7 @@
                     top: rem(16px);
                     right: rem(20px);
                     position: absolute;
-                    background: url("./images/arrow-top.svg") no-repeat center / contain;
+                    background: url("./images/arrow-up.svg") no-repeat center / contain;
                 }
 
                 align-items: center;
@@ -86,6 +87,7 @@
             &.current-cat,
             &.current-cat-parent {
                 & > a {
+                    color: #ffffff;
                     background: $color-accent;
                     cursor: default;
                 }

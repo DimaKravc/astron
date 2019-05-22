@@ -18,7 +18,7 @@
                     dynamic_sidebar('sidebar');
                 } ?>
             </div>
-            <div class="col-12 col-lg-8 col-xl-8">
+            <div class="col-12 col-lg-9 col-xl-8">
                 <?php if (have_posts()) {
                     global $wp_query;
 

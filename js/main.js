@@ -82,6 +82,33 @@ jQuery(document).ready(function ($) {
                     }
                 });
             })
-        }
+        },
+
+        // scrollToTop: function () {
+        //     if (Application.isMobile) return;
+        //     var $toggle = $('[data-js="scroll-to-top"]');
+        //     var $toggleDefaultBottom = $toggle.css('bottom');
+        //     var $footer = $('[data-js="bottom-panel"]');
+        //     $(window).on('scroll load resize', function () {
+        //         var $this = $(this);
+        //         if ($this.scrollTop() > 800) {
+        //             $toggle.addClass('scroll-to-top_is_visible')
+        //         } else {
+        //             $toggle.removeClass('scroll-to-top_is_visible')
+        //         }
+        //
+        //         if ($this.scrollTop() + $this.height() >= $footer.offset().top) {
+        //             var $offset = $this.scrollTop() + $this.height() - $footer.offset().top + 30;
+        //             $toggle.css('bottom', $offset);
+        //         } else {
+        //             $toggle.css('bottom', $toggleDefaultBottom)
+        //         }
+        //     });
+        //
+        //     $toggle.on('click', function () {
+        //         $('html, body').animate({scrollTop: 0}, 600);
+        //         return false;
+        //     });
+        // },
     });
 });
