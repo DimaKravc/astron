@@ -1,0 +1,130 @@
+.form {
+    fieldset {
+        padding: 0;
+        border: none;
+        margin-bottom: rem(20px);
+
+        legend {
+            @include font-size(22px);
+            font-family: $font-family-lead;
+            text-transform: uppercase;
+            margin-bottom: rem(30px);
+        }
+    }
+
+    &__group {
+        position: relative;
+        margin-bottom: rem(35px);
+
+        label {
+            position: absolute;
+            left: rem(18px);
+            top: rem(15px);
+            @include font-size(18px);
+            line-height: 1;
+            font-family: $font-family-lead;
+            text-transform: uppercase;
+            padding: 0 2px;
+            background: $color-accent;
+            transition: all $transition-time;
+            will-change: top, transform;
+        }
+
+        input:not([type="checkbox"]):not([type="radio"]),
+        textarea {
+            background: none;
+            border: 1px solid #000000;
+            outline: none;
+            width: 100%;
+            height: rem(48px);
+            display: block;
+            padding: 0 rem(20px);
+            background: transparent;
+            @include font-size(14px);
+            line-height: 1.6;
+        }
+
+        input[type="radio"] {
+            background: none;
+            border: none;
+            outline: none;
+            width: 100%;
+            height: rem(48px);
+            display: block;
+
+            & + label {
+                position: absolute;
+                border: 1px solid transparent;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                @include font-size(16px);
+                font-family: $font-family-base;
+                text-transform: none;
+                padding-left: rem(50px);
+                cursor: pointer;
+                transition: all $transition-time;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: rem(20px);
+                    top: rem(16px);
+                    width: rem(16px);
+                    height: rem(16px);
+                    border: 1px solid #000000;
+                    border-radius: 50%;
+                    transition: all $transition-time;
+                }
+
+                &:hover {
+                    border-color: #000000;
+                }
+            }
+
+            &:checked + label {
+                &:before {
+                    background: url("./images/check.svg") no-repeat center / 8px #000000;
+                }
+            }
+        }
+
+        textarea {
+            padding: rem(14px) rem(20px);
+            height: auto;
+            resize: vertical;
+        }
+
+        .amount-allowed {
+            @include font-size(18px);
+            line-height: 1;
+            font-family: $font-family-lead;
+            text-transform: uppercase;
+            color: #000000;
+            opacity: 0.1;
+            position: absolute;
+            right: rem(20px);
+            bottom: rem(15px);
+            transition: all $transition-time;
+        }
+
+        &.transform-label {
+            label {
+                top: 0;
+                transform: translateY(-50%);
+            }
+
+            .amount-allowed {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        &_no_indents {
+            margin: 0;
+        }
+    }
+}

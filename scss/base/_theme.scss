@@ -112,6 +112,7 @@ strong {
 small {
     @include font-size($font-size-base - 2px);
     line-height: 1.4285;
+    letter-spacing: -0.56px;
 }
 
 p {
@@ -228,7 +229,7 @@ input:-webkit-autofill:active {
     margin-top: 1em;
 }
 
-.page-template-page-response {
+.page-template-app-form {
     background: $color-accent;
 }
 

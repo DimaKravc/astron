@@ -1,0 +1,19 @@
+.app-form {
+    &__title {
+        @include font-size(72px);
+        line-height: 1;
+        margin-bottom: rem(45px);
+    }
+
+    &__desc {
+        @include font-size(14px);
+        line-height: 1.6;
+    }
+
+    &__offline-toggle {
+        height: rem(45px);
+        line-height: rem(45px);
+        color: $color-accent;
+        padding: 0 rem(75px);
+    }
+}

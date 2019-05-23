@@ -110,5 +110,18 @@ jQuery(document).ready(function ($) {
         //         return false;
         //     });
         // },
+
+        formGroup: function () {
+            const groupNode = $('[data-js="form-group"]');
+
+            groupNode
+                .find('input, textarea')
+                .focus(function () {
+                    $(this).parent(groupNode).addClass('transform-label')
+                })
+                .blur(function () {
+                    $(this).parent(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
+                })
+        }
     });
 });
