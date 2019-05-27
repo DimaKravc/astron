@@ -1,0 +1,50 @@
+.docs-list {
+    display: flex;
+    align-items: flex-start;
+
+    &__item {
+        margin-right: rem(50px);
+
+        a {
+            @include font-size(12px);
+            line-height: 1.6;
+            display: block;
+
+            [class*="icon"] {
+                display: block;
+                margin: 0 auto rem(10px);
+                width: rem(43px);
+                height: rem(56px);
+                transition: background $transition-time;
+            }
+
+            .icon-doc {
+                background: url("./images/doc.svg") no-repeat center / contain;
+            }
+
+            .icon-pdf {
+                background: url("./images/pdf.svg") no-repeat center / contain;
+            }
+
+            .icon-xls {
+                background: url("./images/xls.svg") no-repeat center / contain;
+            }
+
+            &:hover {
+                .icon-doc {
+                    background-image: url("./images/doc--active.svg");
+                }
+
+                .icon-pdf {
+                    background-image: url("./images/pdf--active.svg");
+                }
+
+                .icon-xls {
+                    background-image: url("./images/xls--active.svg");
+                }
+            }
+        }
+
+        @include clearfix();
+    }
+}
