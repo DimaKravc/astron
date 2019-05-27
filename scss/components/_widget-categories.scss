@@ -15,6 +15,7 @@
         & > li {
             font: 0px/0 a;
             position: relative;
+            margin: 0;
 
             & > a {
                 @include font-size(16px);

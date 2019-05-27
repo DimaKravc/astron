@@ -642,19 +642,18 @@ h6 {
 	margin-top: 0;
 	margin-bottom: 1.5625rem;
 	font-family: "Helvetica Condensed Black", sans-serif;
+	line-height: 1.25;
 	text-transform: uppercase;
 }
 
 h1 {
 	font-size: 96px;
 	font-size: 6rem;
-	line-height: 1.3953;
 }
 
 h2 {
 	font-size: 50px;
 	font-size: 3.125rem;
-	line-height: 1.26;
 }
 
 h3 {
@@ -1804,6 +1803,10 @@ input:-webkit-autofill:active {
 	z-index: 11;
 }
 
+.site-spacer.no-indents {
+	margin: 0;
+}
+
 .button {
 	display: block;
 	position: relative;
@@ -2538,6 +2541,7 @@ select.language-select {
 .widget_categories > ul > li {
 	font: 0px/0 a;
 	position: relative;
+	margin: 0;
 }
 
 .widget_categories > ul > li > a {
@@ -2638,6 +2642,9 @@ select.language-select {
 	        animation: animateElement ease-in .25s;
 	-webkit-animation-iteration-count: 1;
 	        animation-iteration-count: 1;
+}
+
+.post.type-post {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2650,7 +2657,7 @@ select.language-select {
 	margin-bottom: 3.125rem;
 }
 
-.post__thumbnail {
+.post.type-post .post__thumbnail {
 	-webkit-box-flex: 0;
 	    -ms-flex: 0 0 11.25rem;
 	        flex: 0 0 11.25rem;
@@ -2659,7 +2666,7 @@ select.language-select {
 	        clip-path: polygon(0 100%, 0 0, 7.5rem 0, 100% 100%);
 }
 
-.post__primary {
+.post.type-post .post__primary {
 	min-width: 0;
 	height: 12.8125rem;
 	margin: 0.625rem 0 0 -3.5625rem;
@@ -2682,7 +2689,7 @@ select.language-select {
 	padding: 1.375rem 1.5625rem 1.375rem 4.6875rem;
 }
 
-.post__header {
+.post.type-post .post__header {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2695,35 +2702,36 @@ select.language-select {
 	margin-bottom: 0.625rem;
 }
 
-.post__title {
+.post.type-post .post__title {
 	margin: 0;
-	font-size: 20px;
-	font-size: 1.25rem;
-	line-height: 1.76;
 	-webkit-box-flex: 1;
 	    -ms-flex: 1;
 	        flex: 1;
 	overflow: hidden;
 }
 
-.post__title a {
+.post.type-post .post__title a {
+	font-size: 20px;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	line-height: 1.76;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: block;
 }
 
-.post__date {
+.post.type-post .post__date {
 	margin-left: 1.25rem;
 }
 
-.post__date time {
+.post.type-post .post__date time {
 	font-size: 12px;
 	font-size: 0.75rem;
 	font-family: "Helvetica Condensed Black", sans-serif;
 }
 
-.post__content {
+.post.type-post .post__content {
 	font-size: 12px;
 	font-size: 0.75rem;
 	line-height: 1.5;
@@ -2735,7 +2743,7 @@ select.language-select {
 	        flex: 1;
 }
 
-.post__footer {
+.post.type-post .post__footer {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2747,11 +2755,11 @@ select.language-select {
 	        justify-content: flex-end;
 }
 
-.post__share {
+.post.type-post .post__share {
 	margin: 0 0.625rem;
 }
 
-.post .button {
+.post.type-post .post .button {
 	height: 1.5625rem;
 	font-size: 10px;
 	font-size: 0.625rem;
@@ -2759,16 +2767,103 @@ select.language-select {
 	color: #ffc20e;
 }
 
-.post + h2 {
+.post.type-post .post + h2 {
 	margin-bottom: 3.125rem;
 }
 
-.post_no_thumbnail .post__thumbnail {
+.post.type-post.post_no_thumbnail .post__thumbnail {
 	display: none;
 }
 
-.post_no_thumbnail .post__primary {
+.post.type-post.post_no_thumbnail .post__primary {
 	margin-left: 0;
+}
+
+.post.type-vacancy {
+	background: #ffc20e;
+	padding: 1.5625rem 1.5625rem 1.25rem;
+	margin-bottom: 1.875rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	height: 15.9375rem;
+}
+
+.post.type-vacancy .post__header {
+	margin-bottom: 0.3125rem;
+}
+
+.post.type-vacancy .post__title {
+	margin: 0 0 0.3125rem;
+	overflow: hidden;
+}
+
+.post.type-vacancy .post__title a {
+	font-size: 20px;
+	font-size: 1.25rem;
+	line-height: 1.25;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
+.post.type-vacancy .post__company {
+	overflow: hidden;
+	font-family: "Helvetica Condensed Black", sans-serif;
+	font-size: 14px;
+	font-size: 0.875rem;
+	line-height: 1.2142;
+	color: #ffffff;
+}
+
+.post.type-vacancy .post__company a {
+	font-family: "Helvetica Condensed Black", sans-serif;
+	font-size: 14px;
+	font-size: 0.875rem;
+	line-height: 1.2142;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
+.post.type-vacancy .post__content {
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	max-height: 6.75rem;
+	overflow: hidden;
+	margin-bottom: 0.625rem;
+}
+
+.post.type-vacancy .post__footer {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+}
+
+.post.type-vacancy .post__footer a {
+	font-family: "Helvetica Condensed Black", sans-serif;
+	font-size: 14px;
+	font-size: 0.875rem;
+	line-height: 1.2142;
+	text-transform: uppercase;
+	text-decoration: underline;
 }
 
 @-webkit-keyframes animateElement {
@@ -2806,6 +2901,12 @@ select.language-select {
 		        clip-path: none;
 		margin: 0;
 		padding-left: 1.5625rem;
+	}
+}
+
+@media (max-width: 1239px) {
+	.post.type-vacancy {
+		height: auto;
 	}
 }
 
@@ -2901,9 +3002,11 @@ select.language-select {
 }
 
 .map {
-	position: fixed !important;
+	position: absolute !important;
 	width: 100%;
 	height: 100%;
+	top: 0;
+	left: 0;
 }
 
 #map div[title="Astron"] {
@@ -3049,7 +3152,7 @@ select.language-select {
 	background-image: url("./images/arrow-left-white.svg");
 }
 
-.app-form-off__section {
+.app-form-off__section:not(:last-child) {
 	margin-bottom: 3.125rem;
 }
 
@@ -3071,10 +3174,11 @@ select.language-select {
 	-webkit-box-align: start;
 	    -ms-flex-align: start;
 	        align-items: flex-start;
+	margin: 0;
 }
 
 .docs-list__item {
-	margin-right: 3.125rem;
+	margin: 0 3.125rem 0 0;
 }
 
 .docs-list__item a {

@@ -15,41 +15,42 @@ if (!isset($content_width)) {
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
-//if (!function_exists('astron_register_post_types')) :
-//    /**
-//     * Create custom post types
-//     */
-//    function astron_register_post_types()
-//    {
-//        $labels = array(
-//            'name' => 'Вакансии',
-//            'singular_name' => 'Вакансию',
-//            'add_new' => 'Добавить вакансию',
-//            'add_new_item' => 'Добавить новую вакансию',
-//            'edit_item' => 'Редактировать вакансию',
-//            'new_item' => 'Новая вакансия',
-//            'all_items' => 'Все вакансии',
-//            'view_item' => 'Просмотр вакансий на сайте',
-//            'search_items' => 'Искать вакансии',
-//            'not_found' => 'Вакансий не найдено.',
-//            'not_found_in_trash' => 'В корзине нет вакансий.',
-//            'menu_name' => 'Вакансии'
-//        );
-//        $args = array(
-//            'label' => 'vacancy',
-//            'labels' => $labels,
-//            'public' => true,
-//            'show_ui' => true,
-//            'has_archive' => true,
-//            'menu_icon' => 'dashicons-groups',
-//            'menu_position' => 20,
-//            'supports' => array('title', 'editor'),
-//            'show_in_rest' => true,
-//        );
-//        register_post_type('vacancy-p', $args);
-//    }
-//endif;
-//add_action('init', 'astron_register_post_types');
+if (!function_exists('astron_register_post_types')) :
+    /**
+     * Create custom post types
+     */
+    function astron_register_post_types()
+    {
+        $labels = array(
+            'name' => 'Вакансии',
+            'singular_name' => 'Вакансию',
+            'add_new' => 'Добавить вакансию',
+            'add_new_item' => 'Добавить новую вакансию',
+            'edit_item' => 'Редактировать вакансию',
+            'new_item' => 'Новая вакансия',
+            'all_items' => 'Все вакансии',
+            'view_item' => 'Просмотр вакансий на сайте',
+            'search_items' => 'Искать вакансии',
+            'not_found' => 'Вакансий не найдено.',
+            'not_found_in_trash' => 'В корзине нет вакансий.',
+            'menu_name' => 'Вакансии'
+        );
+        $args = array(
+            'label' => 'vacancy',
+            'labels' => $labels,
+            'public' => true,
+            'show_ui' => true,
+            'has_archive' => true,
+            'menu_icon' => 'dashicons-groups',
+            'menu_position' => 20,
+            'supports' => array('title', 'editor', 'custom-fields'),
+            'show_in_rest' => true,
+        );
+        register_post_type('vacancy', $args);
+    }
+endif;
+add_action('init', 'astron_register_post_types');
+
 //
 //if (!function_exists('astron_register_taxonomies')) :
 //    /**
@@ -232,7 +233,11 @@ if (!function_exists('astron_excerpt_length')) :
      */
     function astron_excerpt_length()
     {
-        return 50;
+        global $post;
+        if ($post->post_type == 'post')
+            return 50;
+        else if ($post->post_type == 'vacancy')
+            return 27;
     }
 endif;
 add_filter('excerpt_length', 'astron_excerpt_length');
@@ -283,13 +288,13 @@ if (!function_exists('astron_loadmore_ajax_handler')) :
 
         query_posts($args);
 
-        echo '<h2>Page #' . $args['paged'] . '</h2>';
+        echo '<div class="col-12"><h2>Page #' . $args['paged'] . '</h2></div>';
 
         if (have_posts()) :
 
             while (have_posts()): the_post();
 
-                get_template_part('templates/content', 'list');
+                get_template_part('templates/content', $args['post_type'] === 'vacancy' ? 'grid' : 'list');
 
             endwhile;
 

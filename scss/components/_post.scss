@@ -1,100 +1,177 @@
 .post {
     animation: animateElement ease-in .25s;
     animation-iteration-count: 1;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    margin-bottom: rem(50px);
 
-    &__thumbnail {
-        flex: 0 0 rem(180px);
-        height: rem(205px);
-        clip-path: polygon(0 100%, 0 0, rem(120px) 0, 100% 100%);
-    }
-
-    &__primary {
-        min-width: 0;
-        height: rem(205px);
-        margin: rem(10px) 0 0 rem(-57px);
-        background: $color-accent;
-        flex: 1;
+    &.type-post {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        clip-path: polygon(rem(60px) 100%, 0 0, 100% 0, 100% 100%);
-        padding: rem(22px) rem(25px) rem(22px) rem(75px);
-    }
-
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: rem(10px);
-    }
-
-    &__title {
-        margin: 0;
-        @include font-size(20px);
-        line-height: 1.76;
-        flex: 1;
-        overflow: hidden;
-
-        a {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-        }
-    }
-
-    &__date {
-        margin-left: rem(20px);
-
-        time {
-            @include font-size(12px);
-            font-family: $font-family-lead;
-        }
-    }
-
-    &__content {
-        @include font-size(12px);
-        line-height: 1.5;
-        max-height: rem(72px);
-        overflow: hidden;
-        margin-bottom: rem(10px);
-        flex: 1;
-    }
-
-    &__footer {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-    &__share {
-        margin: 0 rem(10px);
-    }
-
-
-    .button {
-        height: rem(25px);
-        @include font-size(10px);
-        line-height: 2.5;
-        color: $color-accent;
-    }
-
-    & + h2 {
+        align-items: start;
+        justify-content: center;
         margin-bottom: rem(50px);
-    }
 
-    &_no_thumbnail {
         .post {
             &__thumbnail {
-                display: none;
+                flex: 0 0 rem(180px);
+                height: rem(205px);
+                clip-path: polygon(0 100%, 0 0, rem(120px) 0, 100% 100%);
             }
 
             &__primary {
-                margin-left: 0;
+                min-width: 0;
+                height: rem(205px);
+                margin: rem(10px) 0 0 rem(-57px);
+                background: $color-accent;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                clip-path: polygon(rem(60px) 100%, 0 0, 100% 0, 100% 100%);
+                padding: rem(22px) rem(25px) rem(22px) rem(75px);
+            }
+
+            &__header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: rem(10px);
+            }
+
+            &__title {
+                margin: 0;
+                flex: 1;
+                overflow: hidden;
+
+                a {
+                    @include font-size(20px);
+                    text-transform: uppercase;
+                    line-height: 1.76;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                }
+            }
+
+            &__date {
+                margin-left: rem(20px);
+
+                time {
+                    @include font-size(12px);
+                    font-family: $font-family-lead;
+                }
+            }
+
+            &__content {
+                @include font-size(12px);
+                line-height: 1.5;
+                max-height: rem(72px);
+                overflow: hidden;
+                margin-bottom: rem(10px);
+                flex: 1;
+            }
+
+            &__footer {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            &__share {
+                margin: 0 rem(10px);
+            }
+
+
+            .button {
+                height: rem(25px);
+                @include font-size(10px);
+                line-height: 2.5;
+                color: $color-accent;
+            }
+
+            & + h2 {
+                margin-bottom: rem(50px);
+            }
+        }
+
+        &.post_no_thumbnail {
+            .post {
+                &__thumbnail {
+                    display: none;
+                }
+
+                &__primary {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    &.type-vacancy {
+        background: $color-accent;
+        padding: rem(25px) rem(25px) rem(20px);
+        margin-bottom: rem(30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: rem(255px);
+
+        .post {
+            &__header {
+                margin-bottom: rem(5px);
+            }
+
+            &__title {
+                margin: 0 0 rem(5px);
+                overflow: hidden;
+
+                a {
+                    @include font-size(20px);
+                    line-height: 1.25;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                }
+            }
+
+            &__company {
+                overflow: hidden;
+                font-family: $font-family-lead;
+                @include font-size(14px);
+                line-height: 1.2142;
+                color: #ffffff;
+
+                a {
+                    font-family: $font-family-lead;
+                    @include font-size(14px);
+                    line-height: 1.2142;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                }
+            }
+
+            &__content {
+                @include font-size(12px);
+                line-height: 1.5;
+                max-height: rem(108px);
+                overflow: hidden;
+                margin-bottom: rem(10px);
+            }
+
+            &__footer {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                a {
+                    font-family: $font-family-lead;
+                    @include font-size(14px);
+                    line-height: 1.2142;
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                }
             }
         }
     }
@@ -121,6 +198,14 @@
             clip-path: none;
             margin: 0;
             padding-left: rem(25px);
+        }
+    }
+}
+
+@media (max-width: $screen-lg-max) {
+    .post {
+        &.type-vacancy {
+            height: auto;
         }
     }
 }

@@ -71,9 +71,9 @@ jQuery(document).ready(function ($) {
                     },
                     success: function (data) {
                         if (data) {
-                            button.text('More posts').parent().before(data).slideDown('slow');
                             window.localize_array.current_page++
-
+                            button.text('More posts')
+                            $('[data-js="posts-area"]').before(data).slideDown('slow');
                             if (window.localize_array.current_page == window.localize_array.max_page)
                                 button.remove();
                         } else {

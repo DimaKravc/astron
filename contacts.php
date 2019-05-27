@@ -13,9 +13,9 @@
 $options = get_option('contacts_options');
 ?>
 <div id="map" class="map"></div>
-<div class="site-spacer">
+<div class="site-spacer no-indents">
     <div class="container">
-        <h1 style="margin-bottom: 1rem;"><?php single_post_title() ?></h1>
+        <h1 style="margin-bottom: 1rem;">Contacts</h1>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
                 <div class="contacts">
