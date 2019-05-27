@@ -106,7 +106,7 @@ h6 {
 
 b,
 strong {
-    font-weight: $font-weight-bold;
+    font-family: $font-family-lead;
 }
 
 small {
@@ -145,6 +145,42 @@ img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0 0 rem(25px);
+
+    li {
+        list-style-type: none;
+        @include font-size(14px);
+        line-height: 1.6;
+        margin-bottom: rem(16px);
+    }
+}
+
+
+ol {
+    counter-reset: list;
+
+    li {
+        position: relative;
+
+        &:before {
+            counter-increment: list;
+            content: counters(list, ".");
+            position: absolute;
+            @include font-size(32px);
+            line-height: 1;
+            font-family: $font-family-lead;
+            color: #ffffff;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-70%);
+            z-index: -1;
+        }
+    }
 }
 
 *,

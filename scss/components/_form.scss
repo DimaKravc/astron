@@ -1,4 +1,5 @@
-.form {
+.form,
+.wpcf7-form {
     fieldset {
         padding: 0;
         border: none;
@@ -15,8 +16,14 @@
     &__group {
         position: relative;
         margin-bottom: rem(35px);
+        width: 100%;
+
+        br {
+            display: none;
+        }
 
         label {
+            max-width: 90%;
             position: absolute;
             left: rem(18px);
             top: rem(15px);
@@ -28,6 +35,7 @@
             background: $color-accent;
             transition: all $transition-time;
             will-change: top, transform;
+            z-index: 1;
         }
 
         input:not([type="checkbox"]):not([type="radio"]),
@@ -42,53 +50,17 @@
             background: transparent;
             @include font-size(14px);
             line-height: 1.6;
-        }
 
-        input[type="radio"] {
-            background: none;
-            border: none;
-            outline: none;
-            width: 100%;
-            height: rem(48px);
-            display: block;
-
-            & + label {
-                position: absolute;
-                border: 1px solid transparent;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                display: flex;
-                align-items: center;
-                @include font-size(16px);
-                font-family: $font-family-base;
-                text-transform: none;
-                padding-left: rem(50px);
-                cursor: pointer;
-                transition: all $transition-time;
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    left: rem(20px);
-                    top: rem(16px);
-                    width: rem(16px);
-                    height: rem(16px);
-                    border: 1px solid #000000;
-                    border-radius: 50%;
-                    transition: all $transition-time;
-                }
-
-                &:hover {
-                    border-color: #000000;
-                }
+            &.wpcf7-not-valid {
+                border-color: red;
             }
 
-            &:checked + label {
-                &:before {
-                    background: url("./images/check.svg") no-repeat center / 8px #000000;
-                }
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active  {
+                -webkit-animation-name: autofill;
+                -webkit-animation-fill-mode: both;
             }
         }
 
@@ -122,9 +94,95 @@
                 visibility: hidden;
             }
         }
+    }
 
-        &_no_indents {
-            margin: 0;
+    &__radio-group {
+        position: relative;
+        margin-bottom: rem(35px);
+        width: 100%;
+
+        .wpcf7-form-control {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: rem(-15px);
+            margin-left: rem(-15px);
         }
+
+        .wpcf7-list-item {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding-left: rem(15px);
+            padding-right: rem(15px);
+            margin: 0;
+            width: 100%;
+            min-height: 1px;
+            position: relative;
+        }
+
+        input[type="radio"] {
+            background: none;
+            border: none;
+            outline: none;
+            width: 100%;
+            height: rem(48px);
+            display: block;
+            visibility: hidden;
+
+            & + span {
+                position: absolute;
+                border: 1px solid transparent;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                @include font-size(16px);
+                font-family: $font-family-base;
+                text-transform: none;
+                padding-left: rem(50px);
+                cursor: pointer;
+                transition: all $transition-time;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: rem(20px);
+                    top: rem(16px);
+                    width: rem(16px);
+                    height: rem(16px);
+                    border: 1px solid #000000;
+                    border-radius: 50%;
+                    transition: all $transition-time;
+                }
+
+                &:hover {
+                    border-color: #000000;
+                }
+            }
+
+            &:checked + span {
+                &:before {
+                    background: url("./images/check.svg") no-repeat center / 8px #000000;
+                }
+            }
+        }
+    }
+
+    .wpcf7-not-valid-tip {
+        display: none;
+    }
+
+    .button {
+        height: rem(45px);
+        line-height: rem(45px);
+        color: $color-accent;
+        padding: 0 rem(75px);
+        width: 100%;
+    }
+
+    .wpcf7-mail-sent-ok,
+    .wpcf7-validation-errors {
+        border-color: #000000;
     }
 }

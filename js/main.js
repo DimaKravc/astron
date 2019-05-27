@@ -117,11 +117,43 @@ jQuery(document).ready(function ($) {
             groupNode
                 .find('input, textarea')
                 .focus(function () {
-                    $(this).parent(groupNode).addClass('transform-label')
+                    $(this).closest(groupNode).addClass('transform-label')
                 })
                 .blur(function () {
-                    $(this).parent(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
-                })
+                    $(this).closest(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
+                });
+
+            $(".wpcf7").on('wpcf7:mailsent', function (event) {
+                setTimeout(function () {
+                    groupNode
+                        .find('input, textarea')
+                        .each(function (index, value) {
+                            $(value).closest(groupNode).removeClass($(value).val() === '' ? 'transform-label' : '')
+                        })
+                }, 1000)
+            });
+        },
+
+        tabs: function () {
+            const toggleNode = $('[data-target]');
+            const entryNode = $('[data-entry]');
+
+            toggleNode.on('click', function (e) {
+                e.preventDefault();
+
+                const target = $(this).data('target');
+
+                toggleNode.each(function (index, node) {
+                    if ($(node).data('target') !== target) {
+                        $(node).show()
+                    } else {
+                        $(node).fadeOut()
+                    }
+                });
+                entryNode.fadeOut();
+
+                $('[data-entry="' + target + '"]').fadeIn();
+            })
         }
     });
 });
