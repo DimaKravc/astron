@@ -52,7 +52,7 @@ $options = get_option('contacts_options');
                         <dl class="contacts-item">
                             <dt>Address</dt>
                             <?php if (!empty($options['address'])): ?>
-                                <dd style="white-space: pre;"><?php echo $options['address'] ?></dd>
+                                <dd style="white-space: pre-line;"><?php echo $options['address'] ?></dd>
                             <?php endif; ?>
                         </dl>
                     <?php endif; ?>

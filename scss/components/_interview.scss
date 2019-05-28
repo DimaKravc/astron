@@ -1,0 +1,15 @@
+.interview {
+    margin-bottom: rem(32px);
+
+    &__row {
+        align-items: center;
+    }
+
+    &__text {
+        padding: 0 rem(50px);
+    }
+
+    &__col {
+        margin: 0 auto rem(32px);
+    }
+}

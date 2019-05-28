@@ -136,7 +136,7 @@ function contacts_option_display_settings($args)
             break;
         case 'textarea':
             $o[$id] = esc_attr(stripslashes($o[$id]));
-            echo "<textarea class='regular-text' type='text' id='$id' name='" . $option_name . "[$id]' value='$o[$id]' rows='5' /></textarea>";
+            echo "<textarea class='regular-text' id='$id' name='" . $option_name . "[$id]' value='$o[$id]' rows='5' />$o[$id]</textarea>";
             echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";
             break;
     }
