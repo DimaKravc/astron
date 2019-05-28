@@ -8,6 +8,7 @@ select.language-select {
     padding: 0 rem(34px) 0 0;
     height: auto;
     line-height: 1;
+    transition: none !important;
 
     .current {
         font-family: $font-family-lead;
@@ -15,6 +16,7 @@ select.language-select {
         line-height: 1.5;
         color: #FFFFFF;
         text-transform: uppercase;
+        transition: color $transition-time;
     }
 
     .list {
@@ -46,7 +48,7 @@ select.language-select {
                 right: 0;
                 bottom: 0;
                 margin: auto;
-                background: url("./images/arrow-right.svg") no-repeat center / contain;
+                background: url("./images/sprite.svg#arrow-right") no-repeat center / contain;
                 opacity: 0;
                 transform: translateX(rem(5px));
                 transition: all .4s ease;
@@ -75,20 +77,35 @@ select.language-select {
     &:after {
         width: rem(20px);
         height: rem(20px);
-        background: url("./images/globus.svg") no-repeat center / contain;
-        transform: none;
+        background: url("./images/sprite.svg#globus") no-repeat center / contain;
+        transform: none !important;
         right: 0;
         margin-top: rem(-10px);
         border: none;
+        transition: background $transition-time;
+    }
+
+    &:hover {
+        .current {
+            color: #000000;
+        }
+
+        &:after {
+            background: url("./images/sprite.svg#globus--black") no-repeat center / contain;
+        }
     }
 
     &.open {
-        &:after {
-            transform: none;
+        .current {
+            color: #000000;
         }
 
         .list {
             transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+        }
+
+        &:after {
+            background: url("./images/sprite.svg#globus--black") no-repeat center / contain;
         }
     }
 }

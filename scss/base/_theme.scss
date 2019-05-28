@@ -155,7 +155,6 @@ ol {
         list-style-type: none;
         @include font-size(14px);
         line-height: 1.6;
-        margin-bottom: rem(16px);
     }
 }
 
@@ -268,20 +267,26 @@ input:-webkit-autofill:active {
     background: $color-accent;
 }
 
-@media (max-width: $screen-md-max) {
+@media (max-width: $screen-lg-max) {
     html {
         font-size: $font-size-base - 1px;
     }
 }
 
-@media (max-width: $screen-sm-max) {
+@media (max-width: $screen-md-max) {
     html {
         font-size: $font-size-base - 2px;
     }
 }
 
-@media (max-width: $screen-sm-max - 200px) {
+@media (max-width: $screen-sm-max) {
     html {
         font-size: $font-size-base - 3px;
+    }
+}
+
+@media (max-width: $screen-sm-max - 200px) {
+    html {
+        font-size: $font-size-base - 4px;
     }
 }

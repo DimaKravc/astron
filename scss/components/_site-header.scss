@@ -1,28 +1,35 @@
 .site-header {
-    padding: rem(55px) 0 rem(135px);
+    padding: rem(50px) 0 rem(75px);
     background: $color-accent;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
     z-index: $header-index;
 
-    &__inner {
-        position: relative;
+    &__top-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
-    &__utils {
-        position: relative;
+    &__bottom-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
-        .language-select {
-            position: absolute;
-            top: rem(68px);
-            right: 0;
+    .site-nav {
+        &__list {
+            margin: 0 0 0 rem(55px);
         }
+    }
+
+    .language-select {
+        margin-top: rem(26px);
     }
 }
 
 @media (max-width: $screen-md-max) {
     .site-header {
-        padding: rem(55px) 0 rem(110px);
+        padding: rem(35px) 0 rem(70px);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
     }
 }

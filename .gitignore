@@ -20,4 +20,4 @@ Thumbs.db
 uwsgi.log
 node_modules/
 npm-debug.log
-redirect_test.html
+images/sprite-parts/

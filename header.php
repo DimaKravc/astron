@@ -29,14 +29,14 @@
 
 <body <?php body_class(); ?>>
 <button class="button scroll-to-top" data-js="scroll-to-top"><i class="icon-arrow-up"></i></button>
-<header class="site-header angle--bottom-left">
+<header class="site-header">
     <div class="container">
-        <div class="site-header__inner">
+        <div class="site-header__top-row">
             <div class="site-brand">
                 <?php if (!is_home() || is_paged()) : ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <?php endif; ?>
-                    <img src="<?php echo get_template_directory_uri() . '/images/astron-logo.svg' ?>"
+                    <img src="<?php echo get_template_directory_uri() . '/images/site-logo.svg' ?>"
                          alt="<?php bloginfo('name') ?>">
                     <?php if (!is_home() || is_paged()) : ?>
                 </a>
@@ -50,9 +50,8 @@
                 'menu_class' => 'site-nav__list'
             )); ?>
 
-            <div class="site-header__utils hidden-sm hidden-xs">
+            <div class="hidden-sm hidden-xs">
                 <a href="<?php echo get_permalink('89') ?>" class="button">Submit an application</a>
-                <?php astron_language_select() ?>
             </div>
 
             <button class="mob-nav-toggle hidden-lg hidden-md" data-js="mob-nav-toggle">
@@ -60,6 +59,9 @@
                 <span></span>
                 <span></span>
             </button>
+        </div>
+        <div class="site-header__bottom-row hidden-sm hidden-xs">
+            <?php astron_language_select() ?>
         </div>
     </div>
 </header>
