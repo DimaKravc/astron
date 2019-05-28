@@ -15,42 +15,6 @@ if (!isset($content_width)) {
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
-if (!function_exists('astron_register_post_types')) :
-    /**
-     * Create custom post types
-     */
-    function astron_register_post_types()
-    {
-        $labels = array(
-            'name' => 'Вакансии',
-            'singular_name' => 'Вакансию',
-            'add_new' => 'Добавить вакансию',
-            'add_new_item' => 'Добавить новую вакансию',
-            'edit_item' => 'Редактировать вакансию',
-            'new_item' => 'Новая вакансия',
-            'all_items' => 'Все вакансии',
-            'view_item' => 'Просмотр вакансий на сайте',
-            'search_items' => 'Искать вакансии',
-            'not_found' => 'Вакансий не найдено.',
-            'not_found_in_trash' => 'В корзине нет вакансий.',
-            'menu_name' => 'Вакансии'
-        );
-        $args = array(
-            'label' => 'vacancy',
-            'labels' => $labels,
-            'public' => true,
-            'show_ui' => true,
-            'has_archive' => true,
-            'menu_icon' => 'dashicons-groups',
-            'menu_position' => 20,
-            'supports' => array('title', 'editor', 'custom-fields'),
-            'show_in_rest' => true,
-        );
-        register_post_type('vacancy', $args);
-    }
-endif;
-add_action('init', 'astron_register_post_types');
-
 //
 //if (!function_exists('astron_register_taxonomies')) :
 //    /**
@@ -133,6 +97,7 @@ if (!function_exists('astron_setup')) :
          * Add image size
          */
         add_image_size('astron_small_thumb', 180, 205, true);
+        add_image_size('astron_middle_thumb', 280, 280, true);
 
         /**
          * Add feed links
@@ -181,6 +146,69 @@ if (!function_exists('astron_load_scripts')) :
     }
 endif;
 add_action('wp_enqueue_scripts', 'astron_load_scripts');
+
+if (!function_exists('astron_register_post_types')) :
+    /**
+     * Create custom post types
+     */
+    function astron_register_post_types()
+    {
+        $labels = array(
+            'name' => 'Вакансии',
+            'singular_name' => 'Вакансию',
+            'add_new' => 'Добавить вакансию',
+            'add_new_item' => 'Добавить новую вакансию',
+            'edit_item' => 'Редактировать вакансию',
+            'new_item' => 'Новая вакансия',
+            'all_items' => 'Все вакансии',
+            'view_item' => 'Просмотр вакансий на сайте',
+            'search_items' => 'Искать вакансии',
+            'not_found' => 'Вакансий не найдено.',
+            'not_found_in_trash' => 'В корзине нет вакансий.',
+            'menu_name' => 'Вакансии'
+        );
+        $args = array(
+            'label' => 'vacancy',
+            'labels' => $labels,
+            'public' => true,
+            'show_ui' => true,
+            'has_archive' => true,
+            'menu_icon' => 'dashicons-groups',
+            'menu_position' => 20,
+            'supports' => array('title', 'editor', 'custom-fields'),
+            'show_in_rest' => true,
+        );
+        register_post_type('vacancy', $args);
+
+        $labels = array(
+            'name' => 'Сотрудники',
+            'singular_name' => 'Сотрудника',
+            'add_new' => 'Добавить сотрудника',
+            'add_new_item' => 'Добавить нового сотрудника',
+            'edit_item' => 'Редактировать сотрудника',
+            'new_item' => 'Новый сотрудник',
+            'all_items' => 'Все сотрудники',
+            'view_item' => 'Просмотр сотрудников на сайте',
+            'search_items' => 'Искать сотрудников',
+            'not_found' => 'Сотрудников не найдено.',
+            'not_found_in_trash' => 'В корзине нет сотрудников.',
+            'menu_name' => 'Сотрудники'
+        );
+        $args = array(
+            'label' => 'employee',
+            'labels' => $labels,
+            'public' => true,
+            'show_ui' => true,
+            'has_archive' => true,
+            'menu_icon' => 'dashicons-businessperson',
+            'menu_position' => 20,
+            'supports' => array('title', 'custom-fields', 'thumbnail'),
+            'show_in_rest' => true,
+        );
+        register_post_type('employee', $args);
+    }
+endif;
+add_action('init', 'astron_register_post_types');
 
 if (!function_exists('astron_register_sidebars')) :
     /**
