@@ -1,0 +1,23 @@
+.breadcrumbs {
+    font-family: $font-family-lead;
+    @include font-size(14px);
+    line-height: 1;
+    text-transform: uppercase;
+    position: relative;
+    top: rem(-32px);
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            color: $color-base;
+            text-decoration: none;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .breadcrumbs {
+        top: 0;
+    }
+}

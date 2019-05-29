@@ -34,6 +34,17 @@ body {
     min-width: 320px;
     display: flex;
     flex-direction: column;
+
+    &.admin-bar {
+        padding-top: 32px;
+    }
+
+    @media screen and (max-width: 782px) {
+        &.admin-bar {
+            padding-top: 46px;
+        }
+    }
+
 }
 
 * {
@@ -142,7 +153,7 @@ hr {
 
 img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 

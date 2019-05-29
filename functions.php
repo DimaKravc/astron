@@ -168,7 +168,7 @@ if (!function_exists('astron_register_post_types')) :
             'menu_name' => 'Вакансии'
         );
         $args = array(
-            'label' => 'vacancy',
+            'label' => 'vacancies',
             'labels' => $labels,
             'public' => true,
             'show_ui' => true,
@@ -178,7 +178,7 @@ if (!function_exists('astron_register_post_types')) :
             'supports' => array('title', 'editor', 'custom-fields'),
             'show_in_rest' => true,
         );
-        register_post_type('vacancy', $args);
+        register_post_type('vacancies', $args);
 
         $labels = array(
             'name' => 'Сотрудники',
@@ -302,6 +302,44 @@ if (!function_exists('astron_language_list')) :
                     echo '</option>';
                 }
                 echo '</select>';
+            }
+        }
+    }
+endif;
+
+if (!function_exists('astron_breadcrumbs')) :
+    /**
+     * Add breadcrumbs support
+     */
+    function astron_breadcrumbs($is_vacancies_page = false)
+    {
+        global $post;
+        if (!is_home()) {
+            echo '<a href="' . site_url() . '">Home</a> / ';
+            if (is_single()) {
+                if (!$is_vacancies_page) {
+                    $category_id = get_cat_ID('All');
+                    $category_link = get_category_link($category_id);
+                    echo '<a href="' . $category_link . '">Blog</a>';
+                } else {
+                    $vacancies_page_link = get_post_type_archive_link('vacancies');
+                    echo '<a href="' . $vacancies_page_link . '">Vacancies</a>';
+                }
+                echo " / ";
+                the_title();
+            } elseif (is_page()) {
+                if ($post->post_parent) {
+                    $parent_id = $post->post_parent;
+                    $breadcrumbs = array();
+                    while ($parent_id) {
+                        $page = get_page($parent_id);
+                        $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+                        $parent_id = $page->post_parent;
+                    }
+                    $breadcrumbs = array_reverse($breadcrumbs);
+                    foreach ($breadcrumbs as $crumb) echo $crumb . ' / ';
+                }
+                echo the_title();
             }
         }
     }

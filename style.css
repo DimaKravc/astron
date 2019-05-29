@@ -611,6 +611,16 @@ body {
 	        flex-direction: column;
 }
 
+body.admin-bar {
+	padding-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	body.admin-bar {
+		padding-top: 46px;
+	}
+}
+
 *::-webkit-scrollbar {
 	width: 10px;
 	background-color: #F5F5F5;
@@ -717,7 +727,7 @@ hr {
 
 img {
 	display: block;
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 }
 
@@ -2981,6 +2991,31 @@ select.language-select {
 @media (max-width: 1239px) {
 	.post.type-vacancy {
 		height: auto;
+	}
+}
+
+.breadcrumbs {
+	font-family: "Helvetica Condensed Black", sans-serif;
+	font-size: 14px;
+	font-size: 0.875rem;
+	line-height: 1;
+	text-transform: uppercase;
+	position: relative;
+	top: -2rem;
+}
+
+.breadcrumbs a {
+	text-decoration: underline;
+}
+
+.breadcrumbs a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+@media (max-width: 991px) {
+	.breadcrumbs {
+		top: 0;
 	}
 }
 

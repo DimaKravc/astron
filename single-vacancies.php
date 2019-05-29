@@ -11,7 +11,7 @@ get_header();
     <div>
         <div class="container">
             <div class="breadcrumbs">
-                <?php astron_breadcrumbs(); ?>
+                <?php astron_breadcrumbs(true); ?>
             </div>
         </div>
     </div>
