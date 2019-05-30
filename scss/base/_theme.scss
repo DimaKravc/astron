@@ -278,8 +278,10 @@ input:-webkit-autofill:active {
 }
 
 .wp-block-image {
-    position: relative;
-    display: inline-block;
+
+    figure {
+        position: relative;
+    }
 
     figcaption {
         margin: 0;
