@@ -93,6 +93,98 @@ get_header();
                 </div>
             </div>
         </section>
+        <section class="section-focus-area angle--top-right">
+            <div class="container">
+                <h2 class="section-focus-area__title slashed">
+                    <div class="slashed__top" title="Focus Area"></div>
+                    <div class="slashed__bottom" title="Focus Area"></div>
+                </h2>
+                <div class="focus-slider" data-js="slider-nav-1">
+                    <div class="focus-slider__item">Agritech</div>
+                    <div class="focus-slider__item">Foodtech</div>
+                    <div class="focus-slider__item">fintech</div>
+                    <div class="focus-slider__item">Healthtech</div>
+                    <div class="focus-slider__item">Supply chain & logistics</div>
+                    <div class="focus-slider__item">E-gov</div>
+                    <div class="focus-slider__item">E-commerce</div>
+                </div>
+                <div class="focus-slider-for" data-js="slider-for-1">
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Financial technology, often shortened to fintech, is the technology and
+                                    innovation that aims to compete with traditional financial methods in the delivery
+                                    of
+                                    financial services. It is an emerging industry that uses technology to improve
+                                    activities in finance. The use of smartphones for mobile banking, investing services
+                                    and
+                                    cryptocurrency are examples of technologies aiming to make financial services more
+                                    accessible to the general public.</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Example text 1</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Example text 2</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Example text 3</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Example text 4</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="focus-slider-for__item">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Example text 5</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri() . '/images/focus-slider.png'; ?>"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="section-worksteps angle--top-right">
             <div class="container">
                 <h2 class="section-worksteps__title slashed">

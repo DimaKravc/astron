@@ -30,6 +30,25 @@ jQuery(document).ready(function ($) {
             });
         },
 
+        focusSlider: function () {
+            $('[data-js="slider-for-1"]').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '[data-js="slider-nav-1"]'
+            });
+            $('[data-js="slider-nav-1"]').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: '[data-js="slider-for-1"]',
+                dots: false,
+                arrows: false,
+                centerMode: false,
+                focusOnSelect: true
+            });
+        },
+
         mobNavOverlay: function () {
             const toggleNode = $('[data-js="mob-nav-toggle"]');
             const overlayNode = $('[data-js="mob-nav-overlay"]');

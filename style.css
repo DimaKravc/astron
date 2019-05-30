@@ -4114,6 +4114,7 @@ select.language-select {
 
 .entry-slider {
 	margin-top: -3.125rem;
+	z-index: 15;
 }
 
 .entry-slider .owl-item img {
@@ -4244,6 +4245,76 @@ select.language-select {
 .section-interview__text {
 	font-size: 14px;
 	font-size: 0.875rem;
+}
+
+.section-focus-area {
+	padding: 6.875rem 0;
+	margin: -4vw 0;
+	background: #ffc20e;
+}
+
+.section-focus-area__title {
+	margin-bottom: 4.6875rem;
+}
+
+.focus-slider {
+	margin-bottom: 4.375rem;
+}
+
+.focus-slider .slick-list {
+	overflow: visible;
+}
+
+.focus-slider .slick-track {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	min-height: 3.125rem;
+}
+
+.focus-slider__item {
+	font-size: 24px;
+	font-size: 1.5rem;
+	font-family: "Helvetica Condensed Black", sans-serif;
+	line-height: 1.25;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	opacity: 0.5;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	text-align: center;
+	cursor: pointer;
+}
+
+.focus-slider__item:hover {
+	opacity: 1;
+}
+
+.focus-slider .slick-slide {
+	outline: none !important;
+}
+
+.focus-slider .slick-current .focus-slider__item {
+	opacity: 1;
+	font-size: 32px;
+	font-size: 2rem;
+}
+
+.focus-slider-for {
+	width: 80%;
+	margin: auto;
+}
+
+.focus-slider-for p {
+	font-size: 14px;
+	font-size: 0.875rem;
+	line-height: 1.6;
+	letter-spacing: -0.56px;
 }
 
 .section-worksteps {
