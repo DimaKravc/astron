@@ -1,0 +1,27 @@
+.section-interview {
+    background: #ffffff;
+    padding: rem(100px) 0;
+
+    &__row {
+        margin-bottom: rem(150px);
+        align-items: center;
+    }
+
+    &__col {
+        padding: 0 rem(100px);
+    }
+
+    &__title {
+        margin-bottom: rem(75px);
+    }
+
+    &__caption {
+        @include font-size(24px);
+        line-height: 1;
+        margin-bottom: rem(40px);
+    }
+
+    &__text {
+        @include font-size(14px);
+    }
+}

@@ -124,12 +124,16 @@ if (!function_exists('astron_load_scripts')) :
          * Load styles
          */
         wp_enqueue_style('nice-select', get_template_directory_uri() . '/styles/nice-select.css', array(), ASTRON_VERSION);
+        wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/styles/owl.carousel.min.css', array(), ASTRON_VERSION);
+        wp_enqueue_style('owl-default', get_template_directory_uri() . '/styles/owl.theme.default.min.css', array(), ASTRON_VERSION);
+        wp_enqueue_style('animate', get_template_directory_uri() . '/styles/animate.css', array(), ASTRON_VERSION);
         wp_enqueue_style('style', get_template_directory_uri() . '/style.css', array(), ASTRON_VERSION);
 
         /**
          * Load scripts
          */
         wp_enqueue_script('nice-select', get_template_directory_uri() . '/js/nice-select.js', array('jquery'), ASTRON_VERSION, true);
+        wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('application', get_template_directory_uri() . '/js/application.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('application'), ASTRON_VERSION, true);
 
@@ -239,18 +243,6 @@ if (!function_exists('astron_register_sidebars')) :
                 'after_title' => '</span>',
             )
         );
-
-//        register_sidebar(
-//            array(
-//                'id' => 'vacancy_sidebar',
-//                'name' => esc_html__('Vacancy sidebar', 'astron'),
-//                'description' => esc_html__('Drag widget', 'astron'),
-//                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-//                'after_widget' => '</aside>',
-//                'before_title' => '<span style="display: none;">',
-//                'after_title' => '</span>',
-//            )
-//        );
     }
 endif;
 add_action('widgets_init', 'astron_register_sidebars');
@@ -344,6 +336,22 @@ if (!function_exists('astron_breadcrumbs')) :
         }
     }
 endif;
+
+if (!function_exists('astron_posts_link_prev_class')) :
+    function astron_posts_link_prev_class($format) {
+        $format = str_replace('href=', 'class="button" href=', $format);
+        return $format;
+    }
+    add_filter('previous_post_link', 'astron_posts_link_prev_class');
+endif;
+
+if (!function_exists('astron_posts_link_next_class')) :
+    function astron_posts_link_next_class($format){
+        $format = str_replace('href=', 'class="button" href=', $format);
+        return $format;
+    }
+endif;
+add_filter('next_post_link', 'astron_posts_link_next_class');
 
 if (!function_exists('astron_loadmore_ajax_handler')) :
     function astron_loadmore_ajax_handler()

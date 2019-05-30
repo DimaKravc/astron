@@ -31,7 +31,7 @@
                         echo '</div>';
 
                         if ($wp_query->max_num_pages > 1):?>
-                            <nav class="posts-navigation">
+                            <nav class="load-more">
                                 <button class="button" data-js="load-more-btn">Load more</button>
                             </nav>
                         <?php endif;

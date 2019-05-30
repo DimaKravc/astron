@@ -1,0 +1,41 @@
+.section-request-promo {
+    background: $color-base;
+    padding: rem(350px) 0 rem(200px);
+    margin: -4vw 0;
+
+    &__promo-text {
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        @include font-size(96px);
+        line-height: 1.25;
+        color: $color-accent;
+        text-align: center;
+        max-width: 80%;
+        margin: 0 auto rem(250px);
+    }
+
+    &__request-text {
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        @include font-size(72px);
+        line-height: 1.25;
+        color: #ffffff;
+        text-align: center;
+        max-width: 85%;
+        margin: 0 auto rem(50px);
+    }
+
+    .button {
+        height: rem(95px);
+        line-height: rem(95px);
+        @include font-size(48px);
+        color: $color-base;
+        width: rem(380px);
+        margin: auto;
+
+        &:after,
+        &:before {
+            background: $color-accent;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.post-navigation {
+    margin-bottom: rem(25px);
+
+    .nav-links {
+        .nav-previous {
+            float: left;
+        }
+
+        .nav-next {
+            float: right;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @include clearfix();
+    }
+
+    .icon-arrow-left,
+    .icon-arrow-right {
+        width: rem(11px);
+        height: rem(11px);
+        display: block;
+    }
+
+    .icon-arrow-left {
+        background: url("./images/sprite.svg#arrow-left-white") no-repeat center / contain;
+        margin-right: rem(15px);
+    }
+
+    .icon-arrow-right {
+        transform: rotate(180deg);
+        background: url("./images/sprite.svg#arrow-left-white") no-repeat center / contain;
+        margin-left: rem(15px);
+    }
+}

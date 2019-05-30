@@ -20,6 +20,16 @@ jQuery(document).ready(function ($) {
             return selectNode
         },
 
+        entrySlider: function () {
+            $('[data-js="entry-slider"]').owlCarousel({
+                items: 1,
+                nav: true,
+                animateOut : 'fadeOut',
+                animateIn: 'fadeIn',
+                mouseDrag: false
+            });
+        },
+
         mobNavOverlay: function () {
             const toggleNode = $('[data-js="mob-nav-toggle"]');
             const overlayNode = $('[data-js="mob-nav-overlay"]');

@@ -1,0 +1,51 @@
+.slashed {
+    height: 200px;
+    position: relative;
+    transform: rotate(-7deg);
+    text-shadow: 3px 3px 3px rgba(255, 255, 255, 0.15);
+
+    &__top,
+    &__bottom {
+        text-align: center;
+        font-family: $font-family-lead;
+        line-height: 100px;
+        @include font-size(100px);
+        overflow: hidden;
+        color: $color-base;
+        transform: rotate(7deg);
+
+        &:before {
+            content: attr(title);
+        }
+    }
+
+    &__top {
+        position: absolute;
+        top: 0;
+        left: 7px;
+        right: 0;
+        bottom: 50%;
+
+        &:before {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &__bottom {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 7px;
+        bottom: 0;
+
+        &:before {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+        }
+    }
+}

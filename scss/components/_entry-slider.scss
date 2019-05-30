@@ -1,0 +1,99 @@
+.entry-slider {
+    margin-top: rem(-50px);
+
+    .owl-item {
+        img {
+            width: auto;
+            margin: auto;
+        }
+    }
+
+    .owl-nav {
+        .owl-prev,
+        .owl-next {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto rem(50px);
+            outline: none;
+
+            span {
+                width: rem(16px);
+                height: rem(32px);
+                display: block;
+                font: 0px/0 a;
+                transition: all $transition-time;
+            }
+
+            &.disabled {
+                span {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+        }
+
+        .owl-prev {
+            right: 100%;
+
+            span {
+                transform: rotate(180deg);
+                background: url("./images/sprite.svg#arrow-right-big") no-repeat center / cover;
+            }
+        }
+
+        .owl-next {
+            left: 100%;
+
+            span {
+                background: url("./images/sprite.svg#arrow-right-big") no-repeat center / cover;
+            }
+        }
+    }
+
+    .owl-dots {
+        position: absolute;
+        right: 20%;
+        top: 100%;
+        text-align: left;
+    }
+
+    .owl-dots .owl-dot {
+        display: inline-block;
+        vertical-align: middle;
+        margin: rem(8px);
+        width: rem(12px);
+        height: rem(12px);
+        background-color: #ffffff;
+        box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.4);
+        transition: background-color .13s ease;
+        border-radius: 50%;
+        outline: none;
+    }
+
+    .owl-dots .owl-dot:hover, .owl-dots .owl-dot.active, .owl-dots .owl-dot:focus {
+        background: $color-base;
+    }
+}
+
+.entry-slider-item {
+    &__row {
+        align-items: center;
+        height: rem(600px);
+    }
+
+    &__caption {
+        font-family: $font-family-lead;
+        @include font-size(20px);
+        line-height: 1.25;
+        text-transform: uppercase;
+        margin-bottom: rem(20px);
+    }
+
+    &__title {
+        font-family: $font-family-lead;
+        @include font-size(65px);
+        line-height: 1.25;
+        text-transform: uppercase;
+    }
+}

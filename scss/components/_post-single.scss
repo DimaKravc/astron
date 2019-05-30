@@ -1,0 +1,20 @@
+.post-single {
+    margin: rem(55px) 0;
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: rem(50px);
+    }
+
+    &__title {
+        margin: 0 rem(25px) rem(25px) 0;
+        flex: 1;
+    }
+
+    &__date {
+        margin: rem(10px) 0;
+        font-family: $font-family-lead;
+        line-height: 1;
+    }
+}

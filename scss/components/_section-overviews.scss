@@ -1,0 +1,19 @@
+.section-overviews {
+    background: #ffffff;
+    padding: 0 0 rem(200px);
+
+    &__title {
+        margin-bottom: rem(75px);
+    }
+
+    &__text {
+        margin: auto;
+        width: 80%;
+        text-align: center;
+        @include font-size(72px);
+        font-family: $font-family-lead;
+        line-height: 1.25;
+        color: $color-accent;
+        text-transform: uppercase;
+    }
+}
