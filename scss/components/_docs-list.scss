@@ -20,28 +20,28 @@
             }
 
             .icon-doc {
-                background: url("./images/doc.svg") no-repeat center / contain;
+                background: url("./images/sprite.svg#doc") no-repeat center / contain;
             }
 
             .icon-pdf {
-                background: url("./images/pdf.svg") no-repeat center / contain;
+                background: url("./images/sprite.svg#pdf") no-repeat center / contain;
             }
 
             .icon-xls {
-                background: url("./images/xls.svg") no-repeat center / contain;
+                background: url("./images/sprite.svg#xls") no-repeat center / contain;
             }
 
             &:hover {
                 .icon-doc {
-                    background-image: url("./images/doc--active.svg");
+                    background-image: url("./images/sprite.svg#doc--active");
                 }
 
                 .icon-pdf {
-                    background-image: url("./images/pdf--active.svg");
+                    background-image: url("./images/sprite.svg#pdf--active");
                 }
 
                 .icon-xls {
-                    background-image: url("./images/xls--active.svg");
+                    background-image: url("./images/sprite.svg#xls--active");
                 }
             }
         }

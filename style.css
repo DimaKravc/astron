@@ -863,6 +863,7 @@ input:-webkit-autofill:active {
 
 .wp-block-image {
 	position: relative;
+	display: inline-block;
 }
 
 .wp-block-image figcaption {
@@ -4577,6 +4578,12 @@ select.language-select {
 	line-height: 1;
 }
 
+.post-single:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 .post {
 	-webkit-animation: animateElement ease-in .25s;
 	        animation: animateElement ease-in .25s;
@@ -5194,7 +5201,7 @@ select.language-select {
 	        transform: translateY(-50%);
 	margin: auto;
 	right: calc(100% + 10px);
-	background: url("./images/arrow-left.svg") no-repeat center/contain;
+	background: url("./images/sprite.svg#arrow-left") no-repeat center/contain;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
@@ -5205,7 +5212,7 @@ select.language-select {
 }
 
 .app-form-off__back-link:hover:before {
-	background-image: url("./images/arrow-left-white.svg");
+	background-image: url("./images/sprite.svg#arrow-left-white");
 }
 
 .app-form-off__section:not(:last-child) {
@@ -5221,6 +5228,10 @@ select.language-select {
 	font-size: 14px;
 	font-size: 0.875rem;
 	line-height: 1.6;
+}
+
+.app-form-off ol li {
+	margin-bottom: 1.25rem;
 }
 
 .docs-list {
@@ -5254,27 +5265,27 @@ select.language-select {
 }
 
 .docs-list__item a .icon-doc {
-	background: url("./images/doc.svg") no-repeat center/contain;
+	background: url("./images/sprite.svg#doc") no-repeat center/contain;
 }
 
 .docs-list__item a .icon-pdf {
-	background: url("./images/pdf.svg") no-repeat center/contain;
+	background: url("./images/sprite.svg#pdf") no-repeat center/contain;
 }
 
 .docs-list__item a .icon-xls {
-	background: url("./images/xls.svg") no-repeat center/contain;
+	background: url("./images/sprite.svg#xls") no-repeat center/contain;
 }
 
 .docs-list__item a:hover .icon-doc {
-	background-image: url("./images/doc--active.svg");
+	background-image: url("./images/sprite.svg#doc--active");
 }
 
 .docs-list__item a:hover .icon-pdf {
-	background-image: url("./images/pdf--active.svg");
+	background-image: url("./images/sprite.svg#pdf--active");
 }
 
 .docs-list__item a:hover .icon-xls {
-	background-image: url("./images/xls--active.svg");
+	background-image: url("./images/sprite.svg#xls--active");
 }
 
 .docs-list__item:after {
