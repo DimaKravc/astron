@@ -4725,7 +4725,7 @@ select.language-select {
 	margin-left: 0;
 }
 
-.post.type-vacancy {
+.post.type-vacancies {
 	background: #ffc20e;
 	padding: 1.5625rem 1.5625rem 1.25rem;
 	margin-bottom: 1.875rem;
@@ -4742,16 +4742,16 @@ select.language-select {
 	height: 15.9375rem;
 }
 
-.post.type-vacancy .post__header {
+.post.type-vacancies .post__header {
 	margin-bottom: 0.3125rem;
 }
 
-.post.type-vacancy .post__title {
+.post.type-vacancies .post__title {
 	margin: 0 0 0.3125rem;
 	overflow: hidden;
 }
 
-.post.type-vacancy .post__title a {
+.post.type-vacancies .post__title a {
 	font-size: 20px;
 	font-size: 1.25rem;
 	line-height: 1.25;
@@ -4762,7 +4762,7 @@ select.language-select {
 	display: block;
 }
 
-.post.type-vacancy .post__company {
+.post.type-vacancies .post__company {
 	overflow: hidden;
 	font-family: "Helvetica Condensed Black", sans-serif;
 	font-size: 14px;
@@ -4771,7 +4771,7 @@ select.language-select {
 	color: #ffffff;
 }
 
-.post.type-vacancy .post__company a {
+.post.type-vacancies .post__company a {
 	font-family: "Helvetica Condensed Black", sans-serif;
 	font-size: 14px;
 	font-size: 0.875rem;
@@ -4782,7 +4782,7 @@ select.language-select {
 	display: block;
 }
 
-.post.type-vacancy .post__content {
+.post.type-vacancies .post__content {
 	font-size: 12px;
 	font-size: 0.75rem;
 	line-height: 1.5;
@@ -4791,7 +4791,7 @@ select.language-select {
 	margin-bottom: 0.625rem;
 }
 
-.post.type-vacancy .post__footer {
+.post.type-vacancies .post__footer {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -4803,7 +4803,7 @@ select.language-select {
 	        justify-content: flex-end;
 }
 
-.post.type-vacancy .post__footer a {
+.post.type-vacancies .post__footer a {
 	font-family: "Helvetica Condensed Black", sans-serif;
 	font-size: 14px;
 	font-size: 0.875rem;
