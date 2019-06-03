@@ -259,7 +259,7 @@ if (!function_exists('astron_excerpt_length')) :
         global $post;
         if ($post->post_type == 'post')
             return 50;
-        else if ($post->post_type == 'vacancy')
+        else if ($post->post_type == 'vacancies')
             return 27;
     }
 endif;
