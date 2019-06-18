@@ -89,20 +89,20 @@ h6 {
     margin-top: 0;
     margin-bottom: rem(25px);
     font-family: $font-family-lead;
-    line-height: 1.1;
+    line-height: 1.12;
     text-transform: uppercase;
 }
 
 h1 {
-    @include font-size(64px);
+    @include font-size(40px);
 }
 
 h2 {
-    @include font-size(50px);
+    @include font-size(32px);
 }
 
 h3 {
-    @include font-size(24px);
+    @include font-size(28px);
 }
 
 h4 {

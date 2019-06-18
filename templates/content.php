@@ -7,19 +7,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="post-single">
-    <header class="post-single__header">
-        <h1 class="post-single__title"><?php the_title(); ?></h1>
-        <div class="post-single__date">
-            <?php
-            $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-            $time_string = sprintf($time_string,
-                esc_attr(get_the_date('c')),
-                get_the_date()
-            );
-            echo sprintf(wp_kses($time_string, array('time' => array('class' => array(), 'datetime' => array()))), esc_attr(get_the_date('c')), get_the_date());
-            ?>
-        </div>
+<article id="post-<?php the_ID(); ?>" class="post">
+    <header class="post__header">
+        <div class="post__thumbnail" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>')"></div>
+        <h1 class="post__inner-box post__title">
+            <?php the_title(); ?>
+        </h1>
     </header>
-    <?php the_content(); ?>
+    <div class="post__inner-box post__content">
+        <?php the_content(); ?>
+    </div>
 </article>

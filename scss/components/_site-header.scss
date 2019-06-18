@@ -1,8 +1,9 @@
 .site-header {
-    padding: rem(50px) 0 rem(75px);
+    padding: rem(45px) 0 0;
     background: $color-accent;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
+    // clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
     z-index: $header-index;
+    position: relative;
 
     &__top-row {
         display: flex;
@@ -23,13 +24,27 @@
     }
 
     .language-select {
-        margin-top: rem(26px);
+        margin-top: rem(16px);
+    }
+
+    &:after {
+        content: "";
+        border: 0 solid transparent;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 100%;
+        border-bottom-width: 4vw;
+        border-right-width: 100vw;
+        border-right-color: $color-accent;
     }
 }
 
-@media (max-width: $screen-md-max) {
+@media (max-width: $screen-sm-max) {
     .site-header {
-        padding: rem(35px) 0 rem(70px);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
+        &__bottom-row {
+            opacity: 0;
+            visibility: hidden;
+        }
     }
 }

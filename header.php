@@ -60,7 +60,7 @@
                 <span></span>
             </button>
         </div>
-        <div class="site-header__bottom-row hidden-sm hidden-xs">
+        <div class="site-header__bottom-row">
             <?php astron_language_select() ?>
         </div>
     </div>

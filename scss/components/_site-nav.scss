@@ -16,6 +16,7 @@
             @include font-size(18px);
             font-family: $font-family-lead;
             letter-spacing: 0.2px;
+            white-space: nowrap;
         }
     }
 
