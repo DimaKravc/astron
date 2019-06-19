@@ -1,7 +1,8 @@
 .site-footer {
-    padding: rem(110px) 0 rem(20px);
+    padding: rem(20px) 0;
     background: $color-accent;
     flex-shrink: 0;
+    position: relative;
     z-index: $footer-index;
 
     &__inner {

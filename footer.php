@@ -7,7 +7,7 @@
  */
 
 ?>
-<footer class="site-footer angle--top-right">
+<footer class="site-footer angle angle_top_right">
     <div class="container">
         <div class="site-footer__inner">
             <?php echo '<p class="copyright">' . sprintf(__('%s copyright - astron llc. %d', 'astron'), '&#169;', date('Y')) . '</p>'; ?>

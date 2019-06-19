@@ -1,0 +1,12 @@
+.page-title {
+    @include font-size(75px);
+    margin: rem(20px) 0 rem(40px);
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: $screen-sm-max) {
+    .page-title {
+        @include font-size(40px);
+    }
+}

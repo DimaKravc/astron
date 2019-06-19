@@ -78,6 +78,21 @@ body {
     &::-webkit-scrollbar-thumb:active {
         background-color: #a5a5a5;
     }
+
+    &::-moz-selection {
+        background: lighten($color-accent, 5%);
+        color: #ffffff;
+    }
+
+    &::selection {
+        background: lighten($color-accent, 5%);
+        color: #ffffff;
+    }
+
+    &::-moz-selection {
+        background: lighten($color-accent, 5%);
+        color: #ffffff;
+    }
 }
 
 h1,
@@ -160,40 +175,40 @@ img {
     height: auto;
 }
 
-ul,
-ol {
-    padding: 0;
-    margin: 0 0 rem(25px);
-
-    li {
-        list-style-type: none;
-        @include font-size(14px);
-        line-height: 1.6;
-    }
-}
-
-
-ol {
-    counter-reset: list;
-
-    li {
-        position: relative;
-
-        &:before {
-            counter-increment: list;
-            content: counters(list, ".");
-            position: absolute;
-            @include font-size(32px);
-            line-height: 1;
-            font-family: $font-family-lead;
-            color: #ffffff;
-            bottom: 0;
-            left: 0;
-            transform: translateX(-70%);
-            z-index: -1;
-        }
-    }
-}
+//ul,
+//ol {
+//    padding: 0;
+//    margin: 0 0 rem(25px);
+//
+//    li {
+//        list-style-type: none;
+//        @include font-size(14px);
+//        line-height: 1.6;
+//    }
+//}
+//
+//
+//ol {
+//    counter-reset: list;
+//
+//    li {
+//        position: relative;
+//
+//        &:before {
+//            counter-increment: list;
+//            content: counters(list, ".");
+//            position: absolute;
+//            @include font-size(32px);
+//            line-height: 1;
+//            font-family: $font-family-lead;
+//            color: #ffffff;
+//            bottom: 0;
+//            left: 0;
+//            transform: translateX(-70%);
+//            z-index: -1;
+//        }
+//    }
+//}
 
 *,
 *:before,
@@ -278,10 +293,8 @@ input:-webkit-autofill:active {
 }
 
 .wp-block-image {
-
-    figure {
-        position: relative;
-    }
+    margin: rem(25px) 0;
+    position: relative;
 
     figcaption {
         margin: 0;
@@ -294,6 +307,28 @@ input:-webkit-autofill:active {
         text-transform: uppercase;
         color: #000000;
     }
+}
+
+.wp-block-embed {
+    margin: 0 0 rem(25px);
+}
+
+blockquote {
+    padding-left: rem(20px);
+    margin-bottom: rem(25px);
+    font-style: italic;
+    @include font-size(18px);
+    line-height: 1.66;
+    color: #999999;
+    border-left: 3px solid $color-accent;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+abbr:hover, abbr:focus {
+    cursor: help;
 }
 
 .page-template-page-app-form {

@@ -6,23 +6,23 @@
  */
 
 $post_class = array(
-    'post',
+    'post-list',
     ! has_post_thumbnail() ? 'post_no_thumbnail' : '',
 );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
-    <div class="post__thumbnail">
+<article id="post-list-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
+    <div class="post-list__thumbnail">
         <a href="<?php echo esc_url(get_permalink()) ?>">
             <?php the_post_thumbnail('astron_small_thumb', array('alt' => get_the_title())); ?>
         </a>
     </div>
-    <div class="post__primary">
-        <header class="post__header">
-            <h3 class="post__title">
+    <div class="post-list__primary">
+        <header class="post-list__header">
+            <h3 class="post-list__title">
                 <a href="<?php echo esc_url(get_permalink()) ?>" rel="bookmark"><?php the_title() ?></a>
             </h3>
-            <div class="post__date">
+            <div class="post-list__date">
                 <?php
                 $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
                 $time_string = sprintf($time_string,
@@ -33,11 +33,11 @@ $post_class = array(
                 ?>
             </div>
         </header>
-        <div class="post__content">
+        <div class="post-list__content">
             <?php echo get_the_excerpt(); ?>
         </div>
-        <footer class="post__footer">
-            <div class="post__share">
+        <footer class="post-list__footer">
+            <div class="post-list__share">
                 <ul class="social-list">
                     <li class="social-list__item">
                         <a href="<?php echo esc_url('http://www.facebook.com/sharer/sharer.php?u=' . get_the_permalink()) ?>"

@@ -5,30 +5,85 @@
     display: flex;
     align-items: center;
 
+    dt {
+        margin-right: rem(10px);
+    }
+
+    dd {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
 
     &__item {
         margin: 0 rem(5px);
 
         [class*="icon-"] {
             display: block;
+            transition: background-image $transition-time;
         }
     }
 
     .icon-fb {
         width: rem(6px);
         height: rem(12px);
-        background: url("./images/fb.svg") no-repeat;
+        background: url("./images/sprite.svg#fb") no-repeat center / cover;
+
+        &:hover {
+            background-image: url("./images/sprite.svg#fb--brand");
+        }
+
+        &_color_dark {
+            background-image: url("./images/sprite.svg#fb--black");
+        }
+
+        &_size_lg {
+            width: rem(10px);
+            height: rem(20px);
+        }
     }
 
     .icon-vk {
         width: rem(15px);
         height: rem(8px);
-        background: url("./images/vk.svg") no-repeat;
+        background: url("./images/sprite.svg#vk") no-repeat center / cover;
+
+        &:hover {
+            background-image: url("./images/sprite.svg#vk--brand");
+        }
+
+        &_color_black {
+            background-image: url("./images/sprite.svg#vk--black");
+        }
+
+        &_size_lg {
+            width: rem(27px);
+            height: rem(15px);
+        }
     }
 
     .icon-tg {
         width: rem(11px);
         height: rem(10px);
-        background: url("./images/tg.svg") no-repeat;
+        background: url("./images/sprite.svg#tg") no-repeat center / cover;
+
+        &:hover {
+            background-image: url("./images/sprite.svg#tg--brand");
+        }
+
+        &_color_black {
+            background-image: url("./images/sprite.svg#tg--black");
+        }
+
+        &_size_lg {
+            width: rem(21px);
+            height: rem(19px);
+        }
+    }
+
+    &_indent_lg {
+        .social-list__item {
+            margin: 0 rem(10px);
+        }
     }
 }

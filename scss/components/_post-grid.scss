@@ -1,0 +1,76 @@
+.post-grid {
+    background: $color-accent;
+    padding: rem(25px) rem(25px) rem(20px);
+    margin-bottom: rem(30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: rem(255px);
+
+    &__top {
+        max-height: 87%;
+        overflow: hidden;
+    }
+
+    &__header {
+        margin-bottom: rem(5px);
+    }
+
+    &__title {
+        margin: 0 0 rem(5px);
+        overflow: hidden;
+
+        a {
+            @include font-size(20px);
+            line-height: 1.25;
+            text-transform: uppercase;
+            display: block;
+        }
+    }
+
+    &__company {
+        overflow: hidden;
+        font-family: $font-family-lead;
+        @include font-size(14px);
+        line-height: 1.2142;
+        color: #ffffff;
+
+        a {
+            font-family: $font-family-lead;
+            @include font-size(14px);
+            line-height: 1.2142;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+    }
+
+    &__content {
+        @include font-size(12px);
+        line-height: 1.5;
+        max-height: rem(108px);
+        overflow: hidden;
+        margin-bottom: rem(10px);
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        a {
+            font-family: $font-family-lead;
+            @include font-size(14px);
+            line-height: 1.2142;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .post-grid {
+        height: auto;
+    }
+}

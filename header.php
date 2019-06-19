@@ -29,7 +29,7 @@
 
 <body <?php body_class(); ?>>
 <button class="button scroll-to-top" data-js="scroll-to-top"><i class="icon-arrow-up"></i></button>
-<header class="site-header">
+<header class="site-header angle angle_bottom_left angle_no-indent">
     <div class="container">
         <div class="site-header__top-row">
             <div class="site-brand">
@@ -51,7 +51,7 @@
             )); ?>
 
             <div class="hidden-sm hidden-xs">
-                <a href="<?php echo get_permalink('89') ?>" class="button">Submit an application</a>
+                <a href="<?php echo get_permalink('89') ?>" class="button">apply now</a>
             </div>
 
             <button class="mob-nav-toggle hidden-lg hidden-md" data-js="mob-nav-toggle">

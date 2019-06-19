@@ -12,7 +12,7 @@
 <?php get_header(); ?>
 <div class="site-spacer">
     <div class="container">
-        <h1 style="margin-bottom: 3.21429rem;">Blog</h1>
+        <h1 class="page-title">Blog</h1>
         <div class="row">
             <div class="col-12 col-lg-3 col-xl-3"><?php if (is_active_sidebar('sidebar')) {
                     dynamic_sidebar('sidebar');

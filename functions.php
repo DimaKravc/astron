@@ -129,6 +129,7 @@ if (!function_exists('astron_load_scripts')) :
         wp_enqueue_style('slick-carousel', get_template_directory_uri() . '/styles/slick.css', array(), ASTRON_VERSION);
         wp_enqueue_style('slick-theme', get_template_directory_uri() . '/styles/slick-theme.css', array(), ASTRON_VERSION);
         wp_enqueue_style('animate', get_template_directory_uri() . '/styles/animate.css', array(), ASTRON_VERSION);
+        wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/styles/magnific-popup.css', array(), ASTRON_VERSION);
         wp_enqueue_style('style', get_template_directory_uri() . '/style.css', array(), ASTRON_VERSION);
 
         /**
@@ -137,6 +138,7 @@ if (!function_exists('astron_load_scripts')) :
         wp_enqueue_script('nice-select', get_template_directory_uri() . '/js/nice-select.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('slick-carousel', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), ASTRON_VERSION, true);
+        wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/js/jquery.magnific-popup.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('application', get_template_directory_uri() . '/js/application.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('application'), ASTRON_VERSION, true);
 

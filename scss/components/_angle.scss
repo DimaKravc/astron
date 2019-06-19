@@ -1,0 +1,67 @@
+.angle {
+    position: relative;
+
+    &:before {
+        content: "";
+        border: 0 solid transparent;
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+
+    &_top_right {
+        border-top: 1px solid transparent;
+        margin-top: calc(4vw - 1px);
+
+        &:before {
+            bottom: 100%;
+            border-top-width: 4vw;
+            border-left-width: calc(100vw - 17px);
+            border-left-color: $color-accent;
+        }
+    }
+
+    &_top_left {
+        border-top: 1px solid transparent;
+        margin-top: calc(4vw - 1px);
+
+        &:before {
+            bottom: 100%;
+            border-top-width: 4vw;
+            border-right-width: calc(100vw - 17px);
+            border-right-color: $color-accent;
+        }
+
+    }
+
+    &_bottom_right {
+        border-bottom: 1px solid transparent;
+        margin-bottom: calc(4vw - 1px);
+
+        &:before {
+            top: 100%;
+            border-bottom-width: 4vw;
+            border-left-width: calc(100vw - 17px);
+            border-left-color: $color-accent;
+        }
+    }
+
+    &_bottom_left {
+        border-bottom: 1px solid transparent;
+        margin-bottom: calc(4vw - 1px);
+
+        &:before {
+            top: 100%;
+            border-bottom-width: 4vw;
+            border-right-width: calc(100vw - 17px);
+            border-right-color: $color-accent;
+        }
+    }
+
+    &_no-indent {
+        margin-top: 0;
+        margin-bottom: 0;
+        border-top: none;
+        border-bottom: none;
+    }
+}

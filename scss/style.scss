@@ -12,8 +12,7 @@ Tags:         one-column, two-columns, three-columns, right-sidebar, left-sideba
 Text Domain:  astros
 */
 
-@import "utils/angle",
-        "utils/clearfix",
+@import "utils/clearfix",
         "utils/font-size";
 
 @import "base/config",
@@ -22,6 +21,7 @@ Text Domain:  astros
 
 @import "components/container",
         "components/grid",
+        "components/angle",
         "components/spacing",
         "components/site-spacer",
         "components/button",
@@ -35,6 +35,7 @@ Text Domain:  astros
         "components/mob-nav-toggle",
         "components/mob-nav-overlay",
         "components/site-footer",
+        "components/page-title",
         "components/entry-slider",
         "components/section-interview",
         "components/section-focus-area",
@@ -45,6 +46,8 @@ Text Domain:  astros
         "components/widget-categories",
         "components/post-single",
         "components/post",
+        "components/post-list",
+        "components/post-grid",
         "components/breadcrumbs",
         "components/load-more",
         "components/post-navigation",

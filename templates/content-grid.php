@@ -6,23 +6,23 @@
  */
 
 $post_class = array(
-    'post'
+    'post-grid'
 );
 ?>
 
-<div class="col-12 col-lg-6 col-xl-3">
-    <article id="post-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
-        <div>
-            <header class="post__header">
-                <h3 class="post__title"><a href="<?php echo esc_url(get_permalink()) ?>"
-                                           rel="bookmark"><?php the_title() ?></a></h3>
-                <div class="post__company"><?php echo get_post_meta(get_the_ID(), 'company')[0] ?></div>
+<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+    <article id="post-grid-<?php the_ID(); ?>" <?php post_class($post_class); ?>>
+        <div class="post-grid__top">
+            <header class="post-grid__header">
+                <h3 class="post-grid__title"><a href="<?php echo esc_url(get_permalink()) ?>"
+                                                rel="bookmark"><?php the_title() ?></a></h3>
+                <div class="post-grid__company"><?php echo get_post_meta(get_the_ID(), 'company')[0] ?></div>
             </header>
-            <div class="post__content">
+            <div class="post-grid__content">
                 <?php echo get_the_excerpt(); ?>
             </div>
         </div>
-        <footer class="post__footer">
+        <footer class="post-grid__footer">
             <a href="<?php echo esc_url(get_permalink()) ?>">Respond</a>
         </footer>
     </article>

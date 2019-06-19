@@ -1,10 +1,16 @@
 .contacts {
     background: $color-accent;
-    padding: rem(40px) rem(50px) rem(35px) rem(42px);
+    padding: rem(40px) rem(50px);
     clip-path: polygon(0 0, 76% 0, 100% 100%, 0 100%);
+    position: relative;
+    z-index: 10;
 
     .contacts-item {
         margin: 0 0 rem(20px);
+
+        &:last-child {
+            margin: 0;
+        }
 
         dt {
             font-family: $font-family-lead;
@@ -19,5 +25,11 @@
             font-family: "Verdana", cursive;
             @include font-size(12px);
         }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .contacts {
+        clip-path: none;
     }
 }

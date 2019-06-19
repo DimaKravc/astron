@@ -1,9 +1,8 @@
 .site-header {
     padding: rem(45px) 0 0;
     background: $color-accent;
-    // clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
-    z-index: $header-index;
     position: relative;
+    z-index: $header-index;
 
     &__top-row {
         display: flex;
@@ -25,18 +24,6 @@
 
     .language-select {
         margin-top: rem(16px);
-    }
-
-    &:after {
-        content: "";
-        border: 0 solid transparent;
-        position: absolute;
-        right: 0;
-        left: 0;
-        top: 100%;
-        border-bottom-width: 4vw;
-        border-right-width: 100vw;
-        border-right-color: $color-accent;
     }
 }
 

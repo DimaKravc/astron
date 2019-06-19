@@ -12,7 +12,7 @@
 <?php get_header(); ?>
     <div class="site-spacer">
         <div class="container">
-            <h1 style="margin-bottom: 3.21429rem;">Partner<br>vacancies</h1>
+            <h1 class="page-title">Partner vacancies</h1>
             <div class="row">
                 <div class="col-12">
                     <?php if (have_posts()) {
