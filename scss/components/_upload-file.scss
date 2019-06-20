@@ -1,0 +1,60 @@
+.upload-file {
+    outline: 2px dashed #000000;
+    outline-offset: -2px;
+    padding: rem(15px) rem(45px) rem(25px);
+    transition: all $transition-time;
+
+    input[type="file"] {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .docs-list {
+        justify-content: center;
+        margin: rem(30px) 0;
+
+        &__item {
+            [class*="icon-"] {
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    &__lead {
+        display: block;
+        @include font-size(18px);
+        line-height: 1.25;
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: rem(4px);
+
+        b {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        &:hover {
+            b {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__allowed-type-msg {
+        display: block;
+        @include font-size(14px);
+        letter-spacing: -0.04em;
+        opacity: 0.2;
+        text-align: center;
+    }
+
+    &.is-dragover {
+        background: #ffffff;
+        outline-offset: -10px;
+    }
+}

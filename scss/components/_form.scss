@@ -3,7 +3,7 @@
     fieldset {
         padding: 0;
         border: none;
-        margin-bottom: rem(20px);
+        margin:  0 0 rem(20px);
 
         legend {
             @include font-size(22px);
@@ -32,7 +32,7 @@
             font-family: $font-family-lead;
             text-transform: uppercase;
             padding: 0 2px;
-            background: $color-accent;
+            background: #ffffff;
             transition: all $transition-time;
             will-change: top, transform;
             z-index: 1;

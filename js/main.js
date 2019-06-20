@@ -84,7 +84,7 @@ jQuery(document).ready(function ($) {
             $('[data-js="load-more-btn"]').on('click', function (e) {
                 e.preventDefault();
 
-                var button = $(this),
+                let button = $(this),
                     data = {
                         'action': 'loadmore',
                         'query': window.localize_array.posts,
@@ -115,11 +115,11 @@ jQuery(document).ready(function ($) {
 
         // scrollToTop: function () {
         //     if (Application.isMobile) return;
-        //     var $toggle = $('[data-js="scroll-to-top"]');
-        //     var $toggleDefaultBottom = $toggle.css('bottom');
-        //     var $footer = $('[data-js="bottom-panel"]');
+        //     let $toggle = $('[data-js="scroll-to-top"]');
+        //     let $toggleDefaultBottom = $toggle.css('bottom');
+        //     let $footer = $('[data-js="bottom-panel"]');
         //     $(window).on('scroll load resize', function () {
-        //         var $this = $(this);
+        //         let $this = $(this);
         //         if ($this.scrollTop() > 800) {
         //             $toggle.addClass('scroll-to-top_is_visible')
         //         } else {
@@ -127,7 +127,7 @@ jQuery(document).ready(function ($) {
         //         }
         //
         //         if ($this.scrollTop() + $this.height() >= $footer.offset().top) {
-        //             var $offset = $this.scrollTop() + $this.height() - $footer.offset().top + 30;
+        //             let $offset = $this.scrollTop() + $this.height() - $footer.offset().top + 30;
         //             $toggle.css('bottom', $offset);
         //         } else {
         //             $toggle.css('bottom', $toggleDefaultBottom)
@@ -186,37 +186,98 @@ jQuery(document).ready(function ($) {
         },
 
         popup: function () {
-            $(document).ready(function() {
-                $('.popup-with-form').magnificPopup({
-                    type: 'inline',
-
-                    fixedContentPos: false,
-                    fixedBgPos: true,
-
-                    overflowY: 'auto',
-
-                    closeBtnInside: true,
-                    preloader: false,
-
-                    midClick: true,
-                    removalDelay: 300,
-                    mainClass: 'my-mfp-zoom-in'
+            $(document).ready(function () {
+                $('.popup-with-zoom-anim').magnificPopup({
+                    removalDelay: 500, //delay removal by X to allow out-animation
+                    callbacks: {
+                        beforeOpen: function () {
+                            this.st.mainClass = this.st.el.attr('data-effect');
+                        }
+                    }
                 });
             });
         },
 
+        uploadFileArea: function () {
+            let isAdvancedUpload = function () {
+                let div = document.createElement('div');
+                return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+            }();
+
+            $('[data-js="upload-file"]').each(function (index, form) {
+                let $form = $(form),
+                    $input = $form.find('input[type="file"]'),
+                    $label = $form.find('label'),
+                    $icons = $form.find('i[class*="icon-"]'),
+                    showFiles = function (files) {
+                        $icons.removeClass('is-active');
+                        if (!files.map) {
+                            files.map = [].map
+                        }
+
+                        files.map(function (currentValue, index, arr) {
+                           if (currentValue.type === 'application/pdf') {
+                               $icons.each(function () {
+                                   if ($(this).hasClass('icon-pdf')) {
+                                       $(this).addClass('is-active');
+                                   }
+                               })
+                           } else if (currentValue.type === 'application/msword' || 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                               $icons.each(function () {
+                                   if ($(this).hasClass('icon-doc')) {
+                                       $(this).addClass('is-active');
+                                   }
+                               })
+                           }
+                        });
+                        $label.html(files.length > 1 ? ($input.attr('data-multiple-caption') || '').replace('{count}', files.length) : files[0].name);
+                    };
+                $input.on('change', function (e) {
+                    showFiles(e.target.files);
+                });
+
+                if (isAdvancedUpload) {
+                    ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'].forEach(function (event) {
+                        form.addEventListener(event, function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        });
+                    });
+                    ['dragover', 'dragenter'].forEach(function (event) {
+                        form.addEventListener(event, function () {
+                            form.classList.add('is-dragover');
+                        });
+                    });
+                    ['dragleave', 'dragend', 'drop'].forEach(function (event) {
+                        form.addEventListener(event, function () {
+                            form.classList.remove('is-dragover');
+                        });
+                    });
+                    form.addEventListener('drop', function (e) {
+                        let files = [].slice.call(e.dataTransfer.files).filter(function (file) {
+                            return file.type === 'application/pdf' ||
+                                file.type === 'application/msword' ||
+                                file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+
+                        });
+                        showFiles(files);
+                    });
+                }
+            })
+        },
+
         embedContent: function () {
             $.fn.fitVids = function (options) {
-                var settings = {
+                let settings = {
                     customSelector: null,
                     ignore: null
                 };
 
                 if (!document.getElementById('fit-vids-style')) {
                     // appendStyles: https://github.com/toddmotto/fluidvids/blob/master/dist/fluidvids.js
-                    var head = document.head || document.getElementsByTagName('head')[0];
-                    var css = '.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}';
-                    var div = document.createElement("div");
+                    let head = document.head || document.getElementsByTagName('head')[0];
+                    let css = '.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}';
+                    let div = document.createElement("div");
                     div.innerHTML = '<p>x</p><style id="fit-vids-style">' + css + '</style>';
                     head.appendChild(div.childNodes[1]);
                 }
@@ -226,7 +287,7 @@ jQuery(document).ready(function ($) {
                 }
 
                 return this.each(function () {
-                    var selectors = [
+                    let selectors = [
                         'iframe[src*="player.vimeo.com"]',
                         'iframe[src*="youtube.com"]',
                         'iframe[src*="youtube-nocookie.com"]',
@@ -239,18 +300,18 @@ jQuery(document).ready(function ($) {
                         selectors.push(settings.customSelector);
                     }
 
-                    var ignoreList = '.fitvidsignore';
+                    let ignoreList = '.fitvidsignore';
 
                     if (settings.ignore) {
                         ignoreList = ignoreList + ', ' + settings.ignore;
                     }
 
-                    var $allVideos = $(this).find(selectors.join(','));
+                    let $allVideos = $(this).find(selectors.join(','));
                     $allVideos = $allVideos.not('object object'); // SwfObj conflict patch
                     $allVideos = $allVideos.not(ignoreList); // Disable FitVids on this video.
 
                     $allVideos.each(function (count) {
-                        var $this = $(this);
+                        let $this = $(this);
                         if ($this.parents(ignoreList).length > 0) {
                             return; // Disable FitVids on this video.
                         }
@@ -261,11 +322,11 @@ jQuery(document).ready(function ($) {
                             $this.attr('height', 9);
                             $this.attr('width', 16);
                         }
-                        var height = (this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10)))) ? parseInt($this.attr('height'), 10) : $this.height(),
+                        let height = (this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10)))) ? parseInt($this.attr('height'), 10) : $this.height(),
                             width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
                             aspectRatio = height / width;
                         if (!$this.attr('id')) {
-                            var videoID = 'fitvid' + count;
+                            let videoID = 'fitvid' + count;
                             $this.attr('id', videoID);
                         }
                         $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100) + '%');
