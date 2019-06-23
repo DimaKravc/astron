@@ -1,11 +1,4 @@
 .focus-area-slider {
-    .owl-stage-outer {
-        margin-left: rem(-50px);
-        margin-right: rem(-50px);
-        padding-left: rem(50px);
-        padding-right: rem(50px);
-    }
-
     .owl-item {
         img {
             width: auto;
@@ -166,6 +159,17 @@
                     display: none !important;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .focus-area-slider-item {
+        .owl-stage-outer {
+            margin-left: rem(-50px);
+            margin-right: rem(-50px);
+            padding-left: rem(50px);
+            padding-right: rem(50px);
         }
     }
 }

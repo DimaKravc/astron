@@ -1,11 +1,4 @@
 .entry-slider {
-    .owl-stage-outer {
-        margin-left: rem(-50px);
-        margin-right: rem(-50px);
-        padding-left: rem(50px);
-        padding-right: rem(50px);
-    }
-
     .owl-item {
         img {
             width: auto;
@@ -194,6 +187,17 @@
             outline: none;
             border: none;
             cursor: pointer;
+        }
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .entry-slider {
+        .owl-stage-outer {
+            margin-left: rem(-50px);
+            margin-right: rem(-50px);
+            padding-left: rem(50px);
+            padding-right: rem(50px);
         }
     }
 }
