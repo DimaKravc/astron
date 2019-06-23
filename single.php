@@ -8,11 +8,13 @@
 
 get_header();
 ?>
-<?php if (have_posts()):
-    while (have_posts()) {
-        the_post();
-        get_template_part('templates/content');
-    }
-endif; ?>
+    <div class="site-spacer__primary site-spacer__primary_no_indents">
+        <?php if (have_posts()):
+            while (have_posts()) {
+                the_post();
+                get_template_part('templates/content');
+            }
+        endif; ?>
+    </div>
 <?php
 get_footer();

@@ -1,44 +1,4 @@
 .app-form-off {
-    &__header {
-        margin-bottom: rem(33px);
-    }
-
-    &__back-link {
-        border: none;
-        outline: none;
-        background: none;
-        @include font-size(14px);
-        font-family: $font-family-lead;
-        text-transform: uppercase;
-        line-height: 1;
-        padding: 0;
-        margin: 0;
-        transition: all $transition-time;
-        position: relative;
-
-        &:before {
-            content: "";
-            width: rem(10px);
-            height: rem(16px);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: auto;
-            right: calc(100% + 10px);
-            background: url("./images/sprite.svg#arrow-left") no-repeat center / contain;
-            transition: all $transition-time;
-        }
-
-        &:hover {
-            cursor: pointer;
-            color: #FFFFFF;
-
-            &:before {
-                background-image: url("./images/sprite.svg#arrow-left-white");
-            }
-        }
-    }
-
     &__section:not(:last-child) {
         margin-bottom: rem(50px);
     }

@@ -15,45 +15,44 @@ if (!isset($content_width)) {
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
-//
-//if (!function_exists('astron_register_taxonomies')) :
-//    /**
-//     * Create custom taxonomies
-//     */
-//    function astron_register_taxonomies()
-//    {
-//        $labels = array(
-//            'name' => 'Рубрики',
-//            'singular_name' => 'Рубрика',
-//            'search_items' => 'Найти рубрику',
-//            'popular_items' => 'Популярные рубрики',
-//            'all_items' => 'Все рубрики',
-//            'parent_item' => null,
-//            'parent_item_colon' => null,
-//            'edit_item' => 'Редактировать рубрику',
-//            'update_item' => 'Обновить рубрику',
-//            'add_new_item' => 'Добавить новую рубрику',
-//            'new_item_name' => 'Название новой рубрики',
-//            'separate_items_with_commas' => 'Разделяйте рубрики запятыми',
-//            'add_or_remove_items' => 'Добавить или удалить рубрику',
-//            'choose_from_most_used' => 'Выбрать из наиболее часто используемых рубрик',
-//            'menu_name' => 'Рубрики'
-//        );
-//        $args = array(
-//            'hierarchical' => true,
-//            'labels' => $labels,
-//            'public' => true,
-//            'show_in_nav_menus' => true,
-//            'show_ui' => true,
-//            'show_tagcloud' => true,
-//            'update_count_callback' => '_update_post_term_count',
-//            'query_var' => true,
-//            'show_in_rest' => true,
-//        );
-//        register_taxonomy('vacancy', array('vacancy-p'), $args);
-//    }
-//endif;
-//add_action('init', 'astron_register_taxonomies');
+if (!function_exists('astron_register_shortcode')) :
+    /**
+     * Create custom shortcode
+     */
+    function astron_register_shortcode()
+    {
+        $args = array(
+            'post_type' => 'employee',
+            'post_status' => 'publish',
+            'posts_per_page' => 10
+        );
+
+        $string = '';
+        $posts = new WP_Query($args);
+
+        if ($posts->have_posts()) {
+
+            $string .= '<div class="row">';
+            while ($posts->have_posts()) {
+                $posts->the_post();
+                $string .= '<div class="col-12 col-md-6 col-lg-4">';
+                $string .= sprintf('<article id="post-employee-%s" class="%s">', get_the_ID(), implode(' ', get_post_class('post post-employee')));
+                $string .= '<div class="post-employee__thumbnail">';
+                $string .= sprintf('%s', get_the_post_thumbnail(get_the_ID(), 'astron_middle_thumb', array('alt' => get_the_title())));
+                $string .= '</div>';
+                $string .= sprintf('<div class="post-employee__position">%s</div>', get_post_meta(get_the_ID(), 'position')[0]);
+                $string .= sprintf('<div class="post-employee__name">%s</div>', get_the_title());
+                $string .= '</article>';
+                $string .= '</div>';
+            }
+            $string .= '</div>';
+        }
+
+        wp_reset_postdata();
+        return $string;
+    }
+endif;
+add_shortcode('employee', 'astron_register_shortcode');
 
 /**
  * Remove recent comments style
@@ -97,7 +96,7 @@ if (!function_exists('astron_setup')) :
          * Add image size
          */
         add_image_size('astron_small_thumb', 180, 205, true);
-        add_image_size('astron_middle_thumb', 280, 280, true);
+        add_image_size('astron_middle_thumb', 370, 365, true);
 
         /**
          * Add feed links
@@ -126,8 +125,6 @@ if (!function_exists('astron_load_scripts')) :
         wp_enqueue_style('nice-select', get_template_directory_uri() . '/styles/nice-select.css', array(), ASTRON_VERSION);
         wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/styles/owl.carousel.min.css', array(), ASTRON_VERSION);
         wp_enqueue_style('owl-theme', get_template_directory_uri() . '/styles/owl.theme.default.min.css', array(), ASTRON_VERSION);
-        wp_enqueue_style('slick-carousel', get_template_directory_uri() . '/styles/slick.css', array(), ASTRON_VERSION);
-        wp_enqueue_style('slick-theme', get_template_directory_uri() . '/styles/slick-theme.css', array(), ASTRON_VERSION);
         wp_enqueue_style('animate', get_template_directory_uri() . '/styles/animate.css', array(), ASTRON_VERSION);
         wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/styles/magnific-popup.css', array(), ASTRON_VERSION);
         wp_enqueue_style('style', get_template_directory_uri() . '/style.css', array(), ASTRON_VERSION);
@@ -137,8 +134,8 @@ if (!function_exists('astron_load_scripts')) :
          */
         wp_enqueue_script('nice-select', get_template_directory_uri() . '/js/nice-select.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), ASTRON_VERSION, true);
-        wp_enqueue_script('slick-carousel', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/js/jquery.magnific-popup.js', array('jquery'), ASTRON_VERSION, true);
+        wp_enqueue_script('smooth-scroll', get_template_directory_uri() . '/js/smooth-scrollbar.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('application', get_template_directory_uri() . '/js/application.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('application'), ASTRON_VERSION, true);
 
@@ -343,15 +340,18 @@ if (!function_exists('astron_breadcrumbs')) :
 endif;
 
 if (!function_exists('astron_posts_link_prev_class')) :
-    function astron_posts_link_prev_class($format) {
+    function astron_posts_link_prev_class($format)
+    {
         $format = str_replace('href=', 'class="button" href=', $format);
         return $format;
     }
+
     add_filter('previous_post_link', 'astron_posts_link_prev_class');
 endif;
 
 if (!function_exists('astron_posts_link_next_class')) :
-    function astron_posts_link_next_class($format){
+    function astron_posts_link_next_class($format)
+    {
         $format = str_replace('href=', 'class="button" href=', $format);
         return $format;
     }

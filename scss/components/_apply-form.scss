@@ -1,5 +1,21 @@
-.apply-form {
+.apply-form--wrap {
     max-width: 100%;
     width: rem(620px);
-    background: $color-accent //temp;
+    background: $color-accent;
+    padding: rem(50px) rem(50px) rem(25px);
+    margin: rem(25px) auto;
+}
+
+.apply-form {
+    &__title {
+        text-align: center;
+        margin-bottom: rem(40px);
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .apply-form--wrap {
+        padding-left: rem(30px);
+        padding-right: rem(30px);
+    }
 }

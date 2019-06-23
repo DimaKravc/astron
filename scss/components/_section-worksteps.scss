@@ -1,46 +1,27 @@
 .section-worksteps {
-    background: #ffffff;
-    padding: rem(100px) 0;
+    padding: rem(150px) 0;
 
     &__title {
-        margin-bottom: rem(75px);
-    }
-
-    &__list {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
-
-    &__item {
-        list-style-type: none;
-        margin-bottom: rem(20px);
-        width: 25%;
-        position: relative;
+        margin-bottom: rem(100px);
     }
 }
 
-.workstep-item {
-    &__title {
-        @include font-size(24px);
-        line-height: 1;
-        margin-bottom: rem(18px);
-    }
+@media (max-width: $screen-md-max) {
+    .section-worksteps {
+        padding: rem(100px) 0;
 
-    &__text {
-        @include font-size(14px);
-        line-height: 1.6;
-        letter-spacing: -0.56px;
-        margin: 0;
+        &__title {
+            margin-bottom: rem(75px);
+        }
     }
+}
 
-    &:before {
-        @include font-size(200px);
-        color: $color-accent;
-        position: absolute;
-        top: 50%;
-        bottom: auto;
-        left: 0;
-        transform: translateX(-50%) translateY(-53%);
+@media (max-width: $screen-sm-max) {
+    .section-worksteps {
+        padding: rem(75px) 0;
+
+        &__title {
+            margin-bottom: rem(50px);
+        }
     }
 }

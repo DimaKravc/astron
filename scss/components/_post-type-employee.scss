@@ -1,0 +1,48 @@
+.post-employee {
+    position: relative;
+    padding-bottom: rem(40px);
+    margin-bottom: rem(80px);
+
+    &__thumbnail {
+        img {
+            width: 100%;
+        }
+    }
+
+    &__position {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: rem(20px);
+        background: $color-base;
+        font-family: $font-family-lead;
+        line-height: 1.2;
+        text-transform: uppercase;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $color-accent;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+    }
+
+    &__name {
+        position: absolute;
+        top: 100%;
+        left: rem(-10px);
+        width: 100%;
+        padding: rem(20px) rem(30px);
+        background: $color-accent;
+        @include font-size(24px);
+        line-height: 1.2;
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $color-base;
+        clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+        transform: translateY(-30%);
+    }
+}

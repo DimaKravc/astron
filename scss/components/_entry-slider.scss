@@ -1,11 +1,45 @@
 .entry-slider {
-    margin-top: rem(-50px);
-    z-index: 15;
+    .owl-stage-outer {
+        margin-left: rem(-50px);
+        margin-right: rem(-50px);
+        padding-left: rem(50px);
+        padding-right: rem(50px);
+    }
 
     .owl-item {
         img {
             width: auto;
             margin: auto;
+        }
+
+        &.animated {
+            animation-duration: .6s;
+            animation-delay: .15s;
+        }
+
+        &.active {
+            .entry-slider-item {
+                &__caption,
+                &__title {
+                    transition: transform .25s .25s linear, opacity .25s .25s linear;
+                    transform: translate(0, 0);
+                    opacity: 1;
+                }
+
+                &__figure {
+                    img {
+                        transition: transform .25s .25s linear;
+
+                        &:first-child {
+                            transform: translate(0, 0);
+                        }
+
+                        &:last-child {
+                            transform: translate(0, 0);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -51,36 +85,12 @@
             }
         }
     }
-
-    .owl-dots {
-        position: absolute;
-        right: 20%;
-        top: 100%;
-        text-align: left;
-    }
-
-    .owl-dots .owl-dot {
-        display: inline-block;
-        vertical-align: middle;
-        margin: rem(8px);
-        width: rem(12px);
-        height: rem(12px);
-        background-color: #ffffff;
-        box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.4);
-        transition: background-color .13s ease;
-        border-radius: 50%;
-        outline: none;
-    }
-
-    .owl-dots .owl-dot:hover, .owl-dots .owl-dot.active, .owl-dots .owl-dot:focus {
-        background: $color-base;
-    }
 }
 
 .entry-slider-item {
     &__row {
         align-items: center;
-        height: rem(600px);
+        height: calc(100vh - (28px + 126px + 4vw));
     }
 
     &__caption {
@@ -89,12 +99,120 @@
         line-height: 1.25;
         text-transform: uppercase;
         margin-bottom: rem(20px);
+        transform: translateX(-50px);
+        opacity: 0;
+        transition: transform .3s linear, opacity .3s linear;
+        will-change: transform, opacity;
     }
 
     &__title {
+        margin: 0;
         font-family: $font-family-lead;
         @include font-size(65px);
-        line-height: 1.25;
+        line-height: 1.2;
         text-transform: uppercase;
+        transform: translateX(-50px);
+        opacity: 0;
+        transition: transform .3s linear, opacity .3s linear;
+    }
+
+    &__figure {
+        width: rem(400px);
+        height: rem(400px);
+        position: relative;
+        margin: auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: transform .3s linear;
+            will-change: transform;
+
+            &:first-child {
+                transform: translate(-10px, -10px);
+            }
+
+            &:last-child {
+                transform: translate(10px, 10px);
+            }
+        }
+    }
+}
+
+.entry-slider-dots {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+
+    &__inner {
+        position: relative;
+        display: inline-block;
+    }
+
+    &__list {
+        .owl-dot {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px;
+            width: 14px;
+            height: 14px;
+            background-color: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.4);
+            transition: background-color .13s ease;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .owl-dot {
+            &:hover {
+                background: #ffffff;
+            }
+        }
+    }
+
+    &__marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 34px;
+        transition: all $transition-time;
+
+        &:after {
+            content: "";
+            background: $color-base;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px;
+            width: 14px;
+            height: 14px;
+            box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.4);
+            transition: background-color .13s ease;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .entry-slider-item {
+        padding: 5vw 0;
+
+        &__row {
+            height: auto;
+        }
+    }
+}
+
+
+@media (max-width: $screen-md-max) {
+    .entry-slider-item {
+        &__title {
+            @include font-size(60px);
+        }
     }
 }

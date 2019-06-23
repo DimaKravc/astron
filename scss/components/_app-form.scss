@@ -17,3 +17,35 @@
         padding: 0 rem(75px);
     }
 }
+
+@media (min-width: $screen-lg-min) {
+    .app-form {
+        &__leveler {
+            display: flex;
+            align-items: center;
+            height: calc(100vh - (225px + 8vw));
+            transform: translate(0);
+
+            [data-ss-show] {
+                position: fixed;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-lg-max) {
+    .app-form {
+        &__leveler {
+            transform: none !important;
+            margin-bottom: rem(50px);
+        }
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .app-form {
+        &__title {
+            @include font-size(40px);
+        }
+    }
+}

@@ -13,7 +13,7 @@
 $options = get_option('contacts_options');
 ?>
 <div id="map" class="map"></div>
-<div class="site-spacer">
+<div class="site-spacer__primary">
     <div class="container">
         <h1 class="page-title">Contacts</h1>
         <div class="row">

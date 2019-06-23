@@ -75,12 +75,12 @@ select.language-select {
     }
 
     &:after {
-        width: rem(20px);
-        height: rem(20px);
-        background: url("./images/sprite.svg#globus") no-repeat center / contain;
-        transform: none !important;
+        width: 22px;
+        height: 22px;
+        background: url("./images/globus.svg") no-repeat center;
+        transform: translateY(-50%) !important;
+        margin: 0;
         right: 0;
-        margin-top: rem(-10px);
         border: none;
         transition: background $transition-time;
     }
@@ -91,7 +91,7 @@ select.language-select {
         }
 
         &:after {
-            background: url("./images/sprite.svg#globus--black") no-repeat center / contain;
+            background-image: url("./images/globus--black.svg");
         }
     }
 
@@ -105,7 +105,7 @@ select.language-select {
         }
 
         &:after {
-            background: url("./images/sprite.svg#globus--black") no-repeat center / contain;
+            background-image: url("./images/globus--black.svg");
         }
     }
 }

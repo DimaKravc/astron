@@ -1,24 +1,23 @@
 .section-request-promo {
     background: $color-base;
-    padding: rem(350px) 0 rem(200px);
-    margin: -4vw 0;
+    padding: rem(250px) 0;
 
     &__promo-text {
         font-family: $font-family-lead;
         text-transform: uppercase;
         @include font-size(96px);
-        line-height: 1.25;
+        line-height: 1.2;
         color: $color-accent;
         text-align: center;
         max-width: 80%;
-        margin: 0 auto rem(250px);
+        margin: 0 auto rem(150px);
     }
 
     &__request-text {
         font-family: $font-family-lead;
         text-transform: uppercase;
         @include font-size(72px);
-        line-height: 1.25;
+        line-height: 1.2;
         color: #ffffff;
         text-align: center;
         max-width: 85%;
@@ -36,6 +35,36 @@
         &:after,
         &:before {
             background: $color-accent;
+        }
+    }
+}
+
+@media (max-width: $screen-lg-max) {
+    .section-request-promo {
+        &__promo-text,
+        &__request-text {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    .section-request-promo {
+        padding: rem(200px) 0;
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .section-request-promo {
+        padding: rem(150px) 0;
+
+        &__promo-text {
+            margin-bottom: rem(100px);
+        }
+
+        &__promo-text,
+        &__request-text {
+            @include font-size(60px);
         }
     }
 }

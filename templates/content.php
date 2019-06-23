@@ -29,43 +29,11 @@
         <footer class="post__footer post__inner-box">
             <?php if (get_post_type() === 'vacancies'): ?>
                 <div class="post__response">
-                    <a class="button popup-with-zoom-anim" href="#test-popup" data-effect="mfp-zoom-in">Open form</a>
+                    <button class="button button_margin_auto popup-with-zoom-anim" href="#apply-form" data-effect="mfp-zoom-in">Respond</button>
                 </div>
-                <form action="" class="apply-form form">
-                    <h3 class="apply-form__title">Applying for a position</h3>
-                    <fieldset>
-                        <legend>Company information</legend>
-                        <div class="form__group" data-js="form-group">
-                            <label for="full-name">Full name</label>
-                            <input type="text" id="full-name" autocomplete="off">
-                            <span class="amount-allowed">140 sym</span>
-                        </div>
-                        <div class="form__group" data-js="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" autocomplete="off">
-                            <span class="amount-allowed">140 sym</span>
-                        </div>
-                        <div class="form__group" data-js="form-group">
-                            <label for="phone-number">Full name</label>
-                            <input type="tel" id="phone-number" autocomplete="off">
-                            <span class="amount-allowed">140 sym</span>
-                        </div>
-                        <div class="upload-file" data-js="upload-file">
-                            <ul class="docs-list">
-                                <li class="docs-list__item">
-                                    <i class="icon-pdf"></i>
-                                </li>
-                                <li class="docs-list__item">
-                                    <i class="icon-doc"></i>
-                                </li>
-                            </ul>
-                            <input type="file" name="cv-file" id="cv-file" data-multiple-caption="{count} files selected"
-                                   accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-                            <label class="upload-file__lead" for="cv-file">Drag & drop or <b>browse</b> your CV File</label>
-                            <span class="upload-file__allowed-type-msg">Valid file extensions: pdf, docx</span>
-                        </div>
-                    </fieldset>
-                </form>
+                <div class="apply-form--wrap mfp-with-anim mfp-hide" id="apply-form">
+                    <?php echo do_shortcode('[contact-form-7 id="210" title="APPLYING FOR A POSITION" html_class="apply-form form"]'); ?>
+                </div>
             <?php elseif (get_post_type() === 'post'): ?>
                 <div class="post__share">
                     <dl class="social-list social-list_indent_lg">

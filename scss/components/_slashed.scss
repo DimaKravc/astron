@@ -1,34 +1,37 @@
+$index: 100;
+
 .slashed {
-    height: 200px;
+    height: #{$index}px;
     position: relative;
-    transform: rotate(-7deg);
-    text-shadow: 3px 3px 3px rgba(255, 255, 255, 0.15);
+    transform: rotate(-3deg);
 
     &__top,
     &__bottom {
-        text-align: center;
         font-family: $font-family-lead;
-        line-height: 100px;
-        @include font-size(100px);
-        overflow: hidden;
+        line-height: 1;
+        font-size: #{$index}px;
+        letter-spacing: -1px;
         color: $color-base;
-        transform: rotate(7deg);
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
 
         &:before {
             content: attr(title);
+            transform: rotate(3deg);
         }
     }
 
     &__top {
         position: absolute;
         top: 0;
-        left: 7px;
+        left: -7px;
         right: 0;
         bottom: 50%;
 
         &:before {
             position: absolute;
-            bottom: -50px;
+            bottom: -#{$index/2}px;
             left: 0;
             right: 0;
         }
@@ -38,14 +41,64 @@
         position: absolute;
         top: 50%;
         left: 0;
-        right: 7px;
+        right: -7px;
         bottom: 0;
 
         &:before {
             position: absolute;
-            top: -50px;
+            top: -#{$index/2}px;
             left: 0;
             right: 0;
+        }
+    }
+}
+
+@media (max-width: $screen-md-max) {
+    $index: 80;
+
+    .slashed {
+        height: #{$index}px;
+
+        &__top,
+        &__bottom {
+            font-size: #{$index}px;
+        }
+
+        &__top {
+            &:before {
+                bottom: -#{$index/2}px;
+            }
+        }
+
+        &__bottom {
+            &:before {
+                top: -#{$index/2}px;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    $index: 60;
+
+    .slashed {
+        height: #{$index}px;
+
+        &__top,
+        &__bottom {
+            font-size: #{$index}px;
+        }
+
+        &__top {
+            &:before {
+                bottom: -#{$index/2}px;
+            }
+        }
+
+        &__bottom {
+            &:before {
+                top: -#{$index/2}px;
+            }
         }
     }
 }

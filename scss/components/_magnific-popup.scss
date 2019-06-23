@@ -1,8 +1,3 @@
-.mfp-content {
-    padding: rem(80px);
-    background: $color-accent;
-}
-
 .mfp-zoom-in {
     /* start state */
     .mfp-with-anim {
@@ -41,4 +36,11 @@
         }
 
     }
+}
+
+.mfp-close {
+    font-family: $font-family-base;
+    font-weight: 200;
+    color: #000000;
+    opacity: 1;
 }

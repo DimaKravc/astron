@@ -1,27 +1,28 @@
 .section-interview {
-    background: #ffffff;
-    padding: rem(100px) 0;
-
-    &__row {
-        margin-bottom: rem(150px);
-        align-items: center;
-    }
-
-    &__col {
-        padding: 0 rem(100px);
-    }
+    padding: rem(150px) 0;
+    z-index: 3;
 
     &__title {
-        margin-bottom: rem(75px);
+        margin-bottom: rem(125px);
     }
+}
 
-    &__caption {
-        @include font-size(24px);
-        line-height: 1;
-        margin-bottom: rem(40px);
+@media (max-width: $screen-md-max) {
+    .section-interview {
+        padding: rem(100px) 0;
+
+        &__title {
+            margin-bottom: rem(75px);
+        }
     }
+}
 
-    &__text {
-        @include font-size(14px);
+@media (max-width: $screen-sm-max) {
+    .section-interview {
+        padding: rem(75px) 0;
+
+        &__title {
+            margin-bottom: rem(50px);
+        }
     }
 }

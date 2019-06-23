@@ -1,5 +1,6 @@
 .angle {
     position: relative;
+    z-index: 1;
 
     &:before {
         content: "";
@@ -16,7 +17,7 @@
         &:before {
             bottom: 100%;
             border-top-width: 4vw;
-            border-left-width: calc(100vw - 17px);
+            border-left-width: 100vw;
             border-left-color: $color-accent;
         }
     }
@@ -28,7 +29,7 @@
         &:before {
             bottom: 100%;
             border-top-width: 4vw;
-            border-right-width: calc(100vw - 17px);
+            border-right-width: 100vw;
             border-right-color: $color-accent;
         }
 
@@ -41,7 +42,7 @@
         &:before {
             top: 100%;
             border-bottom-width: 4vw;
-            border-left-width: calc(100vw - 17px);
+            border-left-width: 100vw;
             border-left-color: $color-accent;
         }
     }
@@ -53,15 +54,48 @@
         &:before {
             top: 100%;
             border-bottom-width: 4vw;
-            border-right-width: calc(100vw - 17px);
+            border-right-width: 100vw;
             border-right-color: $color-accent;
         }
     }
 
-    &_no-indent {
+    &_no_indent {
         margin-top: 0;
         margin-bottom: 0;
         border-top: none;
         border-bottom: none;
+        z-index: 2;
+    }
+
+    &_offset_scroll {
+        &.angle_top_right,
+        &.angle_bottom_right {
+            &:before {
+                border-left-width: calc(100vw - 8px);
+            }
+        }
+
+        &.angle_top_left,
+        &.angle_bottom_left {
+            &:before {
+                border-right-width: calc(100vw - 8px);
+            }
+        }
+    }
+
+    &_bg_white {
+        &.angle_top_right,
+        &.angle_bottom_right {
+            &:before {
+                border-left-color: #ffffff;
+            }
+        }
+
+        &.angle_top_left,
+        &.angle_bottom_left {
+            &:before {
+                border-right-color: #ffffff;
+            }
+        }
     }
 }

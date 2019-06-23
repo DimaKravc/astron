@@ -1,8 +1,11 @@
 .upload-file {
+    margin-bottom: rem(35px);
     outline: 2px dashed #000000;
     outline-offset: -2px;
-    padding: rem(15px) rem(45px) rem(25px);
+    padding: rem(15px) rem(25px) rem(25px);
+    background: #e9b011;
     transition: all $transition-time;
+    will-change: outline-offset, background-color;
 
     input[type="file"] {
         width: 0.1px;
@@ -15,7 +18,7 @@
 
     .docs-list {
         justify-content: center;
-        margin: rem(30px) 0;
+        margin: rem(25px) 0;
 
         &__item {
             [class*="icon-"] {
@@ -36,9 +39,12 @@
         b {
             color: #ffffff;
             text-decoration: underline;
+            transition: color $transition-time;
         }
 
         &:hover {
+            cursor: pointer;
+
             b {
                 text-decoration: none;
             }
@@ -56,5 +62,20 @@
     &.is-dragover {
         background: #ffffff;
         outline-offset: -10px;
+
+        .upload-file__lead {
+            b {
+                color: #000000;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &.wpcf7-not-valid {
+        outline-color: red;
+    }
+
+    &_indent_sm {
+        margin-bottom: rem(25px);
     }
 }

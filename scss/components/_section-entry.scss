@@ -1,0 +1,9 @@
+.section-entry {
+    background: $color-accent;
+}
+
+@media (max-width: $screen-md-max) {
+    .section-entry {
+        padding: 0 0 rem(50px);
+    }
+}

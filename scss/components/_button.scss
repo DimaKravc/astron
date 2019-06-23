@@ -24,14 +24,6 @@
     backface-visibility: hidden;
     z-index: 1;
 
-    &_state_disabled,
-    &[disabled] {
-        background: #e6e3e3;
-        color: #999999;
-        cursor: default;
-        pointer-events: none;
-    }
-
     &:before,
     &:after {
         content: "";
@@ -58,11 +50,42 @@
 
     &:hover {
         &:before {
-            transform: translate(-2%,6%);
+            transform: translate(-2%, 6%);
         }
 
         &:after {
-            transform: translate(2%,-6%);
+            transform: translate(2%, -6%);
         }
+    }
+
+    &_state_disabled,
+    &[disabled] {
+        background: #e6e3e3;
+        color: #999999;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &_size_lg {
+        height: rem(45px);
+        line-height: rem(45px);
+        padding: 0 rem(75px);
+    }
+
+    &_min_width {
+        min-width: rem(160px);
+    }
+
+    &_color_accent {
+        color: $color-accent;
+    }
+
+    &_width_fluid {
+        width: 100%;
+    }
+
+    &_margin_auto {
+        margin-left: auto;
+        margin-right: auto;
     }
 }

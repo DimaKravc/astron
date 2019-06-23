@@ -7,7 +7,7 @@
  */
 
 ?>
-<footer class="site-footer angle angle_top_right">
+<footer class="site-footer angle angle_top_right <?php if (is_home()) echo 'angle_no_indent'; ?>">
     <div class="container">
         <div class="site-footer__inner">
             <?php echo '<p class="copyright">' . sprintf(__('%s copyright - astron llc. %d', 'astron'), '&#169;', date('Y')) . '</p>'; ?>
@@ -20,6 +20,11 @@
         </div>
     </div>
 </footer>
+</div>
+</div>
+<div class="site-preloader" data-sp>
+    <div class="site-preloader__bar" data-spb></div>
+</div>
 <?php wp_footer(); ?>
 </body>
 </html>

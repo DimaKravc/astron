@@ -25,9 +25,21 @@
     .language-select {
         margin-top: rem(16px);
     }
+
+    &_sticky {
+        position: fixed;
+        left: 0;
+        right: 8px;
+        top: 0;
+
+        .site-header__inner {
+            position: relative;
+            right: -4px;
+        }
+    }
 }
 
-@media (max-width: $screen-sm-max) {
+@media (max-width: $screen-md-max) {
     .site-header {
         &__bottom-row {
             opacity: 0;

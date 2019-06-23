@@ -3,13 +3,17 @@
     fieldset {
         padding: 0;
         border: none;
-        margin:  0 0 rem(20px);
+        margin: 0 0 rem(20px);
 
         legend {
             @include font-size(22px);
             font-family: $font-family-lead;
             text-transform: uppercase;
             margin-bottom: rem(30px);
+        }
+
+        &.no-indent {
+            margin: 0;
         }
     }
 
@@ -32,7 +36,6 @@
             font-family: $font-family-lead;
             text-transform: uppercase;
             padding: 0 2px;
-            background: #ffffff;
             transition: all $transition-time;
             will-change: top, transform;
             z-index: 1;
@@ -40,14 +43,13 @@
 
         input:not([type="checkbox"]):not([type="radio"]),
         textarea {
-            background: none;
-            border: 1px solid #000000;
+            border: 1px solid transparent;
             outline: none;
             width: 100%;
             height: rem(48px);
             display: block;
             padding: 0 rem(20px);
-            background: transparent;
+            background: #e9b011;
             @include font-size(14px);
             line-height: 1.6;
 
@@ -94,33 +96,49 @@
                 visibility: hidden;
             }
         }
+
+        &_indent_sm {
+            margin-bottom: rem(25px);
+        }
     }
 
     &__radio-group {
         position: relative;
-        margin-bottom: rem(35px);
+        margin-bottom: rem(15px);
         width: 100%;
+
+        &__label {
+            @include font-size(18px);
+            line-height: 1;
+            font-family: $font-family-lead;
+            text-transform: uppercase;
+            margin: 0 0 rem(15px) rem(18px);
+        }
 
         .wpcf7-form-control {
             display: flex;
             flex-wrap: wrap;
-            margin-right: rem(-15px);
-            margin-left: rem(-15px);
+            margin-right: rem(-10px);
+            margin-left: rem(-10px);
         }
 
         .wpcf7-list-item {
             flex: 0 0 50%;
             max-width: 50%;
-            padding-left: rem(15px);
-            padding-right: rem(15px);
-            margin: 0;
+            padding-left: rem(10px);
+            padding-right: rem(10px);
+            margin: 0 0 rem(20px);
             width: 100%;
             min-height: 1px;
             position: relative;
         }
 
+        label {
+            position: relative;
+            display: block;
+        }
+
         input[type="radio"] {
-            background: none;
             border: none;
             outline: none;
             width: 100%;
@@ -130,6 +148,7 @@
 
             & + span {
                 position: absolute;
+                background: #e9b011;
                 border: 1px solid transparent;
                 top: 0;
                 left: 0;
@@ -153,7 +172,6 @@
                     height: rem(16px);
                     border: 1px solid #000000;
                     border-radius: 50%;
-                    transition: all $transition-time;
                 }
 
                 &:hover {
@@ -163,22 +181,15 @@
 
             &:checked + span {
                 &:before {
-                    background: url("./images/check.svg") no-repeat center / 8px #000000;
+                    background: url("./images/sprite.svg#check") no-repeat center / 8px #000000;
                 }
             }
         }
     }
 
-    .wpcf7-not-valid-tip {
-        display: none;
-    }
-
-    .button {
-        height: rem(45px);
-        line-height: rem(45px);
-        color: $color-accent;
-        padding: 0 rem(75px);
-        width: 100%;
+    .wpcf7-not-valid-tip,
+    .wpcf7-response-output {
+        display: none !important;
     }
 
     .wpcf7-mail-sent-ok,

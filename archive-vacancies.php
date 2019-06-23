@@ -7,10 +7,10 @@
  * @package Astron
  * @version 1.0.0
  */
-?>
 
-<?php get_header(); ?>
-    <div class="site-spacer">
+get_header();
+?>
+    <div class="site-spacer__primary">
         <div class="container">
             <h1 class="page-title">Partner vacancies</h1>
             <div class="row">
@@ -40,4 +40,5 @@
             </div>
         </div>
     </div>
-<?php get_footer(); ?>
+<?php
+get_footer();
