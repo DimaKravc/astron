@@ -28,7 +28,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php if (is_page_template('app-form.php')): ?>
+<?php if (is_page_template('page-app-form.php')): ?>
     <header class="site-header site-header_sticky angle angle_bottom_left angle_no_indent angle_offset_scroll">
         <div class="container">
             <div class="site-header__inner">
@@ -69,9 +69,9 @@
     </header>
 <?php endif; ?>
 <div id="smoothScroll" class="scroll" data-scrollbar>
-    <div class="site-spacer <?php if (is_page_template('app-form.php')) echo 'is-header-sticky'; ?>">
+    <div class="site-spacer <?php if (is_page_template('page-app-form.php')) echo 'is-header-sticky'; ?>">
         <button class="button scroll-to-top" data-js="scroll-to-top"><i class="icon-arrow-up"></i></button>
-        <?php if (!is_page_template('app-form.php')): ?>
+        <?php if (!is_page_template('page-app-form.php')): ?>
             <header class="site-header angle angle_bottom_left angle_no_indent">
                 <div class="container">
                     <div class="site-header__top-row">
