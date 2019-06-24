@@ -7,7 +7,7 @@
 
 $post_class = array(
     'post-list',
-    ! has_post_thumbnail() ? 'post_no_thumbnail' : '',
+    ! has_post_thumbnail() ? 'post-list_no_thumbnail' : '',
 );
 ?>
 
