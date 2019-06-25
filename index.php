@@ -60,6 +60,62 @@ get_header();
                             </div>
                         </div>
                     </div>
+                    <div class="entry-slider-item">
+                        <div class="entry-slider-item__row row">
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__caption">VENTURE CAPITAL FUND</div>
+                                <h2 class="entry-slider-item__title">We make your ideas match with your possibilities</h2>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__figure">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-4--top.png' ?>">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-4--bottom.png' ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="entry-slider-item">
+                        <div class="entry-slider-item__row row">
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__caption">VENTURE CAPITAL FUND</div>
+                                <h2 class="entry-slider-item__title">We make your ideas match with your possibilities</h2>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__figure">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-5--top.png' ?>">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-5--bottom.png' ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="entry-slider-item">
+                        <div class="entry-slider-item__row row">
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__caption">VENTURE CAPITAL FUND</div>
+                                <h2 class="entry-slider-item__title">We make your ideas match with your possibilities</h2>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__figure">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-6--top.png' ?>">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-6--bottom.png' ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="entry-slider-item">
+                        <div class="entry-slider-item__row row">
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__caption">VENTURE CAPITAL FUND</div>
+                                <h2 class="entry-slider-item__title">We make your ideas match with your possibilities</h2>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="entry-slider-item__figure">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-7--top.png' ?>">
+                                    <img src="<?php echo get_template_directory_uri() . '/images/entry-slide-7--bottom.png' ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-6"></div>

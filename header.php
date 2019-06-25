@@ -135,5 +135,6 @@
                     'container_class' => 'site-nav site-nav_loc_mob',
                     'menu_class' => 'site-nav__list'
                 )); ?>
+                <a href="<?php echo get_permalink('89') ?>" class="button button_width_fluid button_color_accent button_size_xl">apply now</a>
             </div>
         </div>

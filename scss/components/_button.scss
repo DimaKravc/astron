@@ -72,6 +72,13 @@
         padding: 0 rem(75px);
     }
 
+    &_size_xl {
+        height: rem(53px);
+        @include font-size(20px);
+        line-height: rem(53px);
+        padding: 0 rem(50px);
+    }
+
     &_min_width {
         min-width: rem(160px);
     }

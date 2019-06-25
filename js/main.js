@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
             owlSlider.owlCarousel({
                 autoplay: true,
                 autoplayHoverPause: true,
-                loop: false,
+                loop: true,
                 items: 1,
                 animateOut: 'fadeOut',
                 animateIn: 'fadeIn',
@@ -172,9 +172,9 @@ jQuery(document).ready(function ($) {
             };
 
             owlSlider.owlCarousel({
-                autoplay: false,
+                autoplay: true,
                 autoplayHoverPause: true,
-                loop: false,
+                loop: true,
                 items: 1,
                 animateOut: 'fadeOut',
                 animateIn: 'fadeIn',
