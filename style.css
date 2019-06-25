@@ -501,6 +501,11 @@ p {
 	margin: 0 0 1.5625rem;
 }
 
+ul,
+ol {
+	margin-bottom: 1.5625rem;
+}
+
 a {
 	color: #000000;
 	outline: none;

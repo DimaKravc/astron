@@ -149,6 +149,11 @@ p {
     margin: 0 0 rem(25px);
 }
 
+ul,
+ol {
+    margin-bottom: rem(25px);
+}
+
 a {
     color: $color-base;
     outline: none;
