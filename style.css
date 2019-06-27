@@ -4863,6 +4863,21 @@ select.language-select {
 	        transition-delay: .4s;
 }
 
+.worksteps-list .animation-on-scroll:nth-child(4) {
+	-webkit-transition-delay: .6s;
+	        transition-delay: .6s;
+}
+
+.worksteps-list .animation-on-scroll:nth-child(5) {
+	-webkit-transition-delay: .8s;
+	        transition-delay: .8s;
+}
+
+.worksteps-list .animation-on-scroll:nth-child(6) {
+	-webkit-transition-delay: 1s;
+	        transition-delay: 1s;
+}
+
 .worksteps-list__list {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -4875,7 +4890,7 @@ select.language-select {
 .worksteps-list__item {
 	list-style-type: none;
 	width: 17.5rem;
-	padding: 2.5rem 0;
+	padding: 3.75rem 0;
 	margin: auto;
 	position: relative;
 	height: 100%;

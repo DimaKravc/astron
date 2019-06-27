@@ -258,20 +258,38 @@ get_header();
                 <div class="worksteps-list row">
                     <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
                         <div class="worksteps-list__item worksteps-item">
-                            <h3 class="worksteps-item__title">You submit a completed resume</h3>
-                            <p class="worksteps-item__text">You send your completed resume to our e-mail or fill it out on this page.</p>
+                            <h3 class="worksteps-item__title">Application</h3>
+                            <p class="worksteps-item__text">Fill out and submit the project application form</p>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
                         <div class="worksteps-list__item worksteps-item">
-                            <h3 class="worksteps-item__title">Analysis and internal interviews</h3>
-                            <p class="worksteps-item__text">YWe receive your resume, analyze it and pass it to the focus group for further processing. Then pass the data to the chief Manager</p>
+                            <h3 class="worksteps-item__title">Screening</h3>
+                            <p class="worksteps-item__text">Once we receive your application, our team will examine your project and consider its compatibility with our investment focus</p>
                         </div>
                     </div>
                     <div class="col-xs-12 col-lg-4 animation-on-scroll">
                         <div class="worksteps-list__item worksteps-item">
-                            <h3 class="worksteps-item__title">Announcement of results and actions</h3>
-                            <p class="worksteps-item__text">Depending on the decision of the General Manager. We give you dividends or send you a refusal letter</p>
+                            <h3 class="worksteps-item__title">First meeting</h3>
+                            <p class="worksteps-item__text">If the project passes the screening stage, you will be invited to a meeting where you’ll have the chance to tell us about your venture in more detail</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                        <div class="worksteps-list__item worksteps-item">
+                            <h3 class="worksteps-item__title">Investment analysis</h3>
+                            <p class="worksteps-item__text">Our investment team will work closely with you to analyze the project’s potential</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                        <div class="worksteps-list__item worksteps-item">
+                            <h3 class="worksteps-item__title">Investment committee</h3>
+                            <p class="worksteps-item__text">The investment committee will make the final decision regarding the project</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-4 animation-on-scroll">
+                        <div class="worksteps-list__item worksteps-item">
+                            <h3 class="worksteps-item__title">Investment offer</h3>
+                            <p class="worksteps-item__text">If the project is approved, Astron VC will make an offer to fund your venture</p>
                         </div>
                     </div>
                 </div>
@@ -280,11 +298,10 @@ get_header();
         <section class="section-request-promo angle--top-right">
             <div class="container">
                 <div class="animation-on-scroll">
-                    <p class="section-request-promo__promo-text">We are eager to help you and that you are not lost among
-                        the crowd stand out!</p>
+                    <p class="section-request-promo__promo-text">We invest in founders to bring innovation to life</p>
                 </div>
                 <div class="animation-on-scroll">
-                    <p class="section-request-promo__request-text">Leave a request for dividends</p>
+                    <p class="section-request-promo__request-text">Start disrupting markets today</p>
                     <a href="<?php echo get_permalink('89') ?>" class="button">Apply now</a>
                 </div>
             </div>
