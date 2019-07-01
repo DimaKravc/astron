@@ -2,6 +2,10 @@
     padding: rem(150px) 0 rem(50px);
     background: $color-accent;
 
+    &__inner {
+        overflow-x: hidden;
+    }
+
     &__title {
         margin-bottom: rem(50px);
     }

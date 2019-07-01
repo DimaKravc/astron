@@ -1,7 +1,7 @@
 $index: 100;
 
 .slashed {
-    height: #{$index}px;
+    height: #{$index + 30}px;
     position: relative;
     transform: rotate(-3deg);
 
@@ -57,7 +57,7 @@ $index: 100;
     $index: 80;
 
     .slashed {
-        height: #{$index}px;
+        height: #{$index + 20}px;
 
         &__top,
         &__bottom {
@@ -79,10 +79,10 @@ $index: 100;
 }
 
 @media (max-width: $screen-sm-max) {
-    $index: 60;
+    $index: 39;
 
     .slashed {
-        height: #{$index}px;
+        height: #{$index + 10}px;
 
         &__top,
         &__bottom {

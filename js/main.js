@@ -140,34 +140,41 @@ jQuery(document).ready(function ($) {
         focusAreaSlider: function () {
             let owlSlider = $('[data-js="focus-area-slider"]');
             let updateNav = function (e) {
+                let count = e.item.count;
+                let offset = Math.floor((count + 1) / 2);
                 let currentIndex = e.item.index;
+                if (currentIndex > 0) {
+                    currentIndex -= offset;
+                }
+                if (currentIndex >= count) {
+                    currentIndex -= count;
+                }
+                let prevIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : count - 1;
+                let nextIndex = currentIndex + 1 <= count - 1 ? currentIndex + 1 : 0;
                 let itemsCollection = e.relatedTarget._items;
                 let $prevButtonNode = $(e.currentTarget).find('[aria-label="Previous"]');
                 let $nextButtonNode = $(e.currentTarget).find('[aria-label="Next"]');
 
-                if (currentIndex !== 0) {
-                    if ($prevButtonNode.find('.owl-nav-preview').length) {
-                        $prevButtonNode.find('.owl-nav-preview').fadeOut(200, function () {
-                            $prevButtonNode.find('.owl-nav-preview')
-                                .html($(itemsCollection[currentIndex - 1]).find('.focus-area-slider-item__title').text())
-                                .fadeIn(200);
-                        });
-                    } else {
-                        $prevButtonNode.html('<div class="owl-nav-preview" style="display: none;">' + $(itemsCollection[currentIndex - 1]).find('.focus-area-slider-item__title').text() + '</div>');
-                        $prevButtonNode.find('.owl-nav-preview').fadeIn(500);
-                    }
+                if ($prevButtonNode.find('.owl-nav-preview').length) {
+                    $prevButtonNode.find('.owl-nav-preview').fadeOut(200, function () {
+                        $prevButtonNode.find('.owl-nav-preview')
+                            .html($(itemsCollection[prevIndex]).find('.focus-area-slider-item__title').text())
+                            .fadeIn(200);
+                    });
+                } else {
+                    $prevButtonNode.html('<div class="owl-nav-preview" style="display: none;">' + $(itemsCollection[prevIndex]).find('.focus-area-slider-item__title').text() + '</div>');
+                    $prevButtonNode.find('.owl-nav-preview').fadeIn(500);
                 }
-                if (currentIndex !== itemsCollection.length - 1) {
-                    if ($nextButtonNode.find('.owl-nav-preview').length) {
-                        $nextButtonNode.find('.owl-nav-preview').fadeOut(200, function () {
-                            $nextButtonNode.find('.owl-nav-preview')
-                                .html($(itemsCollection[currentIndex + 1]).find('.focus-area-slider-item__title').text())
-                                .fadeIn(200);
-                        });
-                    } else {
-                        $nextButtonNode.html('<div class="owl-nav-preview" style="display: none;">' + $(itemsCollection[currentIndex + 1]).find('.focus-area-slider-item__title').text() + '</div>');
-                        $nextButtonNode.find('.owl-nav-preview').fadeIn(500);
-                    }
+
+                if ($nextButtonNode.find('.owl-nav-preview').length) {
+                    $nextButtonNode.find('.owl-nav-preview').fadeOut(200, function () {
+                        $nextButtonNode.find('.owl-nav-preview')
+                            .html($(itemsCollection[nextIndex]).find('.focus-area-slider-item__title').text())
+                            .fadeIn(200);
+                    });
+                } else {
+                    $nextButtonNode.html('<div class="owl-nav-preview" style="display: none;">' + $(itemsCollection[nextIndex]).find('.focus-area-slider-item__title').text() + '</div>');
+                    $nextButtonNode.find('.owl-nav-preview').fadeIn(500);
                 }
             };
 
@@ -192,7 +199,7 @@ jQuery(document).ready(function ($) {
                 },
                 dotsContainer: '[data-fas-dots]',
                 onInitialized: function (e) {
-                    updateNav(e);
+                    updateNav(e, this);
 
                     $('[data-fas-marker]').parent().mouseenter(function () {
                         owlSlider.trigger('stop.owl.autoplay')

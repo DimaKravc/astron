@@ -137,6 +137,7 @@
 
             &:first-child {
                 transform: translate(-10px, -10px);
+                z-index: 5;
             }
 
             &:last-child {
@@ -164,7 +165,7 @@
 }
 
 @media (min-width: $screen-md-min) {
-    .focus-area-slider-item {
+    .focus-area-slider {
         .owl-stage-outer {
             margin-left: rem(-50px);
             margin-right: rem(-50px);
