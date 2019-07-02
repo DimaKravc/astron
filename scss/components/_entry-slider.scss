@@ -145,8 +145,11 @@
     }
 
     &__list {
+        display: flex;
+        align-items: center;
+
         .owl-dot {
-            display: inline-block;
+            display: block;
             vertical-align: middle;
             margin: 0 10px;
             width: 14px;
@@ -168,10 +171,13 @@
     }
 
     &__marker {
+        display: flex;
+        align-items: center;
         position: absolute;
         left: 0;
         top: 0;
         width: 34px;
+        line-height: 1;
         transition: all $transition-time;
 
         &:after {
