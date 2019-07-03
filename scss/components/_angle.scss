@@ -71,14 +71,14 @@
         &.angle_top_right,
         &.angle_bottom_right {
             &:before {
-                border-left-width: calc(100vw - 8px);
+                border-left-width: calc(100vw - 20px);
             }
         }
 
         &.angle_top_left,
         &.angle_bottom_left {
             &:before {
-                border-right-width: calc(100vw - 8px);
+                border-right-width: calc(100vw - 20px);
             }
         }
     }

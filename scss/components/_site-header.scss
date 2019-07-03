@@ -29,12 +29,12 @@
     &_sticky {
         position: fixed;
         left: 0;
-        right: 8px;
+        right: 20px;
         top: 0;
 
         .site-header__inner {
             position: relative;
-            right: -4px;
+            right: -10px;
         }
     }
 }

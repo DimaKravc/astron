@@ -15,7 +15,7 @@
 get_header();
 ?>
     <div class="site-spacer__primary site-spacer__primary_no_indents">
-        <div class="section-entry angle angle_bottom_left angle_no_indent">
+        <section class="section-entry angle angle_bottom_left angle_no_indent">
             <div class="container">
                 <div class="entry-slider owl-carousel" data-js="entry-slider">
                     <div class="entry-slider-item">
@@ -87,7 +87,7 @@ get_header();
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <section class="section-interview angle angle_bottom_left angle_no_indent angle_bg_white">
             <div class="container">
                 <div class="animation-on-scroll">
@@ -253,39 +253,39 @@ get_header();
                         <span class="slashed__bottom" title="Selection process"></span>
                     </h2>
                 </div>
-                <div class="worksteps-list row">
-                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                <div class="worksteps-list row animation-on-scroll">
+                    <div class="col-xs-12 col-md-6 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">Application</h3>
                             <p class="worksteps-item__text">Fill out and submit the project application form</p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                    <div class="col-xs-12 col-md-6 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">Screening</h3>
                             <p class="worksteps-item__text">Once we receive your application, our team will examine your project and consider its compatibility with our investment focus</p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-lg-4 animation-on-scroll">
+                    <div class="col-xs-12 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">First meeting</h3>
                             <p class="worksteps-item__text">If the project passes the screening stage, you will be invited to a meeting where you’ll have the chance to tell us about your venture in
                                 more detail</p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                    <div class="col-xs-12 col-md-6 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">Investment analysis</h3>
                             <p class="worksteps-item__text">Our investment team will work closely with you to analyze the project’s potential</p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6 col-lg-4 animation-on-scroll">
+                    <div class="col-xs-12 col-md-6 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">Investment committee</h3>
                             <p class="worksteps-item__text">The investment committee will make the final decision regarding the project</p>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-lg-4 animation-on-scroll">
+                    <div class="col-xs-12 col-lg-4">
                         <div class="worksteps-list__item worksteps-item">
                             <h3 class="worksteps-item__title">Investment offer</h3>
                             <p class="worksteps-item__text">If the project is approved, Astron VC will make an offer to fund your venture</p>

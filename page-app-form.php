@@ -36,6 +36,24 @@ get_header();
                 <div class="col-12 col-xl-6" data-aft-form="online">
                     <div>
                         <?php echo do_shortcode('[contact-form-7 id="91" title="APPLY FOR A PROJECT"]'); ?>
+                        <div class="form-status" data-form-status="success">
+                            <div class="form-status__inner">
+                                <h2 class="form-status__title slashed">
+                                    <span class="slashed__top" title="SUCCESS"></span>
+                                    <span class="slashed__bottom" title="SUCCESS"></span>
+                                </h2>
+                                <p class="form-status__msg">Your application have been sent successfully</p>
+                            </div>
+                        </div>
+                        <div class="form-status" data-form-status="error">
+                            <div class="form-status__inner">
+                                <h2 class="form-status__title slashed">
+                                    <span class="slashed__top" title="ERROR"></span>
+                                    <span class="slashed__bottom" title="ERROR"></span>
+                                </h2>
+                                <p class="form-status__msg">there was a mistake, we are already working and will soon fix everything</p>
+                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6 app-form__leveler" data-aft-form="offline">
@@ -57,20 +75,20 @@ get_header();
                         <section class="app-form-off__section">
                             <h3>Files for download</h3>
                             <ul class="docs-list">
+<!--                                <li class="docs-list__item">-->
+<!--                                    <a href="#" download>-->
+<!--                                        <i class="icon-xls"></i>-->
+<!--                                        Astron.xls-->
+<!--                                    </a>-->
+<!--                                </li>-->
                                 <li class="docs-list__item">
-                                    <a href="#" download>
-                                        <i class="icon-xls"></i>
-                                        Astron.xls
-                                    </a>
-                                </li>
-                                <li class="docs-list__item">
-                                    <a href="#" download>
+                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.pdf'?>" download>
                                         <i class="icon-pdf"></i>
                                         Astron.pdf
                                     </a>
                                 </li>
                                 <li class="docs-list__item">
-                                    <a href="#" download>
+                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.docx'?>" download>
                                         <i class="icon-doc"></i>
                                         Astron.docx
                                     </a>

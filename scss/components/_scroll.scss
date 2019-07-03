@@ -17,6 +17,29 @@
     }
 
     .scrollbar-thumb {
-        background: #000000;
+        background: transparent;
+    }
+
+    .scrollbar-thumb-y {
+        &:after {
+            content: "In search of disruptive";
+            font-size: 98%;
+            line-height: 1.2;
+            font-family: $font-family-lead;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: #ffffff;
+            text-shadow: 0 0 4px $color-accent;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            margin-top: -10px;
+            transform: rotate(-90DEG);
+        }
     }
 }
