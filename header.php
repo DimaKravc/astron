@@ -17,10 +17,25 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+    <!-- Primary Meta Tags -->
+    <title>Astron - Venture Capital Fund</title>
+    <meta name="title" content="Astron - Venture Capital Fund">
+    <meta name="description" content="Astron VC is a seed and early stage venture capital fund. Our mission is to support the brightest ideas and teams capable of disrupting traditional markets in Uzbekistan by leveraging our capital and experienced hands-on mentorship and leadership.">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="business.business">
-    <meta property="og:title" content="Astron Venture Capital">
-    <meta property="og:url" content="https://astronvc.com">
-    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/screenshot.png' ?>">
+    <meta property="og:url" content="https://astronvc.com/">
+    <meta property="og:title" content="Astron - Venture Capital Fund">
+    <meta property="og:description" content="Astron VC is a seed and early stage venture capital fund. Our mission is to support the brightest ideas and teams capable of disrupting traditional markets in Uzbekistan by leveraging our capital and experienced hands-on mentorship and leadership.">
+    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/images/preview.jpg' ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://astronvc.com/">
+    <meta property="twitter:title" content="Astron - Venture Capital Fund">
+    <meta property="twitter:description" content="Astron VC is a seed and early stage venture capital fund. Our mission is to support the brightest ideas and teams capable of disrupting traditional markets in Uzbekistan by leveraging our capital and experienced hands-on mentorship and leadership.">
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri() . '/images/preview.jpg' ?>">
+
     <meta property="business:contact_data:street_address" content="A. Temur avenue, Simurg business centre, 86A">
     <meta property="business:contact_data:locality" content="Tashkent">
     <meta property="business:contact_data:region" content="Tashkent">
