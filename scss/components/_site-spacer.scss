@@ -16,32 +16,12 @@
     &__secondary {
         flex-shrink: 0;
     }
-
-    &.is-header-sticky {
-        padding-top: calc(126px + 4vw);
-    }
 }
 
-@media (max-width: $screen-lg-max) {
+@media (min-width: $screen-lg-min) {
     .site-spacer {
         &.is-header-sticky {
-            padding-top: calc(118px + 4vw);
-        }
-    }
-}
-
-@media (max-width: $screen-md-max) {
-    .site-spacer {
-        &.is-header-sticky {
-            padding-top: calc(110px + 4vw);
-        }
-    }
-}
-
-@media (max-width: $screen-sm-max) {
-    .site-spacer {
-        &.is-header-sticky {
-            padding-top: calc(102px + 4vw);
+            padding-top: calc(126px + 4vw);
         }
     }
 }
