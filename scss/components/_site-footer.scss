@@ -12,12 +12,6 @@
     }
 }
 
-@media (max-width: $screen-md-max) {
-    .site-footer {
-        padding: rem(80px) 0 rem(20px);
-    }
-}
-
 @media (max-width: $screen-sm-max) {
     .site-footer {
         &__inner {

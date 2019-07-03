@@ -47,3 +47,11 @@
         margin: rem(50px) 0;
     }
 }
+
+@media (max-width: $screen-sm-max) {
+    .post {
+        &__title {
+            padding: rem(20px) rem(15px);
+        }
+    }
+}

@@ -4309,12 +4309,6 @@ select.language-select {
 	        justify-content: space-between;
 }
 
-@media (max-width: 991px) {
-	.site-footer {
-		padding: 5rem 0 1.25rem;
-	}
-}
-
 @media (max-width: 767px) {
 	.site-footer__inner {
 		-webkit-box-orient: vertical;
@@ -5324,6 +5318,12 @@ select.language-select {
 
 .post .navigation {
 	margin: 3.125rem 0;
+}
+
+@media (max-width: 767px) {
+	.post__title {
+		padding: 1.25rem 0.9375rem;
+	}
 }
 
 .post-list {
