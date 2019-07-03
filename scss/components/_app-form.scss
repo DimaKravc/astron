@@ -20,7 +20,8 @@
 
 @media (min-width: $screen-lg-min) {
     .app-form {
-        &__leveler {
+        &__leveler,
+        .form-status__inner {
             display: flex;
             align-items: center;
             height: calc(100vh - (225px + 8vw));

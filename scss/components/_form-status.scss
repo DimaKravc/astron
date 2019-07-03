@@ -1,0 +1,32 @@
+.form-status {
+    display: none;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: rem(370px);
+        margin: auto;
+    }
+
+    &__title {
+        width: 100%;
+        margin-bottom: rem(20px);
+    }
+
+    &__msg {
+        @include font-size(32px);
+        line-height: 1.2;
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        margin-bottom: rem(50px);
+        text-align: center;
+    }
+
+    &__control {
+        margin-bottom: rem(30px);
+    }
+
+    @include clearfix();
+}

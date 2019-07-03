@@ -17,6 +17,16 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Astron Venture Capital">
+    <meta property="og:url" content="https://astronvc.com">
+    <meta property="og:image" content="<?php echo get_template_directory_uri() . '/screenshot.png'?>">
+    <meta property="business:contact_data:street_address" content="A. Temur avenue, Simurg business centre, 86A">
+    <meta property="business:contact_data:locality" content="Tashkent">
+    <meta property="business:contact_data:region" content="Tashkent">
+    <meta property="business:contact_data:postal_code" content="100000">
+    <meta property="business:contact_data:country_name" content="Uzbekistan">
+
     <?php if (!function_exists('has_site_icon') || !has_site_icon()) : ?>
         <link rel="shortcut icon"
               href="<?php echo esc_url(get_theme_mod('header=>favicon', get_template_directory_uri() . '/images/bg/favicon.png')) ?>">

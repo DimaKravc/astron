@@ -312,33 +312,6 @@ jQuery(document).ready(function ($) {
             })
         },
 
-        // scrollToTop: function () {
-        //     if (Application.isMobile) return;
-        //     let $toggle = $('[data-js="scroll-to-top"]');
-        //     let $toggleDefaultBottom = $toggle.css('bottom');
-        //     let $footer = $('[data-js="bottom-panel"]');
-        //     $(window).on('scroll load resize', function () {
-        //         let $this = $(this);
-        //         if ($this.scrollTop() > 800) {
-        //             $toggle.addClass('scroll-to-top_is_visible')
-        //         } else {
-        //             $toggle.removeClass('scroll-to-top_is_visible')
-        //         }
-        //
-        //         if ($this.scrollTop() + $this.height() >= $footer.offset().top) {
-        //             let $offset = $this.scrollTop() + $this.height() - $footer.offset().top + 30;
-        //             $toggle.css('bottom', $offset);
-        //         } else {
-        //             $toggle.css('bottom', $toggleDefaultBottom)
-        //         }
-        //     });
-        //
-        //     $toggle.on('click', function () {
-        //         $('html, body').animate({scrollTop: 0}, 600);
-        //         return false;
-        //     });
-        // },
-
         wpcf7: function () {
             let $formNode = $('.wpcf7');
 
@@ -362,11 +335,27 @@ jQuery(document).ready(function ($) {
                 }, 1000);
             });
 
-            $formNode.on('wpcf7:submit, wpcf7:invalid', function (e) {
+            $formNode.on('wpcf7:submit wpcf7:invalid', function (e) {
                 let $this = $(this);
                 let $inputNode = $this.find('input');
 
                 $inputNode.trigger('classChange');
+            });
+
+            $formNode.on('wpcf7:spam wpcf7:mailfailed', function () {
+                $formNode.find('form').hide();
+                $formNode.siblings('[data-form-status="error"]').fadeIn();
+                if (!$.magnificPopup.instance.isOpen) {
+
+                }
+            });
+
+            $formNode.on('wpcf7:mailsent', function () {
+                $formNode.find('form').hide();
+                $formNode.siblings('[data-form-status="success"]').fadeIn();
+                if (!$.magnificPopup.instance.isOpen) {
+                    $(window.smoothScroll).trigger('update');
+                }
             });
         },
 
@@ -390,6 +379,12 @@ jQuery(document).ready(function ($) {
                     callbacks: {
                         beforeOpen: function () {
                             this.st.mainClass = this.st.el.attr('data-effect');
+                        },
+                        open: function (e) {
+                            $('[data-action="close-popup"]').on('click', function () {
+                                let magnificPopup = $.magnificPopup.instance;
+                                magnificPopup.close();
+                            });
                         }
                     }
                 });

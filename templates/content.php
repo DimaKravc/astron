@@ -2,7 +2,8 @@
 /**
  * Template part for displaying posts.
  *
- * @package Nobrand
+ * @package Astron
+ * @version 1.0.0
  */
 
 ?>
@@ -33,6 +34,26 @@
                 </div>
                 <div class="apply-form--wrap mfp-with-anim mfp-hide" id="apply-form">
                     <?php echo do_shortcode('[contact-form-7 id="210" title="APPLYING FOR A POSITION" html_class="apply-form form"]'); ?>
+                    <div class="form-status" data-form-status="success">
+                        <div class="form-status__inner">
+                            <h2 class="form-status__title slashed">
+                                <span class="slashed__top" title="SUCCESS"></span>
+                                <span class="slashed__bottom" title="SUCCESS"></span>
+                            </h2>
+                            <p class="form-status__msg">Your application have been sent successfully</p>
+                            <button class="form-status__control button button_width_fluid button_color_accent button_size_xl" data-action="close-popup">Thank’s!</button>
+                        </div>
+                    </div>
+                    <div class="form-status" data-form-status="error">
+                        <div class="form-status__inner">
+                            <h2 class="form-status__title slashed">
+                                <span class="slashed__top" title="ERROR"></span>
+                                <span class="slashed__bottom" title="ERROR"></span>
+                            </h2>
+                            <p class="form-status__msg">there was a mistake, we are already working and will soon fix everything</p>
+                            <button class="form-status__control button button_width_fluid button_color_accent button_size_xl" data-action="close-popup">Thank’s!</button>
+                        </div>
+                    </div>
                 </div>
             <?php elseif (get_post_type() === 'post'): ?>
                 <div class="post__share">

@@ -2,7 +2,8 @@
 /**
  * Template part for displaying posts.
  *
- * @package Nobrand
+ * @package Astron
+ * @version 1.0.0
  */
 
 $post_class = array(
