@@ -216,10 +216,13 @@
         }
 
         &__marker {
+            display: flex;
+            align-items: center;
             position: absolute;
             left: 0;
             top: 0;
             width: 34px;
+            line-height: 1;
             transition: all $transition-time;
 
             &:after {
