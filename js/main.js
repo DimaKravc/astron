@@ -41,8 +41,13 @@ jQuery(document).ready(function ($) {
         },
 
         smoothScroll: function () {
-            let scrollbar = window.Scrollbar.init(document.querySelector('#smoothScroll'));
+            let scrollbar = window.Scrollbar.init(document.querySelector('#smoothScroll'), {
+                thumbMinSize: 170,
+                alwaysShowTracks: true
+            });
+            let customThumbNode = document.createElement('span');
             let animationElNode = document.querySelectorAll('.animation-on-scroll');
+            let coloredElNode = document.querySelectorAll('.colored-on-scroll');
             let scrollbarRoutine = function (position) {
                 if (scrollbar.size.container.width >= 1240) {
                     if (position.offset.y >= (scrollbar.size.content.height - scrollbar.size.container.height) / 2) {
@@ -72,7 +77,56 @@ jQuery(document).ready(function ($) {
                         }
                     }
                 });
+
+                let customThumbNodeHeight = customThumbNode.offsetHeight;
+                let customThumbNodeTopPosition = customThumbNode.getBoundingClientRect().top;
+
+                [].forEach.call(coloredElNode, function (el) {
+                    el.gradientPercent = el.gradientPercent || 0;
+                    el.gradientDirection = 'to right';
+
+                    if (scrollbar.isVisible(el)) {
+                        let coloredElNodeHeight = el.offsetHeight;
+                        let coloredElNodeTopPosition = el.getBoundingClientRect().top;
+
+                        if (coloredElNodeHeight + coloredElNodeTopPosition < customThumbNodeHeight + customThumbNodeTopPosition) {
+                            el.gradientDirection = 'to left';
+                            el.gradientPercent = ((customThumbNodeHeight + customThumbNodeTopPosition) - (coloredElNodeHeight + coloredElNodeTopPosition)) / customThumbNodeHeight * 100;
+                        } else {
+                            el.gradientDirection = 'to right';
+                            el.gradientPercent = (customThumbNodeHeight + customThumbNodeTopPosition - coloredElNodeTopPosition) / customThumbNodeHeight * 100;
+                        }
+
+                        if (el.gradientPercent < 0) el.gradientPercent = 0;
+                        if (el.gradientPercent > 100) el.gradientPercent = 100;
+
+                        if (el.gradientDirection === 'to left') {
+                            el.gradientPercent = 100 - el.gradientPercent
+                        }
+
+                        $('.scrollbar-custom-thumb')
+                            .css({
+                                'background-image': '-webkit-linear-gradient(' + el.gradientDirection + ', ' + el.dataset.bg + ' 0, ' + el.dataset.bg + ' ' + el.gradientPercent + '%, black 0, black 100%)'
+                            })
+                            .css({
+                                'background-image': '-moz-linear-gradient(' + el.gradientDirection + ', ' + el.dataset.bg + ' 0, ' + el.dataset.bg + ' ' + el.gradientPercent + '%, black 0, black 100%)'
+                            })
+                            .css({
+                                'background-image': '-ms-linear-gradient(' + el.gradientDirection + ', ' + el.dataset.bg + ' 0, ' + el.dataset.bg + ' ' + el.gradientPercent + '%, black 0, black 100%)'
+                            })
+                            .css({
+                                'background-image': '-o-linear-gradient(' + el.gradientDirection + ', ' + el.dataset.bg + ' 0, ' + el.dataset.bg + ' ' + el.gradientPercent + '%, black 0, black 100%)'
+                            })
+                            .css({
+                                'background-image': 'linear-gradient(' + el.gradientDirection + ', ' + el.dataset.bg + ' 0, ' + el.dataset.bg + ' ' + el.gradientPercent + '%, black 0, black 100%)'
+                            });
+                    }
+                });
             };
+
+            customThumbNode.className = 'scrollbar-custom-thumb';
+            customThumbNode.innerText = 'In search of disruptive';
+            scrollbar.track.yAxis.thumb.element.appendChild(customThumbNode);
 
             $(scrollbar.containerEl).on('update', function () {
                 scrollbar.setPosition(0, 0);
@@ -109,6 +163,7 @@ jQuery(document).ready(function ($) {
                 animateIn: 'fadeIn',
                 smartSpeed: 600,
                 mouseDrag: false,
+                touchDrag: false,
                 responsive: {
                     0: {
                         nav: false
@@ -187,6 +242,7 @@ jQuery(document).ready(function ($) {
                 animateIn: 'fadeIn',
                 smartSpeed: 600,
                 mouseDrag: false,
+                touchDrag: false,
                 responsive: {
                     0: {
                         nav: false,

@@ -129,7 +129,7 @@ get_header();
                                 </div>
                             </div>
                         </div>
-						<div class="focus-area-slider-item">
+                        <div class="focus-area-slider-item">
                             <div class="focus-area-slider-item__row row">
                                 <div class="col-12 col-lg-6">
                                     <h2 class="focus-area-slider-item__title">E-commerce</h2>
@@ -245,7 +245,7 @@ get_header();
                 </div>
             </div>
         </section>
-        <section class="section-worksteps angle angle_bottom_left angle_no_indent angle_bg_white">
+        <section class="section-worksteps">
             <div class="container">
                 <div class="animation-on-scroll">
                     <h2 class="section-worksteps__title slashed">
@@ -294,7 +294,7 @@ get_header();
                 </div>
             </div>
         </section>
-        <section class="section-request-promo angle--top-right">
+        <section class="section-request-promo angle angle_top_right angle_bg_black colored-on-scroll" data-bg="#ffffff">
             <div class="container">
                 <div class="animation-on-scroll">
                     <p class="section-request-promo__promo-text">We invest in founders to bring innovation to life</p>

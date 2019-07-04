@@ -82,8 +82,12 @@
 
 .entry-slider-item {
     &__row {
+        $site-header-height: 126px;
+        $entry-slider-dots-height: 14px;
+        $angle-height: 4vw;
+
         align-items: center;
-        height: calc(100vh - (28px + 126px + 4vw));
+        height: calc(100vh - (#{$site-header-height} + #{$entry-slider-dots-height} + #{$angle-height}));
     }
 
     &__caption {

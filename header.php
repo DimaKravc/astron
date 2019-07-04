@@ -95,7 +95,6 @@
 <?php endif; ?>
 <div id="smoothScroll" class="scroll" data-scrollbar>
     <div class="site-spacer <?php if (is_page_template('page-app-form.php')) echo 'is-header-sticky'; ?>">
-        <button class="button scroll-to-top" data-js="scroll-to-top"><i class="icon-arrow-up"></i></button>
         <header class="site-header angle angle_bottom_left <?php if (is_page_template('page-app-form.php')) {
             echo 'hidden-lg';
         } else echo 'angle_no_indent'; ?>">

@@ -783,32 +783,26 @@ abbr:hover, abbr:focus {
 	background: transparent;
 }
 
-.scroll .scrollbar-thumb-y:after {
-	content: "In search of disruptive";
-	font-size: 98%;
+.scroll .scrollbar-custom-thumb {
+	font-size: 16px;
 	line-height: 1.2;
 	font-family: "Helvetica Condensed Black", sans-serif;
 	text-transform: uppercase;
 	white-space: nowrap;
 	color: #ffffff;
-	text-shadow: 0 0 4px #ffc20e;
-	width: 20px;
-	height: 20px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	background: -webkit-gradient(linear, left top, right top, color-stop(0, black), to(black));
+	background: linear-gradient(to right, black 0, black 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width: 170px;
+	height: 170px;
 	position: absolute;
-	top: 50%;
-	right: 50%;
-	margin-top: -10px;
-	-webkit-transform: rotate(-90DEG);
-	        transform: rotate(-90DEG);
+	top: 0;
+	left: 0;
+	margin-left: -18px;
+	-webkit-transform: rotate(-90deg);
+	        transform: rotate(-90deg);
 }
 
 .animation-on-scroll {
@@ -1738,8 +1732,7 @@ abbr:hover, abbr:focus {
 }
 
 .angle_top_right {
-	border-top: 1px solid transparent;
-	margin-top: calc(4vw - 1px);
+	margin-top: 4vw;
 }
 
 .angle_top_right:before {
@@ -1750,8 +1743,7 @@ abbr:hover, abbr:focus {
 }
 
 .angle_top_left {
-	border-top: 1px solid transparent;
-	margin-top: calc(4vw - 1px);
+	margin-top: 4vw;
 }
 
 .angle_top_left:before {
@@ -1762,8 +1754,7 @@ abbr:hover, abbr:focus {
 }
 
 .angle_bottom_right {
-	border-bottom: 1px solid transparent;
-	margin-bottom: calc(4vw - 1px);
+	margin-bottom: 4vw;
 }
 
 .angle_bottom_right:before {
@@ -1774,8 +1765,7 @@ abbr:hover, abbr:focus {
 }
 
 .angle_bottom_left {
-	border-bottom: 1px solid transparent;
-	margin-bottom: calc(4vw - 1px);
+	margin-bottom: 4vw;
 }
 
 .angle_bottom_left:before {
@@ -1807,6 +1797,14 @@ abbr:hover, abbr:focus {
 
 .angle_bg_white.angle_top_left:before, .angle_bg_white.angle_bottom_left:before {
 	border-right-color: #ffffff;
+}
+
+.angle_bg_black.angle_top_right:before, .angle_bg_black.angle_bottom_right:before {
+	border-left-color: #000000;
+}
+
+.angle_bg_black.angle_top_left:before, .angle_bg_black.angle_bottom_left:before {
+	border-right-color: #000000;
 }
 
 .m-0 {
@@ -3793,37 +3791,6 @@ abbr:hover, abbr:focus {
 	opacity: 1;
 }
 
-.scroll-to-top {
-	position: fixed;
-	bottom: 1.875rem;
-	right: 1.875rem;
-	width: 2.875rem;
-	height: 2.875rem;
-	color: #ffffff;
-	-webkit-transition: opacity .2s ease-in, visibility .2s ease-in;
-	transition: opacity .2s ease-in, visibility .2s ease-in;
-	opacity: 0;
-	visibility: hidden;
-	z-index: 100;
-}
-
-.scroll-to-top .icon-arrow-up {
-	width: 0.9375rem;
-	height: 0.625rem;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDMwNy4wNTQgMzA3LjA1NCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzA3LjA1NCAzMDcuMDU0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+PGc+Cgk8ZyBpZD0iX3gzNF84NS5fVXAiPgoJCTxnPgoJCQk8cGF0aCBkPSJNMzAyLjQ0NSwyMDUuNzg4TDE2NC42Myw2Ny45NTljLTYuMTM2LTYuMTMtMTYuMDc0LTYuMTMtMjIuMjAzLDBMNC41OTcsMjA1Ljc4OGMtNi4xMjksNi4xMzItNi4xMjksMTYuMDY5LDAsMjIuMjAxICAgICBsMTEuMTAxLDExLjEwMWM2LjEyOSw2LjEzNiwxNi4wNzYsNi4xMzYsMjIuMjA5LDBsMTE1LjYyLTExNS42MjZMMjY5LjE1MSwyMzkuMDljNi4xMjgsNi4xMzYsMTYuMDcsNi4xMzYsMjIuMjAxLDAgICAgIGwxMS4xMDEtMTEuMTAxQzMwOC41ODksMjIxLjg1LDMwOC41ODksMjExLjkyLDMwMi40NDUsMjA1Ljc4OHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNmZmZmZmYiPjwvcGF0aD4KCQk8L2c+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPg==") no-repeat center/contain;
-}
-
-.scroll-to-top_is_visible {
-	opacity: 1;
-	visibility: visible;
-}
-
 .slashed {
 	height: 130px;
 	position: relative;
@@ -3851,7 +3818,7 @@ abbr:hover, abbr:focus {
 .slashed__top {
 	position: absolute;
 	top: 0;
-	left: -7px;
+	left: -0.4375rem;
 	right: 0;
 	bottom: 50%;
 }
@@ -3867,7 +3834,7 @@ abbr:hover, abbr:focus {
 	position: absolute;
 	top: 50%;
 	left: 0;
-	right: -7px;
+	right: -0.4375rem;
 	bottom: 0;
 }
 
@@ -4429,7 +4396,7 @@ select.language-select {
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	height: calc(100vh - (28px + 126px + 4vw));
+	height: calc(100vh - (126px + 14px + 4vw));
 }
 
 .entry-slider-item__caption {
