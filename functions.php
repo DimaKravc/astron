@@ -136,6 +136,7 @@ if (!function_exists('astron_load_scripts')) :
         wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/js/jquery.magnific-popup.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('smooth-scroll', get_template_directory_uri() . '/js/smooth-scrollbar.js', array('jquery'), ASTRON_VERSION, true);
+        wp_enqueue_script('validate', get_template_directory_uri() . '/js/jquery.validate.min.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('application', get_template_directory_uri() . '/js/application.js', array('jquery'), ASTRON_VERSION, true);
         wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('application'), ASTRON_VERSION, true);
 

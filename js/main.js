@@ -341,6 +341,44 @@ jQuery(document).ready(function ($) {
             })
         },
 
+        formGroup: function () {
+            const groupNode = $('[data-js="form-group"]');
+
+            groupNode
+                .find('input, textarea')
+                .focus(function () {
+                    $(this).closest(groupNode).addClass('transform-label')
+                })
+                .blur(function () {
+                    $(this).closest(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
+                })
+                .bind('reset', function (e) {
+                    $(this).closest(groupNode).removeClass(e.currentTarget.value === '' ? 'transform-label' : '')
+                });
+        },
+
+        validation() {
+            $('.form').validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true,
+                        number: true
+                    },
+                    age: {
+                        maxlength: 2,
+                        number: true
+                    }
+                },
+                errorElement: 'span'
+            });
+
+            // console.log($formNode.valid())
+        },
+
         appFormTabs: function () {
             let $toggleNode = $('[data-aft-toggle]');
             let toggleNodeText = $toggleNode.html();
@@ -368,10 +406,67 @@ jQuery(document).ready(function ($) {
             })
         },
 
-        wpcf7: function () {
-            let $formNode = $('.wpcf7');
+        appFormTeam: function () {
+            let $showFormNode = $('[data-action="show-form"]');
+            let $formNode = $('[data-node="add-person-to-team-form"]');
+            let collection = [];
+            let maxCollectionLength = 4;
 
-            $formNode.on('wpcf7:mailsent', function () {
+            $showFormNode.on('click', function (e) {
+                e.preventDefault();
+
+                if (collection.length < maxCollectionLength) {
+                    $.magnificPopup.open({
+                        items: {
+                            src: $showFormNode.attr('href')
+                        },
+                        type: 'inline',
+                        removalDelay: 500,
+                        callbacks: {
+                            beforeOpen: function () {
+                                this.st.mainClass = $showFormNode.attr('data-effect');
+                            },
+                            open: function () {
+                                $('[data-action="close-popup"]').on('click', function () {
+                                    let popup = $.magnificPopup.instance;
+
+                                    popup.close();
+                                });
+                            },
+                            beforeClose: function () {
+                                $formNode.validate().resetForm();
+
+                                $formNode.validate().resetForm();
+                                $formNode
+                                    .find('input[type=text], textarea')
+                                    .val('')
+                                    .trigger('reset');
+                            }
+                        }
+                    })
+                }
+            });
+
+            $formNode.on('submit', function (e) {
+                e.preventDefault();
+
+                if ($formNode.valid()) {
+                    let formData = {};
+
+                    $formNode.find('input, textarea').each(function () {
+                        formData[this.name] = $(this).val();
+                    });$('#wpcf7-f91-o1').find('form').append('<input type="text" name="test" value="123123"/>')
+                }
+
+
+            })
+        },
+
+        wpcf7: function () {
+            let $wpcf7 = $('.wpcf7');
+            let $formNode = $wpcf7.find('form');
+
+            $wpcf7.on('wpcf7:mailsent', function () {
                 let $this = $(this);
                 let $groupNode = $this.find('[data-js="form-group"]');
                 let $fileUploadAreaNode = $this.find('[data-js="upload-file"]');
@@ -391,54 +486,42 @@ jQuery(document).ready(function ($) {
                 }, 1000);
             });
 
-            $formNode.on('wpcf7:submit wpcf7:invalid', function (e) {
+            $wpcf7.on('wpcf7:submit wpcf7:invalid', function (e) {
                 let $this = $(this);
                 let $inputNode = $this.find('input');
 
                 $inputNode.trigger('classChange');
             });
 
-            $formNode.on('wpcf7:spam wpcf7:mailfailed', function () {
-                $formNode.find('form').hide();
+            $wpcf7.on('wpcf7:spam wpcf7:mailfailed', function () {
+                $formNode.hide();
                 $formNode.siblings('[data-form-status="error"]').fadeIn();
                 if (!$.magnificPopup.instance.isOpen) {
 
                 }
             });
 
-            $formNode.on('wpcf7:mailsent', function () {
-                $formNode.find('form').hide();
-                $formNode.siblings('[data-form-status="success"]').fadeIn();
+            $wpcf7.on('wpcf7:mailsent', function () {
+                $formNode.hide();
+                $wpcf7.siblings('[data-form-status="success"]').fadeIn();
                 if (!$.magnificPopup.instance.isOpen) {
                     $(window.smoothScroll).trigger('update');
                 }
             });
         },
 
-        formGroup: function () {
-            const groupNode = $('[data-js="form-group"]');
-
-            groupNode
-                .find('input, textarea')
-                .focus(function () {
-                    $(this).closest(groupNode).addClass('transform-label')
-                })
-                .blur(function () {
-                    $(this).closest(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
-                });
-        },
-
         popup: function () {
             $(document).ready(function () {
-                $('.popup-with-zoom-anim').magnificPopup({
-                    removalDelay: 500, //delay removal by X to allow out-animation
+                $('[data-action="popup"]').magnificPopup({
+                    removalDelay: 500,
                     callbacks: {
                         beforeOpen: function () {
                             this.st.mainClass = this.st.el.attr('data-effect');
                         },
-                        open: function (e) {
+                        open: function () {
                             $('[data-action="close-popup"]').on('click', function () {
                                 let magnificPopup = $.magnificPopup.instance;
+
                                 magnificPopup.close();
                             });
                         }

@@ -3,17 +3,13 @@
     fieldset {
         padding: 0;
         border: none;
-        margin: 0 0 rem(20px);
+        margin: 0 0 rem(50px);
 
         legend {
             @include font-size(22px);
             font-family: $font-family-lead;
             text-transform: uppercase;
             margin-bottom: rem(30px);
-        }
-
-        &.no-indent {
-            margin: 0;
         }
     }
 
@@ -24,6 +20,10 @@
 
         br {
             display: none;
+        }
+
+        .wpcf7-form-control-wrap {
+            display: block;
         }
 
         label {
@@ -53,7 +53,8 @@
             @include font-size(14px);
             line-height: 1.6;
 
-            &.wpcf7-not-valid {
+            &.wpcf7-not-valid,
+            &.error {
                 border-color: red;
             }
 
@@ -69,6 +70,7 @@
         textarea {
             padding: rem(14px) rem(20px);
             height: auto;
+            min-height: rem(140px);
             resize: vertical;
         }
 
@@ -99,6 +101,10 @@
 
         &_indent_sm {
             margin-bottom: rem(25px);
+        }
+
+        &_indent_no {
+            margin-bottom: 0;
         }
     }
 
@@ -157,6 +163,7 @@
                 display: flex;
                 align-items: center;
                 @include font-size(16px);
+                line-height: 1.2;
                 font-family: $font-family-base;
                 text-transform: none;
                 padding-left: rem(50px);
@@ -185,6 +192,18 @@
                 }
             }
         }
+    }
+
+    span.error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        @include font-size(11px);
+        line-height: 1.6;
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        color: red;
+        white-space: nowrap;
     }
 
     .wpcf7-not-valid-tip,

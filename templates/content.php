@@ -30,7 +30,7 @@
         <footer class="post__footer post__inner-box">
             <?php if (get_post_type() === 'vacancies'): ?>
                 <div class="post__response">
-                    <button class="button button_margin_auto popup-with-zoom-anim" href="#apply-form" data-effect="mfp-zoom-in">Respond</button>
+                    <button class="button button_margin_auto" href="#apply-form" data-action="popup" data-effect="mfp-zoom-in">Respond</button>
                 </div>
                 <div class="apply-form--wrap mfp-with-anim mfp-hide" id="apply-form">
                     <?php echo do_shortcode('[contact-form-7 id="210" title="APPLYING FOR A POSITION" html_class="apply-form form"]'); ?>

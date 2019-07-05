@@ -69,7 +69,7 @@
     &_size_lg {
         height: rem(45px);
         line-height: rem(45px);
-        padding: 0 rem(75px);
+        padding: 0 rem(50px);
     }
 
     &_size_xl {
@@ -88,7 +88,7 @@
     }
 
     &_width_fluid {
-        width: 100%;
+        min-width: 100%;
     }
 
     &_margin_auto {

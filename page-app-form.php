@@ -36,6 +36,47 @@ get_header();
                 <div class="col-12 col-xl-6" data-aft-form="online">
                     <div>
                         <?php echo do_shortcode('[contact-form-7 id="91" title="APPLY FOR A PROJECT"]'); ?>
+                        <div class="add-person-to-team-form--wrap mfp-with-anim mfp-hide" id="add-person-to-team">
+                            <form action="" class="add-person-to-team-form form" data-node="add-person-to-team-form">
+                                <fieldset>
+                                    <legend>Add a new person to the team</legend>
+                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                        <label for="full_name">Full name</label>
+                                        <input class="required" type="text" name="full_name" id="full_name" autocomplete="off">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <div class="form__group form__group_indent_sm" data-js="form-group">
+                                                <label for="current_city">Current city</label>
+                                                <input class="required" type="text" name="current_city" id="current_city" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="form__group form__group_indent_sm" data-js="form-group">
+                                                <label for="age">Age</label>
+                                                <input class="required" type="text" name="age" id="age" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                        <label for="role">Role within team</label>
+                                        <input class="required" type="text" name="role" id="role" autocomplete="off">
+                                    </div>
+                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                        <label for="education_background">Educational background</label>
+                                        <input class="required" type="text" name="education_background" id="education_background" autocomplete="off">
+                                    </div>
+                                    <div class="form__group form__group_indent_no" data-js="form-group">
+                                        <label for="experience">Work experience</label>
+                                        <input class="required" type="text" name="experience" id="experience" autocomplete="off">
+                                    </div>
+                                </fieldset>
+                                <footer class="add-person-to-team-form__footer">
+                                    <button type="button" class="add-person-to-team-form__cancel" data-action="close-popup">cancel</button>
+                                    <button type="submit" class="button button_size_lg button_color_accent">Add a new person</button>
+                                </footer>
+                            </form>
+                        </div>
                         <div class="form-status" data-form-status="success">
                             <div class="form-status__inner">
                                 <h2 class="form-status__title slashed">
@@ -52,7 +93,7 @@ get_header();
                                     <span class="slashed__bottom" title="ERROR"></span>
                                 </h2>
                                 <p class="form-status__msg">there was a mistake, we are already working and will soon fix everything</p>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,20 +116,20 @@ get_header();
                         <section class="app-form-off__section">
                             <h3>Files for download</h3>
                             <ul class="docs-list">
-<!--                                <li class="docs-list__item">-->
-<!--                                    <a href="#" download>-->
-<!--                                        <i class="icon-xls"></i>-->
-<!--                                        Astron.xls-->
-<!--                                    </a>-->
-<!--                                </li>-->
+                                <!--                                <li class="docs-list__item">-->
+                                <!--                                    <a href="#" download>-->
+                                <!--                                        <i class="icon-xls"></i>-->
+                                <!--                                        Astron.xls-->
+                                <!--                                    </a>-->
+                                <!--                                </li>-->
                                 <li class="docs-list__item">
-                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.pdf'?>" download>
+                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.pdf' ?>" download>
                                         <i class="icon-pdf"></i>
                                         Astron.pdf
                                     </a>
                                 </li>
                                 <li class="docs-list__item">
-                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.docx'?>" download>
+                                    <a href="<?php echo get_template_directory_uri() . '/files/astron-application-form.docx' ?>" download>
                                         <i class="icon-doc"></i>
                                         Astron.docx
                                     </a>

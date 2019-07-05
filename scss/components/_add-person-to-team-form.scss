@@ -1,0 +1,39 @@
+.add-person-to-team-form--wrap {
+    max-width: 100%;
+    width: rem(620px);
+    background: $color-accent;
+    padding: rem(50px) rem(50px) rem(25px);
+    margin: rem(25px) auto;
+}
+
+.add-person-to-team-form {
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: rem(25px);
+    }
+
+    &__cancel {
+        border: none;
+        outline: none;
+        background: none;
+        @include font-size(14px);
+        font-family: $font-family-lead;
+        text-transform: uppercase;
+        margin: 0 rem(20px);
+        cursor: pointer;
+        transition: color $transition-time;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .add-person-to-team-form--wrap {
+        padding-left: rem(30px);
+        padding-right: rem(30px);
+    }
+}
