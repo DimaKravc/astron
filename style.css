@@ -510,8 +510,8 @@ a {
 	color: #000000;
 	outline: none;
 	text-decoration: none;
-	-webkit-transition: color 0.2s ease-in-out;
-	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
 }
 
 a:hover {
@@ -3334,8 +3334,8 @@ abbr:hover, abbr:focus {
 	   -moz-user-select: none;
 	    -ms-user-select: none;
 	        user-select: none;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 	z-index: 1;
@@ -3348,8 +3348,8 @@ abbr:hover, abbr:focus {
 	top: 0;
 	background: #000000;
 	z-index: -1;
-	-webkit-transition: 0.2s ease-in-out;
-	transition: 0.2s ease-in-out;
+	-webkit-transition: 0.2s ease-in;
+	transition: 0.2s ease-in;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 }
@@ -3435,7 +3435,7 @@ abbr:hover, abbr:focus {
 .form__group,
 .wpcf7-form__group {
 	position: relative;
-	margin-bottom: 2.1875rem;
+	margin-bottom: 1.875rem;
 	width: 100%;
 }
 
@@ -3461,8 +3461,8 @@ abbr:hover, abbr:focus {
 	font-family: "Helvetica Condensed Black", sans-serif;
 	text-transform: uppercase;
 	padding: 0 2px;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 	will-change: top, transform;
 	z-index: 1;
 }
@@ -3510,6 +3510,13 @@ abbr:hover, abbr:focus {
 	-webkit-animation-fill-mode: both;
 }
 
+.form__group input:not([type="checkbox"]):not([type="radio"])[readonly],
+.form__group textarea[readonly],
+.wpcf7-form__group input:not([type="checkbox"]):not([type="radio"])[readonly],
+.wpcf7-form__group textarea[readonly] {
+	cursor: default;
+}
+
 .form__group textarea,
 .wpcf7-form__group textarea {
 	padding: 0.875rem 1.25rem;
@@ -3530,8 +3537,8 @@ abbr:hover, abbr:focus {
 	position: absolute;
 	right: 1.25rem;
 	bottom: 0.9375rem;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
 .form__group.transform-label label,
@@ -3545,11 +3552,6 @@ abbr:hover, abbr:focus {
 .wpcf7-form__group.transform-label .amount-allowed {
 	opacity: 0;
 	visibility: hidden;
-}
-
-.form__group_indent_sm,
-.wpcf7-form__group_indent_sm {
-	margin-bottom: 1.5625rem;
 }
 
 .form__group_indent_no,
@@ -3637,8 +3639,8 @@ abbr:hover, abbr:focus {
 	text-transform: none;
 	padding-left: 3.125rem;
 	cursor: pointer;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
 .form__radio-group input[type="radio"] + span:before,
@@ -3668,8 +3670,8 @@ abbr:hover, abbr:focus {
 	position: absolute;
 	top: 100%;
 	left: 0;
-	font-size: 11px;
-	font-size: 0.6875rem;
+	font-size: 12px;
+	font-size: 0.75rem;
 	line-height: 1.6;
 	font-family: "Helvetica Condensed Black", sans-serif;
 	text-transform: uppercase;
@@ -4086,8 +4088,8 @@ select.language-select {
 	line-height: 1.5;
 	color: #FFFFFF;
 	text-transform: uppercase;
-	-webkit-transition: color 0.2s ease-in-out;
-	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
 }
 
 .language-select .list {
@@ -4161,8 +4163,8 @@ select.language-select {
 	margin: 0;
 	right: 0;
 	border: none;
-	-webkit-transition: background 0.2s ease-in-out;
-	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in;
+	transition: background 0.2s ease-in;
 }
 
 .language-select:hover .current {
@@ -4388,8 +4390,8 @@ select.language-select {
 	height: 2rem;
 	display: block;
 	font: 0px/0 a;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
 .entry-slider .owl-nav .owl-prev.disabled span,
@@ -4543,8 +4545,8 @@ select.language-select {
 	top: 0;
 	width: 34px;
 	line-height: 1;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
 .entry-slider-dots__marker:after {
@@ -4884,8 +4886,8 @@ select.language-select {
 		top: 0;
 		width: 34px;
 		line-height: 1;
-		-webkit-transition: all 0.2s ease-in-out;
-		transition: all 0.2s ease-in-out;
+		-webkit-transition: all 0.2s ease-in;
+		transition: all 0.2s ease-in;
 	}
 	.focus-area-slider-dots__marker:after {
 		content: "";
@@ -5147,8 +5149,8 @@ select.language-select {
 	font-family: "Helvetica Condensed Black", sans-serif;
 	display: block;
 	padding: 0 1.25rem;
-	-webkit-transition: 0.2s ease-in-out;
-	transition: 0.2s ease-in-out;
+	-webkit-transition: 0.2s ease-in;
+	transition: 0.2s ease-in;
 }
 
 .widget_categories > ul > li ul {
@@ -5758,8 +5760,8 @@ select.language-select {
 
 .social-list__item [class*="icon-"] {
 	display: block;
-	-webkit-transition: background-image 0.2s ease-in-out;
-	transition: background-image 0.2s ease-in-out;
+	-webkit-transition: background-image 0.2s ease-in;
+	transition: background-image 0.2s ease-in;
 }
 
 .social-list .icon-fb {
@@ -5979,26 +5981,6 @@ select.language-select {
 	padding: 0 4.6875rem;
 }
 
-.app-form__max-person-allowed {
-	font-size: 18px;
-	font-size: 1.125rem;
-	line-height: 1.2;
-	font-family: "Helvetica Condensed Black", sans-serif;
-	color: rgba(0, 0, 0, 0.2);
-	text-transform: uppercase;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: end;
-	    -ms-flex-pack: end;
-	        justify-content: flex-end;
-	width: 100%;
-	height: 100%;
-}
-
 @media (min-width: 1240px) {
 	.app-form__leveler,
 	.app-form .form-status__inner {
@@ -6033,6 +6015,138 @@ select.language-select {
 	}
 }
 
+.team-form-group .form__group:not(:last-child) {
+	margin-bottom: 0.5rem;
+}
+
+.team-form-group label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right: 8.125rem;
+}
+
+.team-form-group .team-item-control {
+	position: absolute;
+	right: 0.75rem;
+	top: 0.375rem;
+	width: 7.1875rem;
+	z-index: 2;
+}
+
+.team-form-group .team-item-control__button {
+	width: 100%;
+	padding: 0.8125rem 0.8125rem 28px;
+	border: none;
+	outline: none;
+	background: none;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+	cursor: pointer;
+	-webkit-clip-path: polygon(0 100%, 0 0, 100% 0%, 100% calc(100% - 15px));
+	        clip-path: polygon(0 100%, 0 0, 100% 0%, 100% calc(100% - 15px));
+	-webkit-transition: background 0.2s ease-in;
+	transition: background 0.2s ease-in;
+}
+
+.team-form-group .team-item-control__button:after {
+	content: "";
+	background: url("./images/icon-3-dots.svg") no-repeat center/contain;
+	width: 20px;
+	height: 10px;
+	display: block;
+	-webkit-transition: background-image 0.2s ease-in;
+	transition: background-image 0.2s ease-in;
+}
+
+.team-form-group .team-item-control__button:hover:after {
+	background-image: url("./images/icon-3-dots--white.svg");
+}
+
+.team-form-group .team-item-control__list {
+	position: absolute;
+	top: calc(100% - 14px);
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0.5rem 0;
+	background: #000000;
+	-webkit-clip-path: polygon(0 100%, 0 15px, 100% 0%, 100% 100%);
+	        clip-path: polygon(0 100%, 0 15px, 100% 0%, 100% 100%);
+	-webkit-transform: translate(-10px, 0px);
+	        transform: translate(-10px, 0px);
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.team-form-group .team-item-control__item {
+	list-style-type: none;
+}
+
+.team-form-group .team-item-control__item__button {
+	width: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.375rem 1rem;
+	font-size: 18px;
+	font-size: 1.125rem;
+	line-height: 1.2;
+	font-family: "Helvetica Condensed Black", sans-serif;
+	text-transform: uppercase;
+	color: #ffc20e;
+	text-align: right;
+	cursor: pointer;
+	-webkit-transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
+}
+
+.team-form-group .team-item-control__item__button:hover {
+	color: #ffffff;
+}
+
+.team-form-group .team-item-control:hover .team-item-control__button {
+	background: #000000;
+}
+
+.team-form-group .team-item-control:hover .team-item-control__button:after {
+	background-image: url("./images/icon-3-dots--white.svg");
+}
+
+.team-form-group .team-item-control:hover .team-item-control__list {
+	opacity: 1;
+	visibility: visible;
+}
+
+.team-form-group__max-person-allowed {
+	font-size: 18px;
+	font-size: 1.125rem;
+	line-height: 1.2;
+	font-family: "Helvetica Condensed Black", sans-serif;
+	color: rgba(0, 0, 0, 0.2);
+	text-transform: uppercase;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+	width: 100%;
+	height: 100%;
+}
+
 .add-person-to-team-form--wrap {
 	max-width: 100%;
 	width: 38.75rem;
@@ -6064,8 +6178,8 @@ select.language-select {
 	text-transform: uppercase;
 	margin: 0 1.25rem;
 	cursor: pointer;
-	-webkit-transition: color 0.2s ease-in-out;
-	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
 }
 
 .add-person-to-team-form__cancel:hover {
@@ -6124,8 +6238,8 @@ select.language-select {
 	outline-offset: -2px;
 	padding: 0.9375rem 1.5625rem 1.5625rem;
 	background: #e9b011;
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 	will-change: outline-offset, background-color;
 }
 
@@ -6164,8 +6278,8 @@ select.language-select {
 .upload-file__lead b {
 	color: #ffffff;
 	text-decoration: underline;
-	-webkit-transition: color 0.2s ease-in-out;
-	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
 }
 
 .upload-file__lead:hover {
@@ -6247,8 +6361,8 @@ select.language-select {
 	margin: 0 auto 0.625rem;
 	width: 2.6875rem;
 	height: 3.5rem;
-	-webkit-transition: background 0.2s ease-in-out;
-	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in;
+	transition: background 0.2s ease-in;
 }
 
 .docs-list__item .icon-doc {

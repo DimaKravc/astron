@@ -16,19 +16,6 @@
         color: $color-accent;
         padding: 0 rem(75px);
     }
-
-    &__max-person-allowed {
-        @include font-size(18px);
-        line-height: 1.2;
-        font-family: $font-family-lead;
-        color: rgba(0, 0, 0, 0.2);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: 100%;
-        height: 100%;
-    }
 }
 
 @media (min-width: $screen-lg-min) {

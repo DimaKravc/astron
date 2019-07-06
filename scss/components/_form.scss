@@ -15,7 +15,7 @@
 
     &__group {
         position: relative;
-        margin-bottom: rem(35px);
+        margin-bottom: rem(30px);
         width: 100%;
 
         br {
@@ -65,6 +65,10 @@
                 -webkit-animation-name: autofill;
                 -webkit-animation-fill-mode: both;
             }
+
+            &[readonly] {
+                cursor: default;
+            }
         }
 
         textarea {
@@ -97,10 +101,6 @@
                 opacity: 0;
                 visibility: hidden;
             }
-        }
-
-        &_indent_sm {
-            margin-bottom: rem(25px);
         }
 
         &_indent_no {
@@ -198,7 +198,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        @include font-size(11px);
+        @include font-size(12px);
         line-height: 1.6;
         font-family: $font-family-lead;
         text-transform: uppercase;

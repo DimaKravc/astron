@@ -111,6 +111,26 @@ if (!function_exists('astron_setup')) :
 endif;
 add_action('after_setup_theme', 'astron_setup');
 
+//add_filter('wpcf7_mail_components', 'custom_mail_components');
+//
+//function custom_mail_components($wpcf7_data, $form = null)
+//{
+//    $tagOne = "[full_name";
+//    $tagTwo = "[experience_4]";
+//    $replacement = '';
+//
+//    $text = $wpcf7_data['body'];
+//
+//    $startTagPos = strstr($text, $tagOne);
+//    $endTagPos = strstr($text, $tagTwo);
+//    $tagLength = $endTagPos - $startTagPos + 1;
+//
+//
+//    $wpcf7_data['body'] = substr_replace($text, $replacement, $startTagPos, $tagLength);
+//
+//    return $wpcf7_data;
+//}
+
 if (!function_exists('astron_load_scripts')) :
     /**
      * Register and enqueue styles/scripts

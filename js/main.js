@@ -352,9 +352,13 @@ jQuery(document).ready(function ($) {
                 .blur(function () {
                     $(this).closest(groupNode).removeClass($(this).val() === '' ? 'transform-label' : '')
                 })
-                .bind('reset', function (e) {
-                    $(this).closest(groupNode).removeClass(e.currentTarget.value === '' ? 'transform-label' : '')
-                });
+                .bind('update', function (e) {
+                    if ($(e.currentTarget).val()) {
+                        $(this).closest(groupNode).addClass('transform-label')
+                    } else {
+                        $(this).closest(groupNode).removeClass('transform-label')
+                    }
+                })
         },
 
         validation() {
@@ -409,57 +413,171 @@ jQuery(document).ready(function ($) {
         appFormTeam: function () {
             let $showFormNode = $('[data-action="show-form"]');
             let $formNode = $('[data-node="add-person-to-team-form"]');
-            let collection = [];
+            let $teamItemBox = $('[data-node="team-item-box"]')
+            let collectionItems = [];
+            let currentItemIndex = 0; // start from 1
+            let actionType = 'add';
             let maxCollectionLength = 4;
-
-            $showFormNode.on('click', function (e) {
-                e.preventDefault();
-
-                if (collection.length < maxCollectionLength) {
+            let resetForm = function (form) {
+                form.validate().resetForm();
+                form
+                    .find('input[type=text], textarea')
+                    .val('')
+                    .trigger('update');
+            };
+            let fillForm = function (form, data) {
+                form.find('input, textarea').each(function (index, element) {
+                    $(element)
+                        .val(data[element.getAttribute('name')] || '')
+                        .trigger('update');
+                });
+            };
+            let popup = {
+                open: function (beforeOpenCallback, openCallback, beforeCloseCallback, closeCallback) {
                     $.magnificPopup.open({
                         items: {
                             src: $showFormNode.attr('href')
                         },
                         type: 'inline',
+                        focus: '#full_name',
                         removalDelay: 500,
                         callbacks: {
                             beforeOpen: function () {
                                 this.st.mainClass = $showFormNode.attr('data-effect');
+
+                                if (beforeOpenCallback) beforeOpenCallback();
                             },
                             open: function () {
-                                $('[data-action="close-popup"]').on('click', function () {
-                                    let popup = $.magnificPopup.instance;
+                                $('[data-action="close-popup"]').on('click', popup.close);
 
-                                    popup.close();
-                                });
+                                if (openCallback) openCallback();
+
+                                console.log(currentItemIndex)
                             },
                             beforeClose: function () {
-                                $formNode.validate().resetForm();
-
-                                $formNode.validate().resetForm();
-                                $formNode
-                                    .find('input[type=text], textarea')
-                                    .val('')
-                                    .trigger('reset');
+                                if (beforeCloseCallback) beforeCloseCallback();
+                            },
+                            close: function () {
+                                if (closeCallback) closeCallback();
                             }
                         }
-                    })
+                    });
+                },
+                close: function () {
+                    $.magnificPopup.instance.close();
+                }
+            };
+            let generateTemplate = function (data, index) {
+                let generateHiddenFields = function (data, index) {
+                    let template = '';
+
+                    for (let key in data) {
+                        template += '<input type="hidden" name="' + key + (index ? '_' + index : '') + '" value="' + data[key] + '">';
+                    }
+
+                    return template;
+                };
+
+                return $('<div class="form__group">' +
+                    '        <label>' + data['full_name'] + ' | ' + data['age'] + ' y.o. | ' + data['role'] + '</label><input readonly/>' +
+                    '        <div class="team-form-group__item-control team-item-control">' +
+                    '            <button type="button" class="team-item-control__button"></button>' +
+                    '            <ul class="team-item-control__list">' +
+                    '                <li class="team-item-control__item">' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="edit-team-item">Edit</button>' +
+                    '                </li>' +
+                    '                <li class="team-item-control__item">' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="duplicate-team-item">Duplicate</button>' +
+                    '                </li>' +
+                    '                <li class="team-item-control__item">' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="remove-team-item">Remove</button>' +
+                    '                </li>' +
+                    '            </ul>' +
+                    '        </div>' +
+                    generateHiddenFields(data, index) +
+                    '</div>');
+            };
+            let routine = function () {
+                let formData = {};
+
+                $formNode.find('input, textarea').each(function () {
+                    formData[this.name] = $(this).val();
+                });
+
+                switch (actionType) {
+                    case 'add':
+                        collectionItems.push(formData);
+                        currentItemIndex++;
+                        break;
+                }
+
+                let localIndex = currentItemIndex;
+
+                let template = generateTemplate(formData, currentItemIndex);
+
+                $('[data-action="edit-team-item"]', template).on('click', function (e) {
+                    e.preventDefault();
+
+                    popup.open(function () {
+                        currentItemIndex = localIndex
+                    }, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
+
+                    actionType = 'edit';
+                });
+
+                $('[data-action="duplicate-team-item"]', template).on('click', function (e) {
+                    e.preventDefault();
+
+                    popup.open(null, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
+
+                    actionType = 'duplicate';
+                });
+
+                $('[data-action="edit-team-item"]', template).on('click', function (e) {
+                    e.preventDefault();
+
+                    popup.open(function () {
+                        currentItemIndex = localIndex
+                    }, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
+
+                    actionType = 'edit';
+                });
+
+                switch (actionType) {
+                    case 'edit':
+                        $teamItemBox.children().eq(currentItemIndex - 1).replaceWith(template);
+                        break;
+                    case 'duplicate':
+                        $teamItemBox.append(template);
+                        break;
+                    case 'remove':
+                        $teamItemBox.children().eq(currentItemIndex - 1).replaceWith('');
+                        break;
+                    case 'add':
+                        $teamItemBox.append(template);
+                        break;
+                }
+            };
+
+            $showFormNode.on('click', function (e) {
+                e.preventDefault();
+
+                if (collectionItems.length < maxCollectionLength) {
+                    actionType = 'add';
+
+                    popup.open(null, null, resetForm.bind(null, $formNode), null);
                 }
             });
 
             $formNode.on('submit', function (e) {
                 e.preventDefault();
 
-                if ($formNode.valid()) {
-                    let formData = {};
+                if ((actionType === 'add' || actionType === 'edit') && !$formNode.valid()) return;
 
-                    $formNode.find('input, textarea').each(function () {
-                        formData[this.name] = $(this).val();
-                    });$('#wpcf7-f91-o1').find('form').append('<input type="text" name="test" value="123123"/>')
-                }
+                routine();
 
-
-            })
+                popup.close();
+            });
         },
 
         wpcf7: function () {

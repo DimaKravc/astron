@@ -40,29 +40,29 @@ get_header();
                             <form action="" class="add-person-to-team-form form" data-node="add-person-to-team-form">
                                 <fieldset>
                                     <legend>Add a new person to the team</legend>
-                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                    <div class="form__group" data-js="form-group">
                                         <label for="full_name">Full name</label>
                                         <input class="required" type="text" name="full_name" id="full_name" autocomplete="off">
                                     </div>
                                     <div class="row">
                                         <div class="col-7">
-                                            <div class="form__group form__group_indent_sm" data-js="form-group">
+                                            <div class="form__group" data-js="form-group">
                                                 <label for="current_city">Current city</label>
                                                 <input class="required" type="text" name="current_city" id="current_city" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-5">
-                                            <div class="form__group form__group_indent_sm" data-js="form-group">
+                                            <div class="form__group" data-js="form-group">
                                                 <label for="age">Age</label>
-                                                <input class="required" type="text" name="age" id="age" autocomplete="off">
+                                                <input class="required" type="tel" name="age" id="age" minlength="2" maxlength="2" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                    <div class="form__group" data-js="form-group">
                                         <label for="role">Role within team</label>
                                         <input class="required" type="text" name="role" id="role" autocomplete="off">
                                     </div>
-                                    <div class="form__group form__group_indent_sm" data-js="form-group">
+                                    <div class="form__group" data-js="form-group">
                                         <label for="education_background">Educational background</label>
                                         <input class="required" type="text" name="education_background" id="education_background" autocomplete="off">
                                     </div>
