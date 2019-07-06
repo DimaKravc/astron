@@ -1,0 +1,120 @@
+.team-form-group {
+    .form__group {
+        &:not(:last-child) {
+            margin-bottom: rem(8px);
+        }
+    }
+
+    label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: rem(130px);
+    }
+
+    .team-item-control {
+        position: absolute;
+        right: rem(12px);
+        top: rem(6px);
+        width: rem(115px);
+        z-index: 2;
+
+        &__button {
+            width: 100%;
+            padding: rem(13px) rem(13px) 28px;
+            border: none;
+            outline: none;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+            clip-path: polygon(0 100%, 0 0, 100% 0%, 100% calc(100% - 15px));
+            transition: background $transition-time;
+
+            &:after {
+                content: "";
+                background: url("./images/icon-3-dots.svg") no-repeat center / contain;
+                width: 20px;
+                height: 10px;
+                display: block;
+                transition: background-image $transition-time;
+            }
+
+            &:hover {
+                &:after {
+                    background-image: url("./images/icon-3-dots--white.svg");
+                }
+            }
+        }
+
+        &__list {
+            position: absolute;
+            top: calc(100% - 14px);
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: rem(8px) 0;
+            background: #000000;
+            clip-path: polygon(0 100%, 0 15px, 100% 0%, 100% 100%);
+            transform: translate(-10px, 0px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all $transition-time;
+        }
+
+        &__item {
+            list-style-type: none;
+
+            &__button {
+                width: 100%;
+                border: none;
+                outline: none;
+                background: none;
+                padding: rem(6px) rem(16px);
+                @include font-size(18px);
+                line-height: 1.2;
+                font-family: $font-family-lead;
+                text-transform: uppercase;
+                color: $color-accent;
+                text-align: right;
+                cursor: pointer;
+                transition: color $transition-time;
+
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+
+        &:hover {
+            .team-item-control {
+                &__button {
+                    background: #000000;
+
+                    &:after {
+                        background-image: url("./images/icon-3-dots--white.svg");
+                    }
+                }
+
+                &__list {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    &__max-person-allowed {
+        @include font-size(18px);
+        line-height: 1.2;
+        font-family: $font-family-lead;
+        color: rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+    }
+}
