@@ -410,21 +410,26 @@ jQuery(document).ready(function ($) {
             })
         },
 
-        appFormTeam: function () {
-            let $showFormNode = $('[data-action="show-form"]');
-            let $formNode = $('[data-node="add-person-to-team-form"]');
-            let $teamItemBox = $('[data-node="team-item-box"]')
-            let collectionItems = [];
-            let currentItemIndex = 0; // start from 1
-            let actionType = 'add';
-            let maxCollectionLength = 4;
+        appFormPartners: function () {
+            let partnerInfoFormSlug = 'partner-info-form';
+
+            let $partnerInfoForm = $('[data-node="' + partnerInfoFormSlug + '"]');
+            let $showPartnerInfoForm = $('[data-action-show="' + partnerInfoFormSlug + '"]');
+            let $partnerItemsBox = $('[data-node="partner-items-box"]');
+
+            let partnersList = [];
+            let currentPartner = null;
+            let maxPartners = 4;
+            let actionType = null;
+
             let resetForm = function (form) {
                 form.validate().resetForm();
                 form
-                    .find('input[type=text], textarea')
+                    .find('input, textarea')
                     .val('')
                     .trigger('update');
             };
+
             let fillForm = function (form, data) {
                 form.find('input, textarea').each(function (index, element) {
                     $(element)
@@ -432,18 +437,19 @@ jQuery(document).ready(function ($) {
                         .trigger('update');
                 });
             };
+
             let popup = {
                 open: function (beforeOpenCallback, openCallback, beforeCloseCallback, closeCallback) {
                     $.magnificPopup.open({
                         items: {
-                            src: $showFormNode.attr('href')
+                            src: '#' + partnerInfoFormSlug
                         },
                         type: 'inline',
                         focus: '#full_name',
                         removalDelay: 500,
                         callbacks: {
                             beforeOpen: function () {
-                                this.st.mainClass = $showFormNode.attr('data-effect');
+                                this.st.mainClass = 'mfp-zoom-in';
 
                                 if (beforeOpenCallback) beforeOpenCallback();
                             },
@@ -451,8 +457,6 @@ jQuery(document).ready(function ($) {
                                 $('[data-action="close-popup"]').on('click', popup.close);
 
                                 if (openCallback) openCallback();
-
-                                console.log(currentItemIndex)
                             },
                             beforeClose: function () {
                                 if (beforeCloseCallback) beforeCloseCallback();
@@ -467,6 +471,7 @@ jQuery(document).ready(function ($) {
                     $.magnificPopup.instance.close();
                 }
             };
+
             let generateTemplate = function (data, index) {
                 let generateHiddenFields = function (data, index) {
                     let template = '';
@@ -478,106 +483,257 @@ jQuery(document).ready(function ($) {
                     return template;
                 };
 
-                return $('<div class="form__group">' +
+                let template = $('<div class="form__group">' +
                     '        <label>' + data['full_name'] + ' | ' + data['age'] + ' y.o. | ' + data['role'] + '</label><input readonly/>' +
                     '        <div class="team-form-group__item-control team-item-control">' +
                     '            <button type="button" class="team-item-control__button"></button>' +
                     '            <ul class="team-item-control__list">' +
                     '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="edit-team-item">Edit</button>' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="edit-partner-info">Edit</button>' +
                     '                </li>' +
                     '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="duplicate-team-item">Duplicate</button>' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="duplicate-partner-info">Duplicate</button>' +
                     '                </li>' +
                     '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="remove-team-item">Remove</button>' +
+                    '                    <button class="team-item-control__item__button" type="button" data-action="remove-partner-info">Remove</button>' +
                     '                </li>' +
                     '            </ul>' +
                     '        </div>' +
                     generateHiddenFields(data, index) +
                     '</div>');
+
+                $('[data-action="edit-partner-info"]', template).on('click', function () {
+                    editPartner(currentPartner)
+                });
+                $('[data-action="duplicate-partner-info"]', template).on('click', routine('duplicate'));
+                $('[data-action="remove-partner-info"]', template).on('click', routine('remove'));
+
+                // $('[data-action="edit-partner-info"]', template).on('click', function (e) {
+                //     e.preventDefault();
+                //
+                //     actionType = 'edit';
+                //
+                //     popup.open(function () {
+                //         currentPartner = localIndex
+                //     }, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
+                // });
+                //
+                // $('[data-action="duplicate-partner-info"]', template).on('click', function (e) {
+                //     e.preventDefault();
+                //
+                //     actionType = 'duplicate';
+                //
+                //     popup.open(null, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
+                // });
+                //
+                // $('[data-action="remove-partner-info"]', template).on('click', function (e) {
+                //     e.preventDefault();
+                //
+                //     actionType = 'remove';
+                //
+                //     $partnerItemsBox.children().eq(currentPartner - 1).replaceWith('');
+                //
+                //     partnersList.slice(currentPartner, 1);
+                // });
+
+                return template
             };
-            let routine = function () {
-                let formData = {};
 
-                $formNode.find('input, textarea').each(function () {
-                    formData[this.name] = $(this).val();
-                });
+            let editPartner = function () {
+                popup.open(function () {
+                }, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
+            };
 
-                switch (actionType) {
-                    case 'add':
-                        collectionItems.push(formData);
-                        currentItemIndex++;
-                        break;
-                }
+            let routine = function (actionType) {
+                if (actionType === 'edit') {
 
-                let localIndex = currentItemIndex;
-
-                let template = generateTemplate(formData, currentItemIndex);
-
-                $('[data-action="edit-team-item"]', template).on('click', function (e) {
-                    e.preventDefault();
-
-                    popup.open(function () {
-                        currentItemIndex = localIndex
-                    }, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
-
-                    actionType = 'edit';
-                });
-
-                $('[data-action="duplicate-team-item"]', template).on('click', function (e) {
-                    e.preventDefault();
-
-                    popup.open(null, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
-
-                    actionType = 'duplicate';
-                });
-
-                $('[data-action="edit-team-item"]', template).on('click', function (e) {
-                    e.preventDefault();
-
-                    popup.open(function () {
-                        currentItemIndex = localIndex
-                    }, fillForm.bind(null, $formNode, formData), resetForm.bind(null, $formNode), null);
-
-                    actionType = 'edit';
-                });
-
-                switch (actionType) {
-                    case 'edit':
-                        $teamItemBox.children().eq(currentItemIndex - 1).replaceWith(template);
-                        break;
-                    case 'duplicate':
-                        $teamItemBox.append(template);
-                        break;
-                    case 'remove':
-                        $teamItemBox.children().eq(currentItemIndex - 1).replaceWith('');
-                        break;
-                    case 'add':
-                        $teamItemBox.append(template);
-                        break;
                 }
             };
 
-            $showFormNode.on('click', function (e) {
-                e.preventDefault();
+            // $showPartnerInfoForm.on('click', function (e) {
+            //     e.preventDefault();
+            //
+            //     if (partnersList.length < maxPartners) {
+            //         actionType = 'add';
+            //
+            //         popup.open(null, null, resetForm.bind(null, $partnerInfoForm), null);
+            //     }
+            // });
 
-                if (collectionItems.length < maxCollectionLength) {
-                    actionType = 'add';
+            // $partnerInfoForm.on('submit', function (e) {
+            //     e.preventDefault();
+            //
+            //     if ((actionType === 'add' || actionType === 'edit') && !$partnerInfoForm.valid()) return;
+            //
+            //     let formData = {};
+            //
+            //     $partnerInfoForm.find('input, textarea').each(function () {
+            //         formData[this.name] = $(this).val();
+            //     });
+            //
+            //     switch (actionType) {
+            //         case 'add':
+            //             partnersList.push(formData);
+            //             currentPartner++;
+            //             break;
+            //     }
+            //
+            //     let template = generateTemplate(formData, currentPartner);
+            //
+            //     switch (actionType) {
+            //         case 'edit':
+            //             $partnerItemsBox.children().eq(currentPartner - 1).replaceWith(template);
+            //             break;
+            //         case 'duplicate':
+            //             $partnerItemsBox.append(template);
+            //             break;
+            //         case 'add':
+            //             $partnerItemsBox.append(template);
+            //             break;
+            //     }
+            //
+            //     popup.close();
+            // });
 
-                    popup.open(null, null, resetForm.bind(null, $formNode), null);
+            let module = {
+                action: null, // add, edit, remove, duplicate
+
+                partners2: [],
+
+                current: 0,
+
+                length: 0,
+
+                limit: 4,
+
+                updateData: function (data) {
+                    console.log(this)
+                    data = data || {};
+
+                    $partnerInfoForm.find('input, textarea').each(function (index, element) {
+                        data[element.name] = $(element).val();
+                    }.bind(this));
+
+                    switch (this.action) {
+                        case 'add':
+                            this.partners2.push(data);
+                            this.current = this.partners2.length - 1;
+                            this.length++;
+                            break;
+                        case 'edit':
+                            this.partners2[this.current] = data;
+                            break;
+                        case 'duplicate':
+                            this.partners2.push(data);
+                            this.length++;
+                            break;
+                        case 'remove':
+                            delete this.partners2[this.current]
+                            this.length--;
+                            break;
+                    }
+                },
+
+                generateTemplate: function () {
+                    let index = this.current;
+                    let data = this.partners2[this.current];
+
+                    let generateHiddenFields = function (data, index) {
+                        let template = '';
+
+                        for (let key in data) {
+                            template += '<input type="hidden" name="' + key + (index ? '_' + index : '') + '" value="' + data[key] + '">';
+                        }
+
+                        return template;
+                    };
+
+                    let template = $('<div id="partner-id-' + index + '" class="form__group">' +
+                        '        <label>' + data['full_name'] + ' | ' + data['age'] + ' y.o. | ' + data['role'] + '</label><input readonly/>' +
+                        '        <div class="team-form-group__item-control team-item-control">' +
+                        '            <button type="button" class="team-item-control__button"></button>' +
+                        '            <ul class="team-item-control__list">' +
+                        '                <li class="team-item-control__item">' +
+                        '                    <button class="team-item-control__item__button" type="button" data-action="edit-partner-info">Edit</button>' +
+                        '                </li>' +
+                        '                <li class="team-item-control__item">' +
+                        '                    <button class="team-item-control__item__button" type="button" data-action="duplicate-partner-info">Duplicate</button>' +
+                        '                </li>' +
+                        '                <li class="team-item-control__item">' +
+                        '                    <button class="team-item-control__item__button" type="button" data-action="remove-partner-info">Remove</button>' +
+                        '                </li>' +
+                        '            </ul>' +
+                        '        </div>' +
+                        generateHiddenFields(data, index) +
+                        '</div>');
+
+                    $('[data-action="edit-partner-info"]', template).on('click', function () {
+                        this.action = 'edit';
+                        this.current = index;
+                        popup.open(null, fillForm.bind(null, $partnerInfoForm, data), resetForm.bind(null, $partnerInfoForm), null);
+                    }.bind(this));
+
+                    $('[data-action="duplicate-partner-info"]', template).on('click', function () {
+                        if (this.length >= this.limit) return;
+                        this.action = 'duplicate';
+                        this.current = index;
+                        this.updateData(data);
+                        this.generateTemplate();
+                    }.bind(this));
+
+                    $('[data-action="remove-partner-info"]', template).on('click', function () {
+                        this.action = 'remove';
+                        this.current = index;
+                        this.updateData();
+                        this.updateTemplate();
+                    }.bind(this));
+
+                    this.updateTemplate(template);
+                },
+
+                updateTemplate(template) {
+                    switch (this.action) {
+                        case 'edit':
+                            $partnerItemsBox.find('#partner-id-' + this.current + '').replaceWith(template);
+                            break;
+                        case 'duplicate':
+                            $partnerItemsBox.append(template);
+                            break;
+                        case 'add':
+                            $partnerItemsBox.append(template);
+                            break;
+                        case 'remove':
+                            $partnerItemsBox.find('#partner-id-' + this.current + '').replaceWith('');
+                            break;
+                    }
+                },
+
+                init: function () {
+                    $showPartnerInfoForm.on('click', function (e) {
+                        e.preventDefault();
+
+                        if (this.partners2.length < this.limit) {
+                            this.action = 'add';
+
+                            popup.open(null, null, resetForm.bind(null, $partnerInfoForm), null);
+                        }
+                    }.bind(this));
+
+                    $partnerInfoForm.on('submit', function (e) {
+                        e.preventDefault();
+
+                        if (!$partnerInfoForm.valid()) return;
+
+                        this.updateData();
+
+                        this.generateTemplate();
+
+                        popup.close();
+                    }.bind(this));
                 }
-            });
+            };
 
-            $formNode.on('submit', function (e) {
-                e.preventDefault();
-
-                if ((actionType === 'add' || actionType === 'edit') && !$formNode.valid()) return;
-
-                routine();
-
-                popup.close();
-            });
+            module.init();
         },
 
         wpcf7: function () {

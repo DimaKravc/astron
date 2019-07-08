@@ -36,8 +36,8 @@ get_header();
                 <div class="col-12 col-xl-6" data-aft-form="online">
                     <div>
                         <?php echo do_shortcode('[contact-form-7 id="91" title="APPLY FOR A PROJECT"]'); ?>
-                        <div class="add-person-to-team-form--wrap mfp-with-anim mfp-hide" id="add-person-to-team">
-                            <form action="" class="add-person-to-team-form form" data-node="add-person-to-team-form">
+                        <div id="partner-info-form" class="partner-info-form--wrap mfp-with-anim mfp-hide">
+                            <form class="partner-info-form form" data-node="partner-info-form">
                                 <fieldset>
                                     <legend>Add a new person to the team</legend>
                                     <div class="form__group" data-js="form-group">
@@ -71,8 +71,8 @@ get_header();
                                         <input class="required" type="text" name="experience" id="experience" autocomplete="off">
                                     </div>
                                 </fieldset>
-                                <footer class="add-person-to-team-form__footer">
-                                    <button type="button" class="add-person-to-team-form__cancel" data-action="close-popup">cancel</button>
+                                <footer class="partner-info-form__footer">
+                                    <button type="button" class="partner-info-form__cancel" data-action="close-popup">cancel</button>
                                     <button type="submit" class="button button_size_lg button_color_accent">Add a new person</button>
                                 </footer>
                             </form>

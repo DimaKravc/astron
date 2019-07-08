@@ -1,4 +1,4 @@
-.add-person-to-team-form--wrap {
+.partner-info-form--wrap {
     max-width: 100%;
     width: rem(620px);
     background: $color-accent;
@@ -6,7 +6,7 @@
     margin: rem(25px) auto;
 }
 
-.add-person-to-team-form {
+.partner-info-form {
     &__footer {
         display: flex;
         align-items: center;
@@ -32,7 +32,7 @@
 }
 
 @media (max-width: $screen-sm-max) {
-    .add-person-to-team-form--wrap {
+    .partner-info-form--wrap {
         padding-left: rem(30px);
         padding-right: rem(30px);
     }

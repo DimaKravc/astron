@@ -17,7 +17,7 @@
         right: rem(12px);
         top: rem(6px);
         width: rem(115px);
-        z-index: 2;
+        z-index: 1;
 
         &__button {
             width: 100%;
@@ -88,6 +88,8 @@
         }
 
         &:hover {
+            z-index: 2;
+
             .team-item-control {
                 &__button {
                     background: #000000;

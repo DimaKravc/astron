@@ -6031,7 +6031,7 @@ select.language-select {
 	right: 0.75rem;
 	top: 0.375rem;
 	width: 7.1875rem;
-	z-index: 2;
+	z-index: 1;
 }
 
 .team-form-group .team-item-control__button {
@@ -6114,6 +6114,10 @@ select.language-select {
 	color: #ffffff;
 }
 
+.team-form-group .team-item-control:hover {
+	z-index: 2;
+}
+
 .team-form-group .team-item-control:hover .team-item-control__button {
 	background: #000000;
 }
@@ -6147,7 +6151,7 @@ select.language-select {
 	height: 100%;
 }
 
-.add-person-to-team-form--wrap {
+.partner-info-form--wrap {
 	max-width: 100%;
 	width: 38.75rem;
 	background: #ffc20e;
@@ -6155,7 +6159,7 @@ select.language-select {
 	margin: 1.5625rem auto;
 }
 
-.add-person-to-team-form__footer {
+.partner-info-form__footer {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -6168,7 +6172,7 @@ select.language-select {
 	margin-bottom: 1.5625rem;
 }
 
-.add-person-to-team-form__cancel {
+.partner-info-form__cancel {
 	border: none;
 	outline: none;
 	background: none;
@@ -6182,12 +6186,12 @@ select.language-select {
 	transition: color 0.2s ease-in;
 }
 
-.add-person-to-team-form__cancel:hover {
+.partner-info-form__cancel:hover {
 	color: #ffffff;
 }
 
 @media (max-width: 767px) {
-	.add-person-to-team-form--wrap {
+	.partner-info-form--wrap {
 		padding-left: 1.875rem;
 		padding-right: 1.875rem;
 	}
