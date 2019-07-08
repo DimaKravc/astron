@@ -798,9 +798,10 @@ abbr:hover, abbr:focus {
 	width: 170px;
 	height: 170px;
 	position: absolute;
-	top: 0;
+	top: 50%;
 	left: 0;
-	margin-left: -18px;
+	margin-left: -15px;
+	margin-top: -85px;
 	-webkit-transform: rotate(-90deg);
 	        transform: rotate(-90deg);
 }
@@ -3379,8 +3380,7 @@ abbr:hover, abbr:focus {
 }
 
 .button_state_disabled, .button[disabled] {
-	background: #e6e3e3;
-	color: #999999;
+	opacity: .7;
 	cursor: default;
 	pointer-events: none;
 }
@@ -3731,7 +3731,7 @@ abbr:hover, abbr:focus {
 }
 
 .form-status__control {
-	margin-bottom: 1.875rem;
+	margin-bottom: 0.625rem;
 }
 
 .form-status:after {
@@ -6114,6 +6114,12 @@ select.language-select {
 	color: #ffffff;
 }
 
+.team-form-group .team-item-control__item__button[disabled] {
+	opacity: .7;
+	cursor: default;
+	pointer-events: none;
+}
+
 .team-form-group .team-item-control:hover {
 	z-index: 2;
 }
@@ -6220,7 +6226,7 @@ select.language-select {
 	max-width: 100%;
 	width: 38.75rem;
 	background: #ffc20e;
-	padding: 3.125rem 3.125rem 1.5625rem;
+	padding: 3.125rem 3.125rem;
 	margin: 1.5625rem auto;
 }
 
@@ -6245,6 +6251,7 @@ select.language-select {
 	-webkit-transition: all 0.2s ease-in;
 	transition: all 0.2s ease-in;
 	will-change: outline-offset, background-color;
+	position: relative;
 }
 
 .upload-file input[type="file"] {
@@ -6254,6 +6261,10 @@ select.language-select {
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+.upload-file input[type="file"] + span.error {
+	display: none !important;
 }
 
 .upload-file .docs-list {
@@ -6313,7 +6324,7 @@ select.language-select {
 	text-decoration: none;
 }
 
-.upload-file.wpcf7-not-valid {
+.upload-file.error {
 	outline-color: red;
 }
 

@@ -35,7 +35,7 @@ get_header();
                 <div class="hidden-xs col-1"></div>
                 <div class="col-12 col-xl-6" data-aft-form="online">
                     <div>
-                        <?php echo do_shortcode('[contact-form-7 id="91" title="APPLY FOR A PROJECT"]'); ?>
+                        <?php echo do_shortcode('[contact-form-7 id="91" title="APPLY FOR A PROJECT" html_class="form"]'); ?>
                         <div id="partner-info-form" class="partner-info-form--wrap mfp-with-anim mfp-hide">
                             <form class="partner-info-form form" data-node="partner-info-form">
                                 <fieldset>

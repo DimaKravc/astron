@@ -341,6 +341,26 @@ jQuery(document).ready(function ($) {
             })
         },
 
+        popup: function () {
+            $(document).ready(function () {
+                $('[data-action="popup"]').magnificPopup({
+                    removalDelay: 500,
+                    callbacks: {
+                        beforeOpen: function () {
+                            this.st.mainClass = this.st.el.attr('data-effect');
+                        },
+                        open: function () {
+                            $('[data-action="close-popup"]').on('click', function () {
+                                let magnificPopup = $.magnificPopup.instance;
+
+                                magnificPopup.close();
+                            });
+                        }
+                    }
+                });
+            });
+        },
+
         formGroup: function () {
             const groupNode = $('[data-js="form-group"]');
 
@@ -362,25 +382,63 @@ jQuery(document).ready(function ($) {
         },
 
         validation() {
-            $('.form').validate({
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true,
-                        number: true
-                    },
-                    age: {
-                        maxlength: 2,
-                        number: true
-                    }
-                },
-                errorElement: 'span'
-            });
+            let $form = $('.form');
+            let errorClass = 'error';
+            let validClass = 'valid';
 
-            // console.log($formNode.valid())
+            $form.each(function (index, form) {
+                $(form).validate({
+                    rules: {
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        phone: {
+                            required: true,
+                            number: true
+                        },
+                        age: {
+                            maxlength: 2,
+                            number: true
+                        }
+                    },
+                    errorElement: 'span',
+                    unhighlight: function (element) {
+                        if (element.type === 'file') {
+                            let uploadFile = $(element).closest('[data-js="upload-file"]');
+
+                            uploadFile
+                                .removeClass('error')
+                                .find('span.error')
+                                .remove();
+                        } else {
+                            $(element).removeClass(errorClass).addClass(validClass);
+                            $(element.form).find("label[for=" + element.id + "]")
+                                .removeClass(errorClass);
+                        }
+                    },
+                    highlight: function (element) {
+                        if (element.type === 'file') {
+                            let uploadFile = $(element).closest('[data-js="upload-file"]');
+
+                            uploadFile
+                                .addClass('error')
+                                .append('<span class="error">' + this.submitted[element.id] + '</span>');
+                        } else {
+                            $(element)
+                                .addClass(errorClass)
+                                .removeClass(validClass);
+                            $(element.form)
+                                .find("label[for=" + element.id + "]")
+                                .addClass(errorClass);
+                        }
+                    }
+                });
+
+                $(form).find('button[type="submit"], input[type="submit"]').on('click', function () {
+                    if (!$(this).closest('.form').valid()) return false
+                });
+            });
         },
 
         appFormTabs: function () {
@@ -416,11 +474,6 @@ jQuery(document).ready(function ($) {
             let $partnerInfoForm = $('[data-node="' + partnerInfoFormSlug + '"]');
             let $showPartnerInfoForm = $('[data-action-show="' + partnerInfoFormSlug + '"]');
             let $partnerItemsBox = $('[data-node="partner-items-box"]');
-
-            let partnersList = [];
-            let currentPartner = null;
-            let maxPartners = 4;
-            let actionType = null;
 
             let resetForm = function (form) {
                 form.validate().resetForm();
@@ -472,171 +525,57 @@ jQuery(document).ready(function ($) {
                 }
             };
 
-            let generateTemplate = function (data, index) {
-                let generateHiddenFields = function (data, index) {
-                    let template = '';
-
-                    for (let key in data) {
-                        template += '<input type="hidden" name="' + key + (index ? '_' + index : '') + '" value="' + data[key] + '">';
-                    }
-
-                    return template;
-                };
-
-                let template = $('<div class="form__group">' +
-                    '        <label>' + data['full_name'] + ' | ' + data['age'] + ' y.o. | ' + data['role'] + '</label><input readonly/>' +
-                    '        <div class="team-form-group__item-control team-item-control">' +
-                    '            <button type="button" class="team-item-control__button"></button>' +
-                    '            <ul class="team-item-control__list">' +
-                    '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="edit-partner-info">Edit</button>' +
-                    '                </li>' +
-                    '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="duplicate-partner-info">Duplicate</button>' +
-                    '                </li>' +
-                    '                <li class="team-item-control__item">' +
-                    '                    <button class="team-item-control__item__button" type="button" data-action="remove-partner-info">Remove</button>' +
-                    '                </li>' +
-                    '            </ul>' +
-                    '        </div>' +
-                    generateHiddenFields(data, index) +
-                    '</div>');
-
-                $('[data-action="edit-partner-info"]', template).on('click', function () {
-                    editPartner(currentPartner)
-                });
-                $('[data-action="duplicate-partner-info"]', template).on('click', routine('duplicate'));
-                $('[data-action="remove-partner-info"]', template).on('click', routine('remove'));
-
-                // $('[data-action="edit-partner-info"]', template).on('click', function (e) {
-                //     e.preventDefault();
-                //
-                //     actionType = 'edit';
-                //
-                //     popup.open(function () {
-                //         currentPartner = localIndex
-                //     }, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
-                // });
-                //
-                // $('[data-action="duplicate-partner-info"]', template).on('click', function (e) {
-                //     e.preventDefault();
-                //
-                //     actionType = 'duplicate';
-                //
-                //     popup.open(null, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
-                // });
-                //
-                // $('[data-action="remove-partner-info"]', template).on('click', function (e) {
-                //     e.preventDefault();
-                //
-                //     actionType = 'remove';
-                //
-                //     $partnerItemsBox.children().eq(currentPartner - 1).replaceWith('');
-                //
-                //     partnersList.slice(currentPartner, 1);
-                // });
-
-                return template
-            };
-
-            let editPartner = function () {
-                popup.open(function () {
-                }, fillForm.bind(null, $partnerInfoForm, formData), resetForm.bind(null, $partnerInfoForm), null);
-            };
-
-            let routine = function (actionType) {
-                if (actionType === 'edit') {
-
-                }
-            };
-
-            // $showPartnerInfoForm.on('click', function (e) {
-            //     e.preventDefault();
-            //
-            //     if (partnersList.length < maxPartners) {
-            //         actionType = 'add';
-            //
-            //         popup.open(null, null, resetForm.bind(null, $partnerInfoForm), null);
-            //     }
-            // });
-
-            // $partnerInfoForm.on('submit', function (e) {
-            //     e.preventDefault();
-            //
-            //     if ((actionType === 'add' || actionType === 'edit') && !$partnerInfoForm.valid()) return;
-            //
-            //     let formData = {};
-            //
-            //     $partnerInfoForm.find('input, textarea').each(function () {
-            //         formData[this.name] = $(this).val();
-            //     });
-            //
-            //     switch (actionType) {
-            //         case 'add':
-            //             partnersList.push(formData);
-            //             currentPartner++;
-            //             break;
-            //     }
-            //
-            //     let template = generateTemplate(formData, currentPartner);
-            //
-            //     switch (actionType) {
-            //         case 'edit':
-            //             $partnerItemsBox.children().eq(currentPartner - 1).replaceWith(template);
-            //             break;
-            //         case 'duplicate':
-            //             $partnerItemsBox.append(template);
-            //             break;
-            //         case 'add':
-            //             $partnerItemsBox.append(template);
-            //             break;
-            //     }
-            //
-            //     popup.close();
-            // });
-
             let module = {
-                action: null, // add, edit, remove, duplicate
+                action: '', // add, edit, remove, duplicate
 
-                partners2: [],
+                data: {},
 
-                current: 0,
+                template: '',
 
-                length: 0,
+                array: [],
+
+                index: 0,
 
                 limit: 4,
 
-                updateData: function (data) {
-                    console.log(this)
-                    data = data || {};
+                getLength: function () {
+                    return this.array.filter(function (item) {
+                        return !!item
+                    }).length
+                },
 
-                    $partnerInfoForm.find('input, textarea').each(function (index, element) {
-                        data[element.name] = $(element).val();
+                getData: function ($form) {
+                    this.data = {};
+
+                    $form.find('input, textarea').each(function (index, element) {
+                        this.data[element.name] = $(element).val();
                     }.bind(this));
+                },
+
+                setData: function () {
+                    this.array = this.array || [];
 
                     switch (this.action) {
                         case 'add':
-                            this.partners2.push(data);
-                            this.current = this.partners2.length - 1;
-                            this.length++;
+                            this.array.push(this.data);
+                            this.index = this.array.length - 1;
                             break;
                         case 'edit':
-                            this.partners2[this.current] = data;
+                            this.array[this.index] = this.data;
                             break;
                         case 'duplicate':
-                            this.partners2.push(data);
-                            this.length++;
+                            this.array.push(this.data);
+                            this.index = this.array.length - 1;
                             break;
                         case 'remove':
-                            delete this.partners2[this.current]
-                            this.length--;
+                            delete this.array[this.index];
                             break;
                     }
                 },
 
                 generateTemplate: function () {
-                    let index = this.current;
-                    let data = this.partners2[this.current];
+                    let localIndex = this.index;
+                    let localData = this.data;
 
                     let generateHiddenFields = function (data, index) {
                         let template = '';
@@ -648,8 +587,8 @@ jQuery(document).ready(function ($) {
                         return template;
                     };
 
-                    let template = $('<div id="partner-id-' + index + '" class="form__group">' +
-                        '        <label>' + data['full_name'] + ' | ' + data['age'] + ' y.o. | ' + data['role'] + '</label><input readonly/>' +
+                    this.template = $('<div id="partner-id-' + this.index + '" class="form__group">' +
+                        '        <label>' + this.data['full_name'] + ' | ' + this.data['age'] + ' y.o. | ' + this.data['role'] + '</label><input readonly/>' +
                         '        <div class="team-form-group__item-control team-item-control">' +
                         '            <button type="button" class="team-item-control__button"></button>' +
                         '            <ul class="team-item-control__list">' +
@@ -664,59 +603,62 @@ jQuery(document).ready(function ($) {
                         '                </li>' +
                         '            </ul>' +
                         '        </div>' +
-                        generateHiddenFields(data, index) +
+                        generateHiddenFields(this.data, this.index + 1) +
                         '</div>');
 
-                    $('[data-action="edit-partner-info"]', template).on('click', function () {
+                    $('[data-action="edit-partner-info"]', this.template).on('click', function () {
                         this.action = 'edit';
-                        this.current = index;
-                        popup.open(null, fillForm.bind(null, $partnerInfoForm, data), resetForm.bind(null, $partnerInfoForm), null);
+                        this.index = localIndex;
+                        this.data = localData;
+                        popup.open(null, fillForm.bind(null, $partnerInfoForm, this.data), resetForm.bind(null, $partnerInfoForm), null);
                     }.bind(this));
 
-                    $('[data-action="duplicate-partner-info"]', template).on('click', function () {
-                        if (this.length >= this.limit) return;
+                    $('[data-action="duplicate-partner-info"]', this.template).on('click', function () {
+                        if (this.getLength() >= this.limit) return;
                         this.action = 'duplicate';
-                        this.current = index;
-                        this.updateData(data);
+                        this.data = localData;
+                        this.setData();
                         this.generateTemplate();
+                        this.setTemplate();
                     }.bind(this));
 
-                    $('[data-action="remove-partner-info"]', template).on('click', function () {
+                    $('[data-action="remove-partner-info"]', this.template).on('click', function () {
                         this.action = 'remove';
-                        this.current = index;
-                        this.updateData();
-                        this.updateTemplate();
+                        this.index = localIndex;
+                        this.setData();
+                        this.setTemplate();
                     }.bind(this));
-
-                    this.updateTemplate(template);
                 },
 
-                updateTemplate(template) {
+                setTemplate() {
                     switch (this.action) {
                         case 'edit':
-                            $partnerItemsBox.find('#partner-id-' + this.current + '').replaceWith(template);
+                            $partnerItemsBox.find('#partner-id-' + this.index + '').replaceWith(this.template);
                             break;
                         case 'duplicate':
-                            $partnerItemsBox.append(template);
+                            $partnerItemsBox.append(this.template);
                             break;
                         case 'add':
-                            $partnerItemsBox.append(template);
+                            $partnerItemsBox.append(this.template);
                             break;
                         case 'remove':
-                            $partnerItemsBox.find('#partner-id-' + this.current + '').replaceWith('');
+                            $partnerItemsBox.find('#partner-id-' + this.index + '').replaceWith('');
                             break;
                     }
+
+                    $showPartnerInfoForm.attr('disabled', this.getLength() >= this.limit);
+                    $('[data-action="duplicate-partner-info"]').attr('disabled', this.getLength() >= this.limit);
                 },
 
                 init: function () {
                     $showPartnerInfoForm.on('click', function (e) {
                         e.preventDefault();
 
-                        if (this.partners2.length < this.limit) {
-                            this.action = 'add';
+                        if (this.getLength() >= this.limit) return;
 
-                            popup.open(null, null, resetForm.bind(null, $partnerInfoForm), null);
-                        }
+                        this.action = 'add';
+
+                        popup.open(null, null, resetForm.bind(null, $partnerInfoForm), null);
                     }.bind(this));
 
                     $partnerInfoForm.on('submit', function (e) {
@@ -724,9 +666,13 @@ jQuery(document).ready(function ($) {
 
                         if (!$partnerInfoForm.valid()) return;
 
-                        this.updateData();
+                        this.getData($partnerInfoForm);
+
+                        this.setData();
 
                         this.generateTemplate();
+
+                        this.setTemplate();
 
                         popup.close();
                     }.bind(this));
@@ -740,32 +686,32 @@ jQuery(document).ready(function ($) {
             let $wpcf7 = $('.wpcf7');
             let $formNode = $wpcf7.find('form');
 
-            $wpcf7.on('wpcf7:mailsent', function () {
-                let $this = $(this);
-                let $groupNode = $this.find('[data-js="form-group"]');
-                let $fileUploadAreaNode = $this.find('[data-js="upload-file"]');
-
-                setTimeout(function () {
-                    $groupNode
-                        .find('input, textarea')
-                        .each(function (index, element) {
-                            $(element).closest($groupNode).removeClass($(element).val() === '' ? 'transform-label' : '')
-                        });
-
-                    $fileUploadAreaNode
-                        .find('input')
-                        .each(function (index, element) {
-                            if ($(element).val() === '') $fileUploadAreaNode.data('reset')();
-                        });
-                }, 1000);
-            });
-
-            $wpcf7.on('wpcf7:submit wpcf7:invalid', function (e) {
-                let $this = $(this);
-                let $inputNode = $this.find('input');
-
-                $inputNode.trigger('classChange');
-            });
+            // $wpcf7.on('wpcf7:mailsent', function () {
+            //     let $this = $(this);
+            //     let $groupNode = $this.find('[data-js="form-group"]');
+            //     let $fileUploadAreaNode = $this.find('[data-js="upload-file"]');
+            //
+            //     setTimeout(function () {
+            //         $groupNode
+            //             .find('input, textarea')
+            //             .each(function (index, element) {
+            //                 $(element).closest($groupNode).removeClass($(element).val() === '' ? 'transform-label' : '')
+            //             });
+            //
+            //         $fileUploadAreaNode
+            //             .find('input')
+            //             .each(function (index, element) {
+            //                 if ($(element).val() === '') $fileUploadAreaNode.data('reset')();
+            //             });
+            //     }, 1000);
+            // });
+            //
+            // $wpcf7.on('wpcf7:submit wpcf7:invalid', function (e) {
+            //     let $this = $(this);
+            //     let $inputNode = $this.find('input');
+            //
+            //     $inputNode.trigger('classChange');
+            // });
 
             $wpcf7.on('wpcf7:spam wpcf7:mailfailed', function () {
                 $formNode.hide();
@@ -781,26 +727,6 @@ jQuery(document).ready(function ($) {
                 if (!$.magnificPopup.instance.isOpen) {
                     $(window.smoothScroll).trigger('update');
                 }
-            });
-        },
-
-        popup: function () {
-            $(document).ready(function () {
-                $('[data-action="popup"]').magnificPopup({
-                    removalDelay: 500,
-                    callbacks: {
-                        beforeOpen: function () {
-                            this.st.mainClass = this.st.el.attr('data-effect');
-                        },
-                        open: function () {
-                            $('[data-action="close-popup"]').on('click', function () {
-                                let magnificPopup = $.magnificPopup.instance;
-
-                                magnificPopup.close();
-                            });
-                        }
-                    }
-                });
             });
         },
 
@@ -842,6 +768,7 @@ jQuery(document).ready(function ($) {
 
                 $input.on('change', function (e) {
                     showFiles(e.target.files);
+                    $(this).blur();
                 });
 
                 $input.bind('classChange', function (e) {
@@ -870,6 +797,7 @@ jQuery(document).ready(function ($) {
                         });
                     });
                     form.addEventListener('drop', function (e) {
+                        console.log(e.dataTransfer)
                         let files = [].slice.call(e.dataTransfer.files).filter(function (file) {
                             return file.type === 'application/pdf' ||
                                 file.type === 'application/msword' ||

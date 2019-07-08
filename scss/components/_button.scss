@@ -60,8 +60,7 @@
 
     &_state_disabled,
     &[disabled] {
-        background: #e6e3e3;
-        color: #999999;
+        opacity: .7;
         cursor: default;
         pointer-events: none;
     }

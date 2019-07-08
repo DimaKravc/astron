@@ -84,6 +84,12 @@
                 &:hover {
                     color: #ffffff;
                 }
+
+                &[disabled] {
+                    opacity: .7;
+                    cursor: default;
+                    pointer-events: none;
+                }
             }
         }
 
