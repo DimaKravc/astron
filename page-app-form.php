@@ -109,8 +109,7 @@ get_header();
                             <ol class="numeric-list">
                                 <li>You download the offline form in a convenient format</li>
                                 <li>After discussing with the team, fill out the form in the file</li>
-                                <li>Completed document send us e-mail <b><a href="mailto:response@astron.uk.com">response@astron.uk.com</a></b>
-                                </li>
+                                <li>Completed document send us e-mail <b><a href="mailto:info@astronvc.com">info@astronvc.com</a></b></li>
                             </ol>
                         </section>
                         <section class="app-form-off__section">

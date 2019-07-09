@@ -17,7 +17,7 @@ $post_class = array(
             <header class="post-grid__header">
                 <h3 class="post-grid__title"><a href="<?php echo esc_url(get_permalink()) ?>"
                                                 rel="bookmark"><?php the_title() ?></a></h3>
-                <div class="post-grid__company"><?php echo get_post_meta(get_the_ID(), 'company')[0] ?></div>
+                <div class="post-grid__company"><?php echo get_post_meta(162, 'company')[0] ?></div>
             </header>
             <div class="post-grid__content">
                 <?php echo get_the_excerpt(); ?>

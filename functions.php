@@ -111,25 +111,20 @@ if (!function_exists('astron_setup')) :
 endif;
 add_action('after_setup_theme', 'astron_setup');
 
-//add_filter('wpcf7_mail_components', 'custom_mail_components');
-//
-//function custom_mail_components($wpcf7_data, $form = null)
-//{
-//    $tagOne = "[full_name";
-//    $tagTwo = "[experience_4]";
-//    $replacement = '';
-//
-//    $text = $wpcf7_data['body'];
-//
-//    $startTagPos = strstr($text, $tagOne);
-//    $endTagPos = strstr($text, $tagTwo);
-//    $tagLength = $endTagPos - $startTagPos + 1;
-//
-//
-//    $wpcf7_data['body'] = substr_replace($text, $replacement, $startTagPos, $tagLength);
-//
-//    return $wpcf7_data;
-//}
+add_filter('wpcf7_mail_components', 'custom_mail_components');
+
+function custom_mail_components($wpcf7_data, $form = null)
+{
+    $submission = WPCF7_Submission::get_instance();
+    $data = $submission->get_posted_data();
+    $post_id = $data["_wpcf7_container_post"];
+    $meta = get_post_meta($post_id, 'company')[0];
+    $cleared_meta = wp_strip_all_tags($meta);
+
+    $wpcf7_data['body'] = str_replace('[company]', $cleared_meta, $wpcf7_data['body']);
+
+    return $wpcf7_data;
+}
 
 if (!function_exists('astron_load_scripts')) :
     /**
