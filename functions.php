@@ -123,6 +123,8 @@ function custom_mail_components($wpcf7_data, $form = null)
 
     $wpcf7_data['body'] = str_replace('[company]', $cleared_meta, $wpcf7_data['body']);
 
+    $wpcf7_data['body'] = preg_replace('/([\r\n]{4,}|[\n]{2,}|[\r]{2,})/', "\n\n", $wpcf7_data['body']);
+
     return $wpcf7_data;
 }
 

@@ -648,6 +648,7 @@ jQuery(document).ready(function ($) {
 
                     $showPartnerInfoForm.attr('disabled', this.getLength() >= this.limit);
                     $('[data-action="duplicate-partner-info"]').attr('disabled', this.getLength() >= this.limit);
+                    $('#partner-amount').val(this.getLength());
                 },
 
                 init: function () {
