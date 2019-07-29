@@ -20,6 +20,7 @@
     <!-- Primary Meta Tags -->
     <title>Astron - Venture Capital Fund</title>
     <meta name="title" content="Astron - Venture Capital Fund">
+    <meta name="keywords" content="Astron, AstronVC, Astron Venture Capital, Venture Investments Uzbekistan, Investments in Uzbekistan, Startup, Астрон, Инвестиции, Венчурный фонд , Венчурный фонд в Узбекистане, Стартап Узбекистан">
     <meta name="description" content="Astron VC is a seed and early stage venture capital fund. Our mission is to support the brightest ideas and teams capable of disrupting traditional markets in Uzbekistan by leveraging our capital and experienced hands-on mentorship and leadership.">
 
     <!-- Open Graph / Facebook -->
